@@ -5,6 +5,7 @@
 class CPlayer : public CGameObject
 {
 public:
+	float maxHealth;
 	float health;
 	float moveSpeed;
 	float coolDown;

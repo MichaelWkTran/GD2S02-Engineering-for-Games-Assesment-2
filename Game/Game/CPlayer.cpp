@@ -4,7 +4,7 @@
 
 CPlayer::CPlayer()
 {
-	health = 100.0f;
+    maxHealth = health = 100.0f;
 	moveSpeed = 6.0f;
 	coolDown = 0.0f;
 
@@ -39,6 +39,7 @@ CPlayer::~CPlayer()
 
 void CPlayer::Update()
 {
+    // player movement
     b2Vec2 movement = b2Vec2
     (
         sf::Keyboard::isKeyPressed(sf::Keyboard::Right) - sf::Keyboard::isKeyPressed(sf::Keyboard::Left), 
@@ -48,4 +49,11 @@ void CPlayer::Update()
     movement *= moveSpeed;
     
     physicsBody->GetBody().SetLinearVelocity(movement);
+
+    // cap player health
+    if (health > maxHealth) health = maxHealth;
+    
+    // player death
+    if (health < 0.0f) DeleteObject();
+
 }

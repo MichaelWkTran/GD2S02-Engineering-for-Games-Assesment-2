@@ -1,4 +1,23 @@
-﻿  CPlayer.cpp
-C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(48,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(47,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  CGameObject.cpp
+C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CGameObject.cpp(8,30): warning C4150: deletion of pointer to incomplete type 'CPhysicsBody'; no destructor called
+C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CGameObject.h(7): message : see declaration of 'CPhysicsBody'
+  CManager.cpp
+C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(35,70): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(35,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(57,53): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(57,53): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+  CPhysicsBody.cpp
+  CPlayer.cpp
+C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(45,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(44,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+  Generating Code...
   Game.vcxproj -> C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\Game.exe

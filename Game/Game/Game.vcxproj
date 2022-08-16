@@ -152,6 +152,7 @@
     <ClCompile Include="CManager.cpp" />
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CPhysicsBody.cpp" />
+    <ClCompile Include="CWall.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CPlayer.cpp" />
   </ItemGroup>
@@ -161,6 +162,7 @@
     <ClInclude Include="CPhysicsBody.h" />
     <ClInclude Include="CUpdatedObject.h" />
     <ClInclude Include="CPlayer.h" />
+    <ClInclude Include="CWall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

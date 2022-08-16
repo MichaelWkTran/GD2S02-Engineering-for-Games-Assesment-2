@@ -33,7 +33,8 @@ CManager::CManager()
 	
 	// sets up the renderwindow
 	window = new sf::RenderWindow(sf::VideoMode(screenSize.x, screenSize.y), "Game");
-
+	event = sf::Event();
+	
 	// set up physics
 	b2Vec2 v2Gravity(0.0, 0.f);
 	physicsWorld = new b2World(v2Gravity);
