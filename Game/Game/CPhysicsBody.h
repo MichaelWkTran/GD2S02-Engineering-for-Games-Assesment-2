@@ -5,12 +5,12 @@
 class CPhysicsBody
 {
 protected:
-	b2Body* m_pBody;
-	b2Shape* m_pShape;
+	b2Body* body;
+	b2Shape* shape;
 
 public:
-	b2BodyDef m_BodyDef;
-	b2FixtureDef m_FixtureDef;
+	b2BodyDef bodyDef;
+	b2FixtureDef fixtureDef;
 
 	CPhysicsBody();
 	~CPhysicsBody();
@@ -19,14 +19,14 @@ public:
 	template <class T>
 	void SetupShape();
 
-	b2Body& GetBody() const { return *m_pBody; }
-	b2Shape& GetShape() const { return *m_pShape; }
+	b2Body& GetBody() const { return *body; }
+	b2Shape& GetShape() const { return *shape; }
 };
 
-//The template class, T, must inherit from b2Shape
+// the template class, T, must inherit from b2Shape
 template<class T>
 inline void CPhysicsBody::SetupShape()
 {
-	m_pShape = new T;
-	m_FixtureDef.shape = m_pShape;
+	shape = new T;
+	fixtureDef.shape = shape;
 };

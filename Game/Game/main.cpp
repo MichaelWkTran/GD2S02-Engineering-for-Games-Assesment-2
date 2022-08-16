@@ -3,11 +3,11 @@
 
 int main()
 {
-	CManager* pManager = new CManager();
-	pManager->CreateObject<CPlayer>();
+	CManager* manager = new CManager();
+	manager->CreateObject<CPlayer>();
 
-	while (pManager->isRunning)
+	while (manager->isRunning)
 	{
-		pManager->Update();
+		manager->Update();
 	}
 }

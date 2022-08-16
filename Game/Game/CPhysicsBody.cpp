@@ -3,17 +3,17 @@
 
 CPhysicsBody::CPhysicsBody()
 {
-	m_pBody = nullptr;
-	m_pShape = nullptr;
+	body = nullptr;
+	shape = nullptr;
 }
 
 CPhysicsBody::~CPhysicsBody()
 {
-	GetManager().GetPhysicsWorld().DestroyBody(m_pBody);
+	GetManager().GetPhysicsWorld().DestroyBody(body);
 }
 
 void CPhysicsBody::SetupBody()
 {
-	m_pBody = GetManager().GetPhysicsWorld().CreateBody(&m_BodyDef);
-	m_pBody->CreateFixture(&m_FixtureDef);
+	body = GetManager().GetPhysicsWorld().CreateBody(&bodyDef);
+	body->CreateFixture(&fixtureDef);
 }

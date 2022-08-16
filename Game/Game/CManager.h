@@ -18,7 +18,7 @@ private:
 	sf::Event event;
 	sf::Clock deltaTimeClock;
 
-	//Physics Variables
+	// physics variables
 	b2World* physicsWorld;
 
 	void Zoom(float _fZoomValue);
@@ -27,7 +27,7 @@ public:
 	bool isRunning;
 	float deltatime;
 
-	//Physics Variables
+	// physics variables
 	float pixelToWorldScale;
 	float timeStep;
 	float maxFrameTime;
@@ -35,7 +35,7 @@ public:
 	int velocityIterations;
 	int positionIterations;
 
-	//Methods
+	// methods
 	CManager();
 	~CManager();
 
@@ -45,7 +45,7 @@ public:
 
 	void Update();
 
-	//Get Set Methods
+	// get set methods
 	static CManager& GetSingleton() { return *singleton; };
 	b2World& GetPhysicsWorld() { return *physicsWorld; }
 	sf::RenderWindow& GetWindow() { return *window; }

@@ -13,7 +13,7 @@ void CGameObject::Draw()
 {
 	if (!visible) return;
 
-	//Transform the drawable to m_Transfrom
+	// transform the drawable to m_Transfrom
 	sf::Transformable* drawableTransform = dynamic_cast<sf::Transformable*>(drawable);
 	if (drawableTransform == nullptr)
 	{
@@ -26,6 +26,6 @@ void CGameObject::Draw()
 	drawableTransform->setRotation(transform.getRotation());
 	drawableTransform->setOrigin(transform.getOrigin());
 
-	//Draw Drawable
+	// draw drawable
 	GetManager().GetWindow().draw(*drawable);
 }
