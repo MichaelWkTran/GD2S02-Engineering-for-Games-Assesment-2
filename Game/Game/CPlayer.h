@@ -2,6 +2,8 @@
 #include "CGameObject.h"
 #include "Box2D/box2d.h"
 
+class CBullet;
+
 class CPlayer : public CGameObject
 {
 public:

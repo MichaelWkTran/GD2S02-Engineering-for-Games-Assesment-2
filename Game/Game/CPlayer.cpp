@@ -1,6 +1,8 @@
 #include "CPlayer.h"
 #include "CManager.h"
 #include "CPhysicsBody.h"
+#include "CBullet.h"
+#include <iostream>
 
 CPlayer::CPlayer()
 {
@@ -56,4 +58,9 @@ void CPlayer::Update()
     // player death
     if (health < 0.0f) DeleteObject();
 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    {
+        CBullet* bullet = new CBullet(1, 0, dynamic_cast<sf::Transformable*>(drawable)->getPosition());
+        GetManager().objectsInWorld.emplace_back(new CBullet(1, 10, dynamic_cast<sf::Transformable*>(drawable)->getPosition()));
+    }
 }
