@@ -1,2 +1,7 @@
 ﻿  CBullet.cpp
+  CGun.cpp
+  CPlayer.cpp
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(53,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(52,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
   Game.vcxproj -> C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\Game.exe

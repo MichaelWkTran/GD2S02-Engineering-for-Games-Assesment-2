@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CBullet.cpp" />
+    <ClCompile Include="CGun.cpp" />
     <ClCompile Include="CManager.cpp" />
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CPhysicsBody.cpp" />
@@ -159,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CBullet.h" />
+    <ClInclude Include="CGun.h" />
     <ClInclude Include="CManager.h" />
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CPhysicsBody.h" />

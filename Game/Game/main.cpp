@@ -4,7 +4,8 @@
 int main()
 {
 	CManager* manager = new CManager();
-	manager->CreateObject<CPlayer>();
+	CPlayer* player = manager->CreateObject<CPlayer>();
+	player->AddGunToRender();
 
 	while (manager->isRunning)
 	{

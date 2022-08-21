@@ -2,6 +2,7 @@
 #include "CManager.h"
 #include "CPhysicsBody.h"
 #include "CBullet.h"
+#include "CGun.h"
 #include <iostream>
 
 CPlayer::CPlayer()
@@ -33,6 +34,10 @@ CPlayer::CPlayer()
 
     // setup b2Body
     physicsBody->SetupBody();
+    physicsBody->GetBody().SetFixedRotation(true);
+
+    facingDirection = b2Vec2(1, 0);
+    heldGun = new CGun(&facingDirection, this);
 }
 
 CPlayer::~CPlayer()
@@ -51,6 +56,11 @@ void CPlayer::Update()
     movement *= moveSpeed;
     
     physicsBody->GetBody().SetLinearVelocity(movement);
+    
+    if (movement != b2Vec2(0, 0))
+    {
+        facingDirection = b2Vec2(movement.x, movement.y);
+    }
 
     // cap player health
     if (health > maxHealth) health = maxHealth;
@@ -60,7 +70,11 @@ void CPlayer::Update()
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
     {
-        CBullet* bullet = new CBullet(1, 0, dynamic_cast<sf::Transformable*>(drawable)->getPosition());
-        GetManager().objectsInWorld.emplace_back(new CBullet(1, 10, dynamic_cast<sf::Transformable*>(drawable)->getPosition()));
+        heldGun->Shoot();
     }
+}
+
+void CPlayer::AddGunToRender()
+{
+    GetManager().objectsInWorld.push_back(heldGun);
 }
