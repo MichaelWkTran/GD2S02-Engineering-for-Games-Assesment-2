@@ -17,7 +17,7 @@ CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b
 	float radius = 4.0f;
 
 	// set the origin of the SFML transform
-	transform.setOrigin(sf::Vector2f(radius, radius));
+	transform.setOrigin(radius, radius);
 
 	// setup sf::Drawable
 	drawable = new sf::CircleShape(radius);
@@ -27,6 +27,7 @@ CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b
 	// setup b2BodyDef
 	physicsBody = new CPhysicsBody;
 	physicsBody->bodyDef.type = b2_dynamicBody;
+	physicsBody->bodyDef.bullet = true;
 
 	// setup b2Shape
 	physicsBody->SetupShape<b2CircleShape>();
@@ -34,7 +35,6 @@ CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b
 
 	// setup b2FixtureDef
 	physicsBody->fixtureDef.density = 1.0f;
-
 	physicsBody->bodyDef.position = b2Vec2(transform.getPosition().x * GetManager().pixelToWorldScale, transform.getPosition().y * GetManager().pixelToWorldScale);
 
 	// setup b2Body
@@ -47,8 +47,8 @@ CBullet::~CBullet()
 
 void CBullet::Update()
 {
-	lifeCounter += GetManager().deltatime;
-	if (lifeCounter >= lifeTime)
+	lifeTime -= GetManager().deltatime;
+	if (lifeTime < 0)
 	{
 		DeleteObject();
 	}

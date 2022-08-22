@@ -10,7 +10,6 @@ class CManager
 private:
 	static CManager* singleton;
 	
-
 	// window and view variables
 	sf::Vector2f screenSize;
 	sf::View view;

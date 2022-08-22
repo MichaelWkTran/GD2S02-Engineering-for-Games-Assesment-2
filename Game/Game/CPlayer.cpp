@@ -23,7 +23,7 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
 	float radius = 16.0f;
 
     // set the origin of the SFML transform
-	transform.setOrigin(sf::Vector2f(radius, radius));
+	transform.setOrigin(radius, radius);
 
     // setup sf::Drawable
 	drawable = new sf::RectangleShape(sf::Vector2f(radius, radius) * 2.0f);
@@ -78,6 +78,7 @@ void CPlayer::Update()
     // player death
     if (health < 0.0f) DeleteObject();
 
+    // shoot projectile
     if (sf::Keyboard::isKeyPressed(shoot))
     {
         heldGun->Shoot();
