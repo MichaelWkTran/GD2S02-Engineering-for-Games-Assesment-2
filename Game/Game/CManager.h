@@ -27,6 +27,7 @@ public:
 	std::deque<CUpdatedObject*> objectsInWorld;
 	bool isRunning;
 	float deltatime;
+	sf::Font font;
 
 	// physics variables
 	float pixelToWorldScale;

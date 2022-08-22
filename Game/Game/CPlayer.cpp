@@ -5,11 +5,19 @@
 #include "CGun.h"
 #include <iostream>
 
-CPlayer::CPlayer()
+CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::Key _left, sf::Keyboard::Key _right, sf::Keyboard::Key _shoot, sf::Vector2f _spawnPos)
 {
-    maxHealth = health = 100.0f;
+    up = _up;
+    down = _down;
+    left = _left;
+    right = _right;
+    shoot = _shoot;
+
+    maxHealth = health = 10.0f;
 	moveSpeed = 6.0f;
 	coolDown = 0.0f;
+
+    tags.emplace("Player");
 
     // setup CGameObject
 	float radius = 16.0f;
@@ -20,6 +28,7 @@ CPlayer::CPlayer()
     // setup sf::Drawable
 	drawable = new sf::RectangleShape(sf::Vector2f(radius, radius) * 2.0f);
 	((sf::RectangleShape*)drawable)->setFillColor(sf::Color().Red);
+	transform.setPosition(_spawnPos);
 
     // setup b2BodyDef
     physicsBody = new CPhysicsBody;
@@ -28,6 +37,7 @@ CPlayer::CPlayer()
     // setup b2Shape
     physicsBody->SetupShape<b2CircleShape>();
     physicsBody->GetShape().m_radius = radius * GetManager().pixelToWorldScale;
+    physicsBody->bodyDef.position = b2Vec2(transform.getPosition().x * GetManager().pixelToWorldScale, transform.getPosition().y * GetManager().pixelToWorldScale);
 
     // setup b2FixtureDef
     physicsBody->fixtureDef.density = 1.0f;
@@ -49,8 +59,8 @@ void CPlayer::Update()
     // player movement
     b2Vec2 movement = b2Vec2
     (
-        sf::Keyboard::isKeyPressed(sf::Keyboard::Right) - sf::Keyboard::isKeyPressed(sf::Keyboard::Left), 
-        sf::Keyboard::isKeyPressed(sf::Keyboard::Down) - sf::Keyboard::isKeyPressed(sf::Keyboard::Up)
+        sf::Keyboard::isKeyPressed(right) - sf::Keyboard::isKeyPressed(left), 
+        sf::Keyboard::isKeyPressed(down) - sf::Keyboard::isKeyPressed(up)
     );
     movement.Normalize();
     movement *= moveSpeed;
@@ -68,7 +78,7 @@ void CPlayer::Update()
     // player death
     if (health < 0.0f) DeleteObject();
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    if (sf::Keyboard::isKeyPressed(shoot))
     {
         heldGun->Shoot();
     }
@@ -77,4 +87,9 @@ void CPlayer::Update()
 void CPlayer::AddGunToRender()
 {
     GetManager().objectsInWorld.push_back(heldGun);
+}
+
+void CPlayer::TakeDamage(float _damage)
+{
+    health -= _damage;
 }

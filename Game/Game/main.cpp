@@ -4,8 +4,12 @@
 int main()
 {
 	CManager* manager = new CManager();
-	CPlayer* player = manager->CreateObject<CPlayer>();
-	player->AddGunToRender();
+	CPlayer* player1 = new CPlayer(sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::Space, { 100, 100 });
+	CPlayer* player2 = new CPlayer(sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::RControl, { 800, 500 });
+	manager->objectsInWorld.push_back(player1);
+	manager->objectsInWorld.push_back(player2);
+	player1->AddGunToRender();
+	player2->AddGunToRender();
 
 	while (manager->isRunning)
 	{

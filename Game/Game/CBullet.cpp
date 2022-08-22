@@ -11,6 +11,8 @@ CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b
 
 	velocity *= moveSpeed;
 
+	tags.emplace("Bullet");
+
 	// setup CGameObject
 	float radius = 4.0f;
 
