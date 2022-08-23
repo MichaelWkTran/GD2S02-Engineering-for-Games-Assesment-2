@@ -33,6 +33,12 @@
     <ClCompile Include="CWall.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CBullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CGun.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CManager.h">
@@ -51,6 +57,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CWall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CBullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CGun.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

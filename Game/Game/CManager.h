@@ -9,8 +9,7 @@ class CManager
 {
 private:
 	static CManager* singleton;
-	std::deque<CUpdatedObject*> objectsInWorld;
-
+	
 	// window and view variables
 	sf::Vector2f screenSize;
 	sf::View view;
@@ -24,8 +23,10 @@ private:
 	void Zoom(float _fZoomValue);
 
 public:
+	std::deque<CUpdatedObject*> objectsInWorld;
 	bool isRunning;
 	float deltatime;
+	sf::Font font;
 
 	// physics variables
 	float pixelToWorldScale;

@@ -44,6 +44,8 @@ CManager::CManager()
 	accumulatedTime = 0.0f;
 	velocityIterations = 8;
 	positionIterations = 3;
+
+	font.loadFromFile("fonts/SansSerif.ttf");
 }
 
 CManager::~CManager()
