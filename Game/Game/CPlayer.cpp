@@ -46,6 +46,7 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
     // setup b2Body
     physicsBody->SetupBody();
     physicsBody->GetBody().SetFixedRotation(true);
+    physicsBody->GetBody().GetUserData().pointer = (uintptr_t)static_cast<void*>(this);
 
     facingDirection = b2Vec2(1, 0);
     heldGun = new CGun(&facingDirection, this);
@@ -92,7 +93,11 @@ void CPlayer::Update()
     if (health > maxHealth) health = maxHealth;
     
     // player death
-    if (health < 0.0f) DeleteObject();
+    if (health <= 0.0f)
+    {
+        DeleteObject();
+        heldGun->DeleteObject();
+    }
 
     // shoot projectile
     if (sf::Keyboard::isKeyPressed(shoot))
@@ -109,6 +114,15 @@ void CPlayer::AddGunToRender()
 void CPlayer::TakeDamage(float _damage)
 {
     health -= _damage;
+    if (isPlayerOne)
+    {
+        healthString = "Player One Health: " + std::to_string(health);
+    }
+    else
+    {
+        healthString = "Player Two Health: " + std::to_string(health);
+    }
+    healthText.setString(healthString);
 }
 
 void CPlayer::Draw()

@@ -5,7 +5,7 @@
 
 class CUpdatedObject;
 
-class CManager
+class CManager : public b2ContactListener
 {
 private:
 	static CManager* singleton;
@@ -21,6 +21,8 @@ private:
 	b2World* physicsWorld;
 
 	void Zoom(float _fZoomValue);
+
+	virtual void BeginContact(b2Contact* _contact) override;
 
 public:
 	std::deque<CUpdatedObject*> objectsInWorld;

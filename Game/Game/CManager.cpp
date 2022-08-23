@@ -3,6 +3,8 @@
 #include "CGameObject.h"
 #include "CPhysicsBody.h"
 #include "box2d\box2D.h"
+#include "CPlayer.h";
+#include "CBullet.h"
 
 CManager* CManager::singleton = nullptr;
 
@@ -10,6 +12,25 @@ void CManager::Zoom(float _zoomValue)
 {
 	view.zoom(_zoomValue);
 	window->setView(view);
+}
+
+void CManager::BeginContact(b2Contact* _contact)
+{
+	void* objectOne = (void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer;
+	void* objectTwo = (void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer;
+	if (static_cast<CGameObject*>(objectOne) && static_cast<CGameObject*>(objectTwo))
+	{
+		if (static_cast<CGameObject*>(objectOne)->TagExists("Player") && static_cast<CGameObject*>(objectTwo)->TagExists("Bullet"))
+		{
+			static_cast<CPlayer*>(objectOne)->TakeDamage(static_cast<CBullet*>(objectTwo)->damage);
+			static_cast<CGameObject*>(objectTwo)->DeleteObject();
+		}
+		else if (static_cast<CGameObject*>(objectOne)->TagExists("Bullet") && static_cast<CGameObject*>(objectTwo)->TagExists("Player"))
+		{
+			static_cast<CPlayer*>(objectTwo)->TakeDamage(static_cast<CBullet*>(objectOne)->damage);
+			static_cast<CGameObject*>(objectOne)->DeleteObject();
+		}
+	}
 }
 
 CManager::CManager()
@@ -44,6 +65,8 @@ CManager::CManager()
 	accumulatedTime = 0.0f;
 	velocityIterations = 8;
 	positionIterations = 3;
+
+	physicsWorld->SetContactListener(this);
 
 	font.loadFromFile("fonts/SansSerif.ttf");
 }

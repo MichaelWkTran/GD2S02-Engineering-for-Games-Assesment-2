@@ -39,6 +39,7 @@ CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b
 
 	// setup b2Body
 	physicsBody->SetupBody();
+	physicsBody->GetBody().GetUserData().pointer = (uintptr_t)static_cast<void*>(this);
 }
 
 CBullet::~CBullet()
