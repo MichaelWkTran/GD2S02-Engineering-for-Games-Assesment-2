@@ -5,13 +5,14 @@
 #include "CGun.h"
 #include <iostream>
 
-CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::Key _left, sf::Keyboard::Key _right, sf::Keyboard::Key _shoot, sf::Vector2f _spawnPos)
+CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::Key _left, sf::Keyboard::Key _right, sf::Keyboard::Key _shoot, sf::Vector2f _spawnPos, bool _isPlayerOne)
 {
     up = _up;
     down = _down;
     left = _left;
     right = _right;
     shoot = _shoot;
+    isPlayerOne = _isPlayerOne;
 
     maxHealth = health = 10.0f;
 	moveSpeed = 6.0f;
@@ -48,6 +49,21 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
 
     facingDirection = b2Vec2(1, 0);
     heldGun = new CGun(&facingDirection, this);
+
+    if (isPlayerOne)
+    {
+        healthString = "Player One Health: " + std::to_string(health);
+        healthText.setPosition({ 10, 10 });
+    }
+    else
+    {
+        healthString = "Player Two Health: " + std::to_string(health);
+        healthText.setPosition({ 1000, 10 });
+    }
+    healthText.setString(healthString);
+    healthText.setFillColor(sf::Color::Black);
+    healthText.setFont(GetManager().font);
+    healthText.setCharacterSize(20);
 }
 
 CPlayer::~CPlayer()
@@ -93,4 +109,27 @@ void CPlayer::AddGunToRender()
 void CPlayer::TakeDamage(float _damage)
 {
     health -= _damage;
+}
+
+void CPlayer::Draw()
+{
+    if (!visible) return;
+
+    // transform the drawable to m_Transfrom
+    sf::Transformable* drawableTransform = dynamic_cast<sf::Transformable*>(drawable);
+    if (drawableTransform == nullptr)
+    {
+        std::cout << "ERROR: m_pDrawable in CGameObject must inherit from sf::Transformable\n";
+        return;
+    }
+
+    drawableTransform->setPosition(transform.getPosition());
+    drawableTransform->setScale(transform.getScale());
+    drawableTransform->setRotation(transform.getRotation());
+    drawableTransform->setOrigin(transform.getOrigin());
+
+    // draw drawable
+    GetManager().GetWindow().draw(*drawable);
+
+    GetManager().GetWindow().draw(healthText);
 }
