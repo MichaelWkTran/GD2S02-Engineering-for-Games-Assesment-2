@@ -108,7 +108,7 @@ void CPlayer::Update()
 
 void CPlayer::AddGunToRender()
 {
-    GetManager().objectsInWorld.push_back(heldGun);
+    //GetManager().objectsInWorld.push_back(heldGun);
 }
 
 void CPlayer::TakeDamage(float _damage)

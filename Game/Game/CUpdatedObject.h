@@ -9,11 +9,7 @@ private:
 	bool deleteUpdatedObject;
 
 public:
-	CUpdatedObject()
-	{
-		startCalled = false;
-		deleteUpdatedObject = false;
-	}
+	CUpdatedObject();
 
 	const bool GetDeleteObject() const
 	{

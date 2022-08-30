@@ -131,7 +131,7 @@ void CGun::Shoot()
 		sf::Vector2f bulletSpawnPos = sf::Vector2f(dynamic_cast<sf::Transformable*>(drawable)->getPosition().x + playerFacingDirection->x * multiplier, dynamic_cast<sf::Transformable*>(drawable)->getPosition().y + playerFacingDirection->y * multiplier);
 		for (int i = 0; i < bulletCount; i++)
 		{
-			GetManager().objectsInWorld.emplace_back(new CBullet(damage, bulletSpeed, bulletSpawnPos, *playerFacingDirection));
+			new CBullet(damage, bulletSpeed, bulletSpawnPos, *playerFacingDirection);
 		}
 		counterFireRate = 0;
 	}

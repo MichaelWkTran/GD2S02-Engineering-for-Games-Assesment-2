@@ -7,9 +7,12 @@ class CUpdatedObject;
 
 class CManager : public b2ContactListener
 {
+	friend CUpdatedObject;
+
 private:
 	static CManager* singleton;
-	
+	std::deque<CUpdatedObject*> objectsInWorld;
+
 	// window and view variables
 	sf::Vector2f screenSize;
 	sf::View view;
@@ -25,7 +28,6 @@ private:
 	virtual void BeginContact(b2Contact* _contact) override;
 
 public:
-	std::deque<CUpdatedObject*> objectsInWorld;
 	bool isRunning;
 	float deltatime;
 	sf::Font font;
@@ -41,11 +43,12 @@ public:
 	// methods
 	CManager();
 	~CManager();
-
-	template <class T>
-	T* CreateObject();
+	CManager(const CManager&) = delete;
+	CManager& operator= (const CManager&) = delete;
+	
+	void DestroyImmediate(CUpdatedObject* _UpdatedObject);
+	void DestroyImmediate(CUpdatedObject*& _UpdatedObject);
 	void Clear();
-
 	void Update();
 
 	// get set methods
@@ -53,12 +56,5 @@ public:
 	b2World& GetPhysicsWorld() { return *physicsWorld; }
 	sf::RenderWindow& GetWindow() { return *window; }
 };
-
-template<class T>
-inline T* CManager::CreateObject()
-{
-	objectsInWorld.emplace_back(new T);
-	return (T*)objectsInWorld.back();
-}
 
 #define GetManager CManager::GetSingleton

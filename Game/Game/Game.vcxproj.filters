@@ -39,6 +39,9 @@
     <ClCompile Include="CGun.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CUpdatedObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CManager.h">

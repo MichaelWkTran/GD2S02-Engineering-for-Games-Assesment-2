@@ -156,6 +156,7 @@
     <ClCompile Include="CManager.cpp" />
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CPhysicsBody.cpp" />
+    <ClCompile Include="CUpdatedObject.cpp" />
     <ClCompile Include="CWall.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CPlayer.cpp" />

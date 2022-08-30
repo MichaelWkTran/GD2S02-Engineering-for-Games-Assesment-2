@@ -5,6 +5,7 @@
 #include "box2d\box2D.h"
 #include "CPlayer.h";
 #include "CBullet.h"
+#include <iostream>
 
 CManager* CManager::singleton = nullptr;
 
@@ -75,6 +76,45 @@ CManager::~CManager()
 {
 	Clear();
 	delete physicsWorld;
+}
+
+void CManager::DestroyImmediate(CUpdatedObject* _UpdatedObject)
+{
+	if (_UpdatedObject == nullptr)
+	{
+		std::cout << "ERROR: Can not use DestroyImmediate on nullptr";
+		return;
+	}
+
+	for (int i = 0; i < (int)objectsInWorld.size(); i++)
+	{
+		if (objectsInWorld[i] != _UpdatedObject) continue;
+
+		objectsInWorld.erase(objectsInWorld.begin() + i);
+		delete _UpdatedObject;
+
+		return;
+	}
+}
+
+void CManager::DestroyImmediate(CUpdatedObject*& _UpdatedObject)
+{
+	if (_UpdatedObject == nullptr)
+	{
+		std::cout << "ERROR: Can not use DestroyImmediate on nullptr";
+		return;
+	}
+
+	for (int i = 0; i < (int)objectsInWorld.size(); i++)
+	{
+		if (objectsInWorld[i] != _UpdatedObject) continue;
+
+		objectsInWorld.erase(objectsInWorld.begin() + i);
+		delete _UpdatedObject;
+		_UpdatedObject = nullptr;
+
+		return;
+	}
 }
 
 void CManager::Clear()
