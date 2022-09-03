@@ -1,6 +1,7 @@
 #pragma once
 #include "box2d\box2D.h"
 #include <SFML/Graphics.hpp>
+#include "CLevelMaker.h"
 #include <deque>
 
 class CUpdatedObject;
@@ -20,12 +21,16 @@ private:
 	sf::Event event;
 	sf::Clock deltaTimeClock;
 
+	bool isLevelMakerOpen = false;
+
 	// physics variables
 	b2World* physicsWorld;
 
 	void Zoom(float _fZoomValue);
 
 	virtual void BeginContact(b2Contact* _contact) override;
+
+	CLevelMaker* levelmaker = nullptr;
 
 public:
 	bool isRunning;

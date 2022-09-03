@@ -3,9 +3,10 @@
 #include "CPhysicsBody.h"
 #include "CManager.h"
 
-CWall::CWall()
+CWall::CWall(sf::Vector2f _pos)
 {
     health = -1.0f;
+    objType = MapPlaceableObjects::UnbreakableWall;
 
     // setup sf::Drawable
     drawable = new sf::RectangleShape(sf::Vector2f(32.0f, 32.0f));
@@ -14,6 +15,7 @@ CWall::CWall()
 
     //The the origin of the SFML transform
     transform.setOrigin(sf::Vector2f(rectangleShape->getSize().x, rectangleShape->getSize().y) / 2.0f);
+    transform.setPosition(_pos);
 
     // setup b2BodyDef
     physicsBody = new CPhysicsBody;
@@ -27,6 +29,8 @@ CWall::CWall()
         (rectangleShape->getSize().x * GetManager().pixelToWorldScale) / 2.0f,
         (rectangleShape->getSize().y * GetManager().pixelToWorldScale) / 2.0f
     );
+    // setup b2Shape
+    physicsBody->bodyDef.position = b2Vec2(transform.getPosition().x * GetManager().pixelToWorldScale, transform.getPosition().y * GetManager().pixelToWorldScale);
 
     // setup b2FixtureDef
     physicsBody->fixtureDef.density = 1.0f;

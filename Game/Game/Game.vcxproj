@@ -152,9 +152,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CBullet.cpp" />
+    <ClCompile Include="CGround.cpp" />
     <ClCompile Include="CGun.cpp" />
+    <ClCompile Include="CLevelMaker.cpp" />
     <ClCompile Include="CManager.cpp" />
     <ClCompile Include="CGameObject.cpp" />
+    <ClCompile Include="CMapPlaceBase.cpp" />
     <ClCompile Include="CPhysicsBody.cpp" />
     <ClCompile Include="CUpdatedObject.cpp" />
     <ClCompile Include="CWall.cpp" />
@@ -163,13 +166,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CBullet.h" />
+    <ClInclude Include="CGround.h" />
     <ClInclude Include="CGun.h" />
+    <ClInclude Include="CLevelMaker.h" />
     <ClInclude Include="CManager.h" />
     <ClInclude Include="CGameObject.h" />
+    <ClInclude Include="CMapPlaceBase.h" />
     <ClInclude Include="CPhysicsBody.h" />
     <ClInclude Include="CUpdatedObject.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CWall.h" />
+    <ClInclude Include="GlobalEnumInclude.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -70,6 +70,8 @@ CManager::CManager()
 	physicsWorld->SetContactListener(this);
 
 	font.loadFromFile("fonts/SansSerif.ttf");
+
+	levelmaker = new CLevelMaker();
 }
 
 CManager::~CManager()
@@ -150,6 +152,14 @@ void CManager::Update()
 			Zoom(screenSize.y / event.size.height);
 			break;
 		}
+		case sf::Event::KeyPressed:
+		{
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Tab))
+			{
+				isLevelMakerOpen = !isLevelMakerOpen;
+			}
+			break;
+		}
 		}
 	}
 
@@ -188,6 +198,11 @@ void CManager::Update()
 	for (auto& pUpdatedObject : objectsInWorld) pUpdatedObject->Update();
 	for (auto& pUpdatedObject : objectsInWorld) pUpdatedObject->EndUpdate();
 	for (auto& pUpdatedObject : objectsInWorld) pUpdatedObject->Draw();
+
+	if (isLevelMakerOpen)
+	{
+		levelmaker->Render();
+	}
 
 	// display drawn objects
 	window->display();

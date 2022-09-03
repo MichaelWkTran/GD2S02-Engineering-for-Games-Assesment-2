@@ -1,12 +1,12 @@
 #pragma once
-#include "CGameObject.h"
+#include "CMapPlaceBase.h"
 
-class CWall : public CGameObject
+class CWall : public CMapPlaceBase
 {
 public:
 	float health;
 
-	CWall();
+	CWall(sf::Vector2f _pos);
 	~CWall();
 
 	virtual void Update() override;
