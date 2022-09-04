@@ -31,6 +31,14 @@ void CManager::BeginContact(b2Contact* _contact)
 			static_cast<CPlayer*>(objectTwo)->TakeDamage(static_cast<CBullet*>(objectOne)->damage);
 			static_cast<CGameObject*>(objectOne)->DeleteObject();
 		}
+		else if (static_cast<CGameObject*>(objectOne)->TagExists("Bullet") && static_cast<CGameObject*>(objectTwo)->TagExists("UnbreakableWall"))
+		{
+			static_cast<CGameObject*>(objectOne)->DeleteObject();
+		}
+		else if (static_cast<CGameObject*>(objectOne)->TagExists("UnbreakableWall") && static_cast<CGameObject*>(objectTwo)->TagExists("Bullet"))
+		{
+			static_cast<CGameObject*>(objectTwo)->DeleteObject();
+		}
 	}
 }
 
@@ -152,14 +160,6 @@ void CManager::Update()
 			Zoom(screenSize.y / event.size.height);
 			break;
 		}
-		case sf::Event::KeyPressed:
-		{
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Tab))
-			{
-				isLevelMakerOpen = !isLevelMakerOpen;
-			}
-			break;
-		}
 		}
 	}
 
@@ -191,6 +191,7 @@ void CManager::Update()
 
 	// clear screen
 	window->clear(sf::Color::White);
+	levelmaker->Update();
 
 	// call updated object methods
 	for (auto& pUpdatedObject : objectsInWorld) pUpdatedObject->Start();
@@ -198,11 +199,6 @@ void CManager::Update()
 	for (auto& pUpdatedObject : objectsInWorld) pUpdatedObject->Update();
 	for (auto& pUpdatedObject : objectsInWorld) pUpdatedObject->EndUpdate();
 	for (auto& pUpdatedObject : objectsInWorld) pUpdatedObject->Draw();
-
-	if (isLevelMakerOpen)
-	{
-		levelmaker->Render();
-	}
 
 	// display drawn objects
 	window->display();
@@ -214,6 +210,10 @@ void CManager::Update()
 
 		CUpdatedObject* pDeletedGameObject = objectsInWorld[i];
 		objectsInWorld.erase(objectsInWorld.begin() + i);
+		if (((CGameObject*)pDeletedGameObject)->GetPhysicsBody() != nullptr)
+		{
+			physicsWorld->DestroyBody(&((CGameObject*)pDeletedGameObject)->GetPhysicsBody()->GetBody());
+		}
 		delete pDeletedGameObject;
 	}
 }

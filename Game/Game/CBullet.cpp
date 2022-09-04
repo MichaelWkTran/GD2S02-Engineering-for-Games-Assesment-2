@@ -44,6 +44,7 @@ CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b
 
 CBullet::~CBullet()
 {
+	
 }
 
 void CBullet::Update()

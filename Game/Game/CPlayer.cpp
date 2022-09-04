@@ -91,13 +91,6 @@ void CPlayer::Update()
 
     // cap player health
     if (health > maxHealth) health = maxHealth;
-    
-    // player death
-    if (health <= 0.0f)
-    {
-        DeleteObject();
-        heldGun->DeleteObject();
-    }
 
     // shoot projectile
     if (sf::Keyboard::isKeyPressed(shoot))
@@ -123,6 +116,14 @@ void CPlayer::TakeDamage(float _damage)
         healthString = "Player Two Health: " + std::to_string(health);
     }
     healthText.setString(healthString);
+
+    // player death
+    if (health <= 0.0f)
+    {
+        DeleteObject();
+        heldGun->DeleteObject();
+        heldGun->ownerPlayer = nullptr;
+    }
 }
 
 void CPlayer::Draw()

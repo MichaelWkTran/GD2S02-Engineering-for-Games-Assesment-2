@@ -21,8 +21,6 @@ private:
 	sf::Event event;
 	sf::Clock deltaTimeClock;
 
-	bool isLevelMakerOpen = false;
-
 	// physics variables
 	b2World* physicsWorld;
 

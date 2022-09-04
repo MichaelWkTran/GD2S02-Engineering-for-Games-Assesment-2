@@ -119,8 +119,11 @@ void CGun::Update()
 	}
 
 	// update position
-	sf::Drawable* playerDrawable = ownerPlayer->GetDrawable();
-	transform.setPosition(dynamic_cast<sf::Transformable*>(playerDrawable)->getPosition());
+	if (ownerPlayer != nullptr)
+	{
+		sf::Drawable* playerDrawable = ownerPlayer->GetDrawable();
+		transform.setPosition(dynamic_cast<sf::Transformable*>(playerDrawable)->getPosition());
+	}
 }
 
 void CGun::Shoot()

@@ -37,11 +37,17 @@ CWall::CWall(sf::Vector2f _pos)
 
     // setup b2Body
     physicsBody->SetupBody();
+    physicsBody->GetBody().SetFixedRotation(true);
+    physicsBody->GetBody().GetUserData().pointer = (uintptr_t)static_cast<void*>(this);
+
+    // setup b2Body
+    physicsBody->SetupBody();
+
+    tags.emplace("UnbreakableWall");
 }
 
 CWall::~CWall()
 {
-
 }
 
 void CWall::Update()

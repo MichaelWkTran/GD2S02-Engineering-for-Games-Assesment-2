@@ -1,5 +1,6 @@
 #include "CLevelMaker.h"
 #include "CGround.h"
+#include "CManager.h"
 #include <Shobjidl.h.>
 #include <Shlwapi.h>
 #include <atlbase.h>
@@ -33,6 +34,60 @@ CLevelMaker::CLevelMaker()
 				arena[i][j] = new CGround(sf::Vector2f(32 * i + 200, 32 * j));
 			}
 		}
+	}
+}
+
+void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
+{
+	for (int i = 0; i < arenaSize; i++)
+	{
+		for (int j = 0; j < arenaSize; j++)
+		{
+			if (((sf::RectangleShape*)arena[i][j]->GetDrawable())->getGlobalBounds().contains(_mousePos))
+			{
+				switch (selectedPlacement)
+				{
+				case Ground:
+					arena[i][j]->DeleteObject();
+					arena[i][j] = new CGround(sf::Vector2f(32 * i + 200, 32 * j));
+					break;
+				case UnbreakableWall:
+					arena[i][j]->DeleteObject();
+					arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j));
+					break;
+				case BreakableWall:
+					break;
+				}
+				i = arenaSize;
+				j = arenaSize;
+			}
+		}
+	}
+}
+
+void CLevelMaker::Update()
+{
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	{
+		CheckPlace(GetManager().GetWindow().mapPixelToCoords(sf::Mouse::getPosition(GetManager().GetWindow())));
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+	{
+		selectedPlacement = Ground;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+	{
+		selectedPlacement = UnbreakableWall;
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	{
+		SaveLevel();
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+	{
+		LoadLevel();
 	}
 }
 
@@ -72,7 +127,13 @@ void CLevelMaker::SaveLevel()
 						std::string path = W2A(pszFilePath);
 						saveFile.open(path, std::ios::out | std::ios::trunc);
 
-						
+						for (int i = 0; i < arenaSize; i++)
+						{
+							for (int j = 0; j < arenaSize; j++)
+							{
+								saveFile << arena[i][j]->objType << "\n" << i << "\n" << j << "\n";
+							}
+						}
 
 						saveFile.close();
 					}
@@ -126,21 +187,31 @@ void CLevelMaker::LoadLevel()
 						std::ifstream inFile;
 						inFile.open(Path.c_str());
 
-						std::string Name;
-						float x;
-						float y;
-						int rotation;
+						int objType;
+						int k;
+						int l;;
 
 						while (inFile)
 						{
-							// clear name
-							Name = "";
 
 							// read name, x, y, and rotation
-							inFile >> Name;
-							inFile >> x;
-							inFile >> y;
-							inFile >> rotation;
+							inFile >> objType;
+							inFile >> k;
+							inFile >> l;
+
+							switch (objType)
+							{
+							case Ground:
+								arena[k][l]->DeleteObject();
+								arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l));
+								break;
+							case UnbreakableWall:
+								arena[k][l]->DeleteObject();
+								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l));
+								break;
+							default:
+								break;
+							}
 						}
 						saveFile.close();
 					}

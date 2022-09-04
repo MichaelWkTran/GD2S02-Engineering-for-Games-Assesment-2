@@ -5,8 +5,8 @@
 class CPhysicsBody
 {
 protected:
-	b2Body* body;
-	b2Shape* shape;
+	b2Body* body = nullptr;
+	b2Shape* shape = nullptr;
 
 public:
 	b2BodyDef bodyDef;
