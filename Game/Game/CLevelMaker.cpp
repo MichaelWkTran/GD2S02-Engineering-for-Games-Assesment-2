@@ -21,6 +21,13 @@ void CLevelMaker::Render()
 
 CLevelMaker::CLevelMaker()
 {
+	arena = new CMapPlaceBase * *[arenaSizeX];
+
+	for (int i = 0; i < arenaSizeY; i++)
+	{
+		arena[i] = new CMapPlaceBase * [arenaSizeY];
+	}
+
 	for (int i = 0; i < arenaSizeX; i++)
 	{
 		for (int j = 0; j < arenaSizeY; j++)
@@ -62,7 +69,6 @@ void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 
 void CLevelMaker::Update()
 {
-
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::L))
 	{
 		LoadLevel();
