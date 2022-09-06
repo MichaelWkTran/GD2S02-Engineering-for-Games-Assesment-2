@@ -8,6 +8,9 @@
 #include <iostream>
 #include <string>
 
+/// <summary>
+/// renders all the map objects
+/// </summary>
 void CLevelMaker::Render()
 {
 	for (int i = 0; i < arenaSizeX; i++)
@@ -19,15 +22,21 @@ void CLevelMaker::Render()
 	}
 }
 
+/// <summary>
+/// makes an arena based on the X and Y from the header, fills it with a temp map of a rectangle / square
+/// </summary>
 CLevelMaker::CLevelMaker()
 {
+	// make an array of pointers to arrays
 	arena = new CMapPlaceBase**[arenaSizeX];
 
+	// make arrays that the previous pointers are pointing to
 	for (int i = 0; i < arenaSizeX; i++)
 	{
 		arena[i] = new CMapPlaceBase*[arenaSizeY];
 	}
 
+	// fill the array and make the temp map
 	for (int i = 0; i < arenaSizeX; i++)
 	{
 		for (int j = 0; j < arenaSizeY; j++)
@@ -44,14 +53,21 @@ CLevelMaker::CLevelMaker()
 	}
 }
 
+/// <summary>
+/// checks the spot the user is trying to place an object
+/// </summary>
+/// <param name="_mousePos"></param>
 void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 {
+	// loop through all map objects
 	for (int i = 0; i < arenaSizeX; i++)
 	{
 		for (int j = 0; j < arenaSizeY; j++)
 		{
+			// check the spot they are trying to replace, and that its not the same object
 			if (((sf::RectangleShape*)arena[i][j]->GetDrawable())->getGlobalBounds().contains(_mousePos) && arena[i][j]->objType != selectedPlacement)
 			{
+				// decide what to place
 				switch (selectedPlacement)
 				{
 				case Ground:
@@ -65,6 +81,7 @@ void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 				case BreakableWall:
 					break;
 				}
+				// get out of the for loops
 				i = arenaSizeX;
 				j = arenaSizeY;
 			}
@@ -72,13 +89,18 @@ void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 	}
 }
 
+/// <summary>
+/// check input
+/// </summary>
 void CLevelMaker::Update()
 {
+	// check if the user is trying to place a tile
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
 		CheckPlace(GetManager().GetWindow().mapPixelToCoords(sf::Mouse::getPosition(GetManager().GetWindow())));
 	}
 
+	// sawp the object currently being place to the one the user switched to
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
 	{
 		selectedPlacement = Ground;
@@ -88,6 +110,7 @@ void CLevelMaker::Update()
 		selectedPlacement = UnbreakableWall;
 	}
 
+	// rotate left and right
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 	{
 		rotationValue -= 90;
@@ -101,6 +124,7 @@ void CLevelMaker::Update()
 			rotationValue = 0;
 	}
 
+	// ctrl + s and ctrl + l to save and load levels
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		SaveLevel();
@@ -111,6 +135,9 @@ void CLevelMaker::Update()
 	}
 }
 
+/// <summary>
+/// saves the current map layout to a txt file
+/// </summary>
 void CLevelMaker::SaveLevel()
 {
 	IFileOpenDialog* fileOpen;
@@ -166,6 +193,9 @@ void CLevelMaker::SaveLevel()
 	}
 }
 
+/// <summary>
+/// load a layout from a txt file
+/// </summary>
 void CLevelMaker::LoadLevel()
 {
 	IFileOpenDialog* fileOpen;
@@ -220,6 +250,7 @@ void CLevelMaker::LoadLevel()
 							inFile >> l;
 							inFile >> rotation;
 
+							// decide which object to place
 							switch (objType)
 							{
 							case Ground:
