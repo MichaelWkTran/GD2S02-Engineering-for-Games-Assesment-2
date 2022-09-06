@@ -23,7 +23,7 @@ CLevelMaker::CLevelMaker()
 {
 	arena = new CMapPlaceBase**[arenaSizeX];
 
-	for (int i = 0; i < arenaSizeY; i++)
+	for (int i = 0; i < arenaSizeX; i++)
 	{
 		arena[i] = new CMapPlaceBase*[arenaSizeY];
 	}
@@ -50,7 +50,7 @@ void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 	{
 		for (int j = 0; j < arenaSizeY; j++)
 		{
-			if (((sf::RectangleShape*)arena[i][j]->GetDrawable())->getGlobalBounds().contains(_mousePos))
+			if (((sf::RectangleShape*)arena[i][j]->GetDrawable())->getGlobalBounds().contains(_mousePos) && arena[i][j]->objType != selectedPlacement)
 			{
 				switch (selectedPlacement)
 				{

@@ -6,8 +6,8 @@ class CLevelMaker
 {
 private:
 	int selectedPlacement = 0;
-	int arenaSizeX = 10;
-	int arenaSizeY = 10;
+	int arenaSizeX = 40;
+	int arenaSizeY = 20;
 	CMapPlaceBase*** arena = nullptr;
 
 	void CheckPlace(sf::Vector2f _mousePos);
