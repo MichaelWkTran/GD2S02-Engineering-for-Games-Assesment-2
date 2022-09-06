@@ -10,9 +10,9 @@
 
 void CLevelMaker::Render()
 {
-	for (int i = 0; i < arenaSize; i++)
+	for (int i = 0; i < arenaSizeX; i++)
 	{
-		for (int j = 0; j < arenaSize; j++)
+		for (int j = 0; j < arenaSizeY; j++)
 		{
 			arena[i][j]->Draw();
 		}
@@ -21,11 +21,18 @@ void CLevelMaker::Render()
 
 CLevelMaker::CLevelMaker()
 {
-	for (int i = 0; i < arenaSize; i++)
+	arena = new CMapPlaceBase**[arenaSizeX];
+
+	for (int i = 0; i < arenaSizeY; i++)
 	{
-		for (int j = 0; j < arenaSize; j++)
+		arena[i] = new CMapPlaceBase*[arenaSizeY];
+	}
+
+	for (int i = 0; i < arenaSizeX; i++)
+	{
+		for (int j = 0; j < arenaSizeY; j++)
 		{
-			if (i == 0 || i == arenaSize - 1 || j == 0 || j == arenaSize - 1)
+			if (i == 0 || i == arenaSizeX - 1 || j == 0 || j == arenaSizeY - 1)
 			{
 				arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j));
 			}
@@ -39,9 +46,9 @@ CLevelMaker::CLevelMaker()
 
 void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 {
-	for (int i = 0; i < arenaSize; i++)
+	for (int i = 0; i < arenaSizeX; i++)
 	{
-		for (int j = 0; j < arenaSize; j++)
+		for (int j = 0; j < arenaSizeY; j++)
 		{
 			if (((sf::RectangleShape*)arena[i][j]->GetDrawable())->getGlobalBounds().contains(_mousePos))
 			{
@@ -58,8 +65,8 @@ void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 				case BreakableWall:
 					break;
 				}
-				i = arenaSize;
-				j = arenaSize;
+				i = arenaSizeX;
+				j = arenaSizeY;
 			}
 		}
 	}
@@ -127,9 +134,9 @@ void CLevelMaker::SaveLevel()
 						std::string path = W2A(pszFilePath);
 						saveFile.open(path, std::ios::out | std::ios::trunc);
 
-						for (int i = 0; i < arenaSize; i++)
+						for (int i = 0; i < arenaSizeX; i++)
 						{
-							for (int j = 0; j < arenaSize; j++)
+							for (int j = 0; j < arenaSizeY; j++)
 							{
 								saveFile << arena[i][j]->objType << "\n" << i << "\n" << j << "\n" << ((sf::Shape*)arena[i][j]->GetDrawable())->getRotation();
 							}

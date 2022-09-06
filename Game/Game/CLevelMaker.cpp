@@ -10,9 +10,9 @@
 
 void CLevelMaker::Render()
 {
-	for (int i = 0; i < arenaSize; i++)
+	for (int i = 0; i < arenaSizeX; i++)
 	{
-		for (int j = 0; j < arenaSize; j++)
+		for (int j = 0; j < arenaSizeY; j++)
 		{
 			arena[i][j]->Draw();
 		}
@@ -21,27 +21,20 @@ void CLevelMaker::Render()
 
 CLevelMaker::CLevelMaker()
 {
-	for (int i = 0; i < arenaSize; i++)
+	for (int i = 0; i < arenaSizeX; i++)
 	{
-		for (int j = 0; j < arenaSize; j++)
+		for (int j = 0; j < arenaSizeY; j++)
 		{
-			if (i == 0 || i == arenaSize - 1 || j == 0 || j == arenaSize - 1)
-			{
-				arena[i][j] = nullptr;
-			}
-			else
-			{
-				arena[i][j] = nullptr;
-			}
+			arena[i][j] = nullptr;
 		}
 	}
 }
 
 void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 {
-	for (int i = 0; i < arenaSize; i++)
+	for (int i = 0; i < arenaSizeX; i++)
 	{
-		for (int j = 0; j < arenaSize; j++)
+		for (int j = 0; j < arenaSizeY; j++)
 		{
 			if (((sf::RectangleShape*)arena[i][j]->GetDrawable())->getGlobalBounds().contains(_mousePos))
 			{
@@ -60,8 +53,8 @@ void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 				case BreakableWall:
 					break;
 				}
-				i = arenaSize;
-				j = arenaSize;
+				i = arenaSizeX;
+				j = arenaSizeY;
 			}
 		}
 	}
@@ -69,11 +62,8 @@ void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 
 void CLevelMaker::Update()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	{
-		SaveLevel();
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::L))
 	{
 		LoadLevel();
 	}
@@ -115,9 +105,9 @@ void CLevelMaker::SaveLevel()
 						std::string path = W2A(pszFilePath);
 						saveFile.open(path, std::ios::out | std::ios::trunc);
 
-						for (int i = 0; i < arenaSize; i++)
+						for (int i = 0; i < arenaSizeX; i++)
 						{
-							for (int j = 0; j < arenaSize; j++)
+							for (int j = 0; j < arenaSizeY; j++)
 							{
 								saveFile << arena[i][j]->objType << "\n" << i << "\n" << j << "\n";
 							}
@@ -177,7 +167,8 @@ void CLevelMaker::LoadLevel()
 
 						int objType;
 						int k;
-						int l;;
+						int l;
+						float rotation;
 
 						while (inFile)
 						{
@@ -186,18 +177,19 @@ void CLevelMaker::LoadLevel()
 							inFile >> objType;
 							inFile >> k;
 							inFile >> l;
+							inFile >> rotation;
 
 							switch (objType)
 							{
 							case Ground:
-								if (arena[k][l] != nullptr)
-									arena[k][l]->DeleteObject();
+								arena[k][l]->DeleteObject();
 								arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l));
+								((sf::Shape*)arena[k][l]->GetDrawable())->setRotation(rotation);
 								break;
 							case UnbreakableWall:
-								if (arena[k][l] != nullptr)
-									arena[k][l]->DeleteObject();
+								arena[k][l]->DeleteObject();
 								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l));
+								((sf::Shape*)arena[k][l]->GetDrawable())->setRotation(rotation);
 								break;
 							default:
 								break;
