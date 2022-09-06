@@ -1,60 +1,40 @@
 ﻿  CLevelMaker.cpp
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(30,59): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(53,62): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(30,49): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(53,52): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(34,61): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(58,60): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(34,51): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(58,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(52,62): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(195,65): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(52,52): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(195,55): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(56,60): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(200,63): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(56,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(206,65): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(206,55): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(210,63): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(210,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(200,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float

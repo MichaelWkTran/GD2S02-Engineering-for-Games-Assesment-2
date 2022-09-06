@@ -27,11 +27,11 @@ CLevelMaker::CLevelMaker()
 		{
 			if (i == 0 || i == arenaSize - 1 || j == 0 || j == arenaSize - 1)
 			{
-				arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j));
+				arena[i][j] = nullptr;
 			}
 			else
 			{
-				arena[i][j] = new CGround(sf::Vector2f(32 * i + 200, 32 * j));
+				arena[i][j] = nullptr;
 			}
 		}
 	}
@@ -48,11 +48,13 @@ void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 				switch (selectedPlacement)
 				{
 				case Ground:
-					arena[i][j]->DeleteObject();
+					if (arena[i][j] != nullptr)
+						arena[i][j]->DeleteObject();
 					arena[i][j] = new CGround(sf::Vector2f(32 * i + 200, 32 * j));
 					break;
 				case UnbreakableWall:
-					arena[i][j]->DeleteObject();
+					if (arena[i][j] != nullptr)
+						arena[i][j]->DeleteObject();
 					arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j));
 					break;
 				case BreakableWall:
@@ -67,20 +69,6 @@ void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 
 void CLevelMaker::Update()
 {
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-	{
-		CheckPlace(GetManager().GetWindow().mapPixelToCoords(sf::Mouse::getPosition(GetManager().GetWindow())));
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
-	{
-		selectedPlacement = Ground;
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
-	{
-		selectedPlacement = UnbreakableWall;
-	}
-
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		SaveLevel();
@@ -202,11 +190,13 @@ void CLevelMaker::LoadLevel()
 							switch (objType)
 							{
 							case Ground:
-								arena[k][l]->DeleteObject();
+								if (arena[k][l] != nullptr)
+									arena[k][l]->DeleteObject();
 								arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l));
 								break;
 							case UnbreakableWall:
-								arena[k][l]->DeleteObject();
+								if (arena[k][l] != nullptr)
+									arena[k][l]->DeleteObject();
 								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l));
 								break;
 							default:

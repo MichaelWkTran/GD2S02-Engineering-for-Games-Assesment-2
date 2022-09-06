@@ -1,0 +1,138 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Game.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  CBullet.cpp
+  CGround.cpp
+  CGun.cpp
+  CLevelMaker.cpp
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CLevelMaker.cpp(30,59): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CLevelMaker.cpp(30,49): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CLevelMaker.cpp(34,61): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CLevelMaker.cpp(34,51): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CLevelMaker.cpp(52,62): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CLevelMaker.cpp(52,52): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CLevelMaker.cpp(56,60): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CLevelMaker.cpp(56,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CLevelMaker.cpp(208,65): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CLevelMaker.cpp(208,55): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CLevelMaker.cpp(213,63): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CLevelMaker.cpp(213,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  CManager.cpp
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CManager.cpp(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CManager.cpp(65,70): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CManager.cpp(65,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CManager.cpp(132,53): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CManager.cpp(132,53): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+  CGameObject.cpp
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CGameObject.cpp(8,48): warning C4150: deletion of pointer to incomplete type 'CPhysicsBody'; no destructor called
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CGameObject.h(7): message : see declaration of 'CPhysicsBody'
+  CMapPlaceBase.cpp
+  CPhysicsBody.cpp
+  CUpdatedObject.cpp
+  CWall.cpp
+  main.cpp
+  CPlayer.cpp
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CPlayer.cpp(17,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CPlayer.cpp(80,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CPlayer.cpp(79,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\Game\CPlayer.cpp(109,22): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+box2d-d.lib(b2_broad_phase.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_broad_phase.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_chain_shape.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_chain_shape.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_circle_shape.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_circle_shape.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_collide_circle.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_collide_circle.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_collide_edge.obj) : warning LNK4099: PDB '' was not found with 'box2d-d.lib(b2_collide_edge.obj)' or at ''; linking object as if no debug info
+box2d-d.lib(b2_collide_polygon.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_collide_polygon.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_collision.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_collision.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_distance.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_distance.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_dynamic_tree.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_dynamic_tree.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_edge_shape.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_edge_shape.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_polygon_shape.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_polygon_shape.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_time_of_impact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_time_of_impact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_block_allocator.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_block_allocator.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_draw.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_draw.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_math.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_math.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_settings.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_settings.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_stack_allocator.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_stack_allocator.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_timer.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_timer.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_body.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_body.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_chain_circle_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_chain_circle_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_chain_polygon_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_chain_polygon_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_circle_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_circle_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_contact_manager.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_contact_manager.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_contact_solver.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_contact_solver.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_distance_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_distance_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_edge_circle_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_edge_circle_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_edge_polygon_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_edge_polygon_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_fixture.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_fixture.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_friction_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_friction_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_gear_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_gear_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_island.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_island.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_motor_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_motor_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_mouse_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_mouse_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_polygon_circle_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_polygon_circle_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_polygon_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_polygon_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_prismatic_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_prismatic_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_pulley_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_pulley_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_revolute_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_revolute_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_weld_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_weld_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_wheel_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_wheel_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_world.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_world.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_world_callbacks.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_world_callbacks.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\box2d.pdb'; linking object as if no debug info
+  Game.vcxproj -> C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Level Editor\x64\Debug\Level Editor.exe
