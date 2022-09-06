@@ -39,32 +39,7 @@ CLevelMaker::CLevelMaker()
 
 void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 {
-	for (int i = 0; i < arenaSizeX; i++)
-	{
-		for (int j = 0; j < arenaSizeY; j++)
-		{
-			if (((sf::RectangleShape*)arena[i][j]->GetDrawable())->getGlobalBounds().contains(_mousePos))
-			{
-				switch (selectedPlacement)
-				{
-				case Ground:
-					if (arena[i][j] != nullptr)
-						arena[i][j]->DeleteObject();
-					arena[i][j] = new CGround(sf::Vector2f(32 * i + 200, 32 * j));
-					break;
-				case UnbreakableWall:
-					if (arena[i][j] != nullptr)
-						arena[i][j]->DeleteObject();
-					arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j));
-					break;
-				case BreakableWall:
-					break;
-				}
-				i = arenaSizeX;
-				j = arenaSizeY;
-			}
-		}
-	}
+	
 }
 
 void CLevelMaker::Update()
@@ -77,57 +52,7 @@ void CLevelMaker::Update()
 
 void CLevelMaker::SaveLevel()
 {
-	IFileOpenDialog* fileOpen;
-	HRESULT hr = CoCreateInstance(CLSID_FileOpenDialog, NULL, CLSCTX_ALL, IID_IFileOpenDialog, reinterpret_cast<void**>(&fileOpen));
-
-	if (SUCCEEDED(hr))
-	{
-		// Show the Open dialog box.
-		hr = fileOpen->Show(NULL);
-
-		// Get the file name from the dialog box.
-		if (SUCCEEDED(hr))
-		{
-			IShellItem* item;
-			hr = fileOpen->GetResult(&item);
-			if (SUCCEEDED(hr))
-			{
-				PWSTR pszFilePath;
-				hr = item->GetDisplayName(SIGDN_FILESYSPATH, &pszFilePath);
-
-				// Display the file name to the user.
-				if (SUCCEEDED(hr))
-				{
-					USES_CONVERSION;
-
-					std::string temp;
-
-					temp = PathFindExtensionA(W2A(pszFilePath));
-
-					if (temp == ".txt")
-					{
-						// open the file
-						std::fstream saveFile;
-						std::string path = W2A(pszFilePath);
-						saveFile.open(path, std::ios::out | std::ios::trunc);
-
-						for (int i = 0; i < arenaSizeX; i++)
-						{
-							for (int j = 0; j < arenaSizeY; j++)
-							{
-								saveFile << arena[i][j]->objType << "\n" << i << "\n" << j << "\n";
-							}
-						}
-
-						saveFile.close();
-					}
-					CoTaskMemFree(pszFilePath);
-				}
-				item->Release();
-			}
-		}
-		fileOpen->Release();
-	}
+	
 }
 
 void CLevelMaker::LoadLevel()
@@ -178,7 +103,6 @@ void CLevelMaker::LoadLevel()
 
 						while (inFile)
 						{
-
 							// read name, x, y, and rotation
 							inFile >> objType;
 							inFile >> k;
@@ -189,13 +113,11 @@ void CLevelMaker::LoadLevel()
 							{
 							case Ground:
 								arena[k][l]->DeleteObject();
-								arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l));
-								((sf::Shape*)arena[k][l]->GetDrawable())->setRotation(rotation);
+								arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l), rotation);
 								break;
 							case UnbreakableWall:
 								arena[k][l]->DeleteObject();
-								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l));
-								((sf::Shape*)arena[k][l]->GetDrawable())->setRotation(rotation);
+								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l), rotation);
 								break;
 							default:
 								break;

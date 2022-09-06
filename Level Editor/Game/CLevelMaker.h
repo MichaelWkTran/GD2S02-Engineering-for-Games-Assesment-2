@@ -8,6 +8,7 @@ private:
 	int selectedPlacement = 0;
 	int arenaSizeX = 40;
 	int arenaSizeY = 20;
+	int rotationValue = 0;
 	CMapPlaceBase*** arena = nullptr;
 
 	void CheckPlace(sf::Vector2f _mousePos);

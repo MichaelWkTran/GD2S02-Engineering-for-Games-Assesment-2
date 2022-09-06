@@ -3,7 +3,7 @@
 #include "CPhysicsBody.h"
 #include "CManager.h"
 
-CWall::CWall(sf::Vector2f _pos)
+CWall::CWall(sf::Vector2f _pos, float _rotation)
 {
     health = -1.0f;
     objType = MapPlaceableObjects::UnbreakableWall;
@@ -16,6 +16,7 @@ CWall::CWall(sf::Vector2f _pos)
     //The the origin of the SFML transform
     transform.setOrigin(sf::Vector2f(rectangleShape->getSize().x, rectangleShape->getSize().y) / 2.0f);
     transform.setPosition(_pos);
+    transform.setRotation(_rotation);
 
     // setup b2BodyDef
     physicsBody = new CPhysicsBody;

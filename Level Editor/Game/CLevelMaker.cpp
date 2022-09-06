@@ -34,11 +34,11 @@ CLevelMaker::CLevelMaker()
 		{
 			if (i == 0 || i == arenaSizeX - 1 || j == 0 || j == arenaSizeY - 1)
 			{
-				arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j));
+				arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j), 0);
 			}
 			else
 			{
-				arena[i][j] = new CGround(sf::Vector2f(32 * i + 200, 32 * j));
+				arena[i][j] = new CGround(sf::Vector2f(32 * i + 200, 32 * j), 0);
 			}
 		}
 	}
@@ -56,11 +56,11 @@ void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 				{
 				case Ground:
 					arena[i][j]->DeleteObject();
-					arena[i][j] = new CGround(sf::Vector2f(32 * i + 200, 32 * j));
+					arena[i][j] = new CGround(sf::Vector2f(32 * i + 200, 32 * j), rotationValue);
 					break;
 				case UnbreakableWall:
 					arena[i][j]->DeleteObject();
-					arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j));
+					arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j), rotationValue);
 					break;
 				case BreakableWall:
 					break;
@@ -86,6 +86,19 @@ void CLevelMaker::Update()
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
 	{
 		selectedPlacement = UnbreakableWall;
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+	{
+		rotationValue -= 90;
+		if (rotationValue == -90)
+			rotationValue = 0;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+	{
+		rotationValue += 90;
+		if (rotationValue == 360)
+			rotationValue = 0;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::S))
@@ -201,7 +214,6 @@ void CLevelMaker::LoadLevel()
 
 						while (inFile)
 						{
-
 							// read name, x, y, and rotation
 							inFile >> objType;
 							inFile >> k;
@@ -212,13 +224,11 @@ void CLevelMaker::LoadLevel()
 							{
 							case Ground:
 								arena[k][l]->DeleteObject();
-								arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l));
-								((sf::Shape*)arena[k][l]->GetDrawable())->setRotation(rotation);
+								arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l), rotation);
 								break;
 							case UnbreakableWall:
 								arena[k][l]->DeleteObject();
-								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l));
-								((sf::Shape*)arena[k][l]->GetDrawable())->setRotation(rotation);
+								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l), rotation);
 								break;
 							default:
 								break;
