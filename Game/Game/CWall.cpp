@@ -3,8 +3,10 @@
 #include "CPhysicsBody.h"
 #include "CManager.h"
 
-CWall::CWall(sf::Vector2f _pos, float _rotation)
+//[Delete later on] Tag of the wall has been changed from "UnbreakableWall" to "Wall"
+CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
 {
+    isBreakable = _isBreakable;
     health = -1.0f;
     objType = MapPlaceableObjects::UnbreakableWall;
 
@@ -14,7 +16,7 @@ CWall::CWall(sf::Vector2f _pos, float _rotation)
     rectangleShape->setFillColor(sf::Color().Black);
 
     //The the origin of the SFML transform
-    transform.setOrigin(sf::Vector2f(rectangleShape->getSize().x, rectangleShape->getSize().y) / 2.0f);
+    transform.setOrigin(rectangleShape->getSize() / 2.0f);
     transform.setPosition(_pos);
     transform.setRotation(_rotation);
 
@@ -44,13 +46,13 @@ CWall::CWall(sf::Vector2f _pos, float _rotation)
     // setup b2Body
     physicsBody->SetupBody();
 
-    tags.emplace("UnbreakableWall");
+    tags.emplace("Wall");
 }
 
-CWall::~CWall()
+void CWall::TakeDamage(float _damage)
 {
-}
+    health -= _damage;
 
-void CWall::Update()
-{
+    //Delete the wall if it is breakable and it have no health
+    if (isBreakable && health <= 0) DeleteObject();
 }

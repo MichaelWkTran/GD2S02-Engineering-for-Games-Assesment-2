@@ -159,6 +159,7 @@
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CMapPlaceBase.cpp" />
     <ClCompile Include="CPhysicsBody.cpp" />
+    <ClCompile Include="CSpikeTrap.cpp" />
     <ClCompile Include="CUpdatedObject.cpp" />
     <ClCompile Include="CWall.cpp" />
     <ClCompile Include="main.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CMapPlaceBase.h" />
     <ClInclude Include="CPhysicsBody.h" />
+    <ClInclude Include="CSpikeTrap.h" />
     <ClInclude Include="CUpdatedObject.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CWall.h" />

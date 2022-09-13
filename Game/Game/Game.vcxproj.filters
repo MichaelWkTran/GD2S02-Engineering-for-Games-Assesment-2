@@ -51,6 +51,9 @@
     <ClCompile Include="CGround.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CSpikeTrap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CManager.h">
@@ -87,6 +90,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GlobalEnumInclude.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CSpikeTrap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

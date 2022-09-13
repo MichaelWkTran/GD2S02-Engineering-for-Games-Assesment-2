@@ -3,8 +3,10 @@
 #include "CGameObject.h"
 #include "CPhysicsBody.h"
 #include "box2d\box2D.h"
-#include "CPlayer.h";
+#include "CPlayer.h"
 #include "CBullet.h"
+#include "CWall.h"
+#include "CSpikeTrap.h"
 #include <iostream>
 
 CManager* CManager::singleton = nullptr;
@@ -19,25 +21,42 @@ void CManager::BeginContact(b2Contact* _contact)
 {
 	void* objectOne = (void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer;
 	void* objectTwo = (void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer;
+
 	if (static_cast<CGameObject*>(objectOne) && static_cast<CGameObject*>(objectTwo))
 	{
+		//Player Bullet Collision
 		if (static_cast<CGameObject*>(objectOne)->TagExists("Player") && static_cast<CGameObject*>(objectTwo)->TagExists("Bullet"))
 		{
 			static_cast<CPlayer*>(objectOne)->TakeDamage(static_cast<CBullet*>(objectTwo)->damage);
 			static_cast<CGameObject*>(objectTwo)->DeleteObject();
 		}
+		//Bullet Player Collision
 		else if (static_cast<CGameObject*>(objectOne)->TagExists("Bullet") && static_cast<CGameObject*>(objectTwo)->TagExists("Player"))
 		{
 			static_cast<CPlayer*>(objectTwo)->TakeDamage(static_cast<CBullet*>(objectOne)->damage);
 			static_cast<CGameObject*>(objectOne)->DeleteObject();
 		}
-		else if (static_cast<CGameObject*>(objectOne)->TagExists("Bullet") && static_cast<CGameObject*>(objectTwo)->TagExists("UnbreakableWall"))
+		//Bullet Wall Collision
+		else if (static_cast<CGameObject*>(objectOne)->TagExists("Bullet") && static_cast<CGameObject*>(objectTwo)->TagExists("Wall"))
 		{
+			static_cast<CWall*>(objectTwo)->TakeDamage(static_cast<CBullet*>(objectOne)->damage);
 			static_cast<CGameObject*>(objectOne)->DeleteObject();
 		}
-		else if (static_cast<CGameObject*>(objectOne)->TagExists("UnbreakableWall") && static_cast<CGameObject*>(objectTwo)->TagExists("Bullet"))
+		//Wall Bullet Collision
+		else if (static_cast<CGameObject*>(objectOne)->TagExists("Wall") && static_cast<CGameObject*>(objectTwo)->TagExists("Bullet"))
 		{
+			static_cast<CWall*>(objectOne)->TakeDamage(10.0f);
 			static_cast<CGameObject*>(objectTwo)->DeleteObject();
+		}
+		//Player SpikeTrap Collision
+		else if (static_cast<CGameObject*>(objectOne)->TagExists("Player") && static_cast<CGameObject*>(objectTwo)->TagExists("SpikeTrap"))
+		{
+			static_cast<CPlayer*>(objectOne)->TakeDamage(static_cast<CSpikeTrap*>(objectTwo)->damage);
+		}
+		//SpikeTrap Player Collision
+		else if (static_cast<CGameObject*>(objectOne)->TagExists("SpikeTrap") && static_cast<CGameObject*>(objectTwo)->TagExists("Player"))
+		{
+			static_cast<CPlayer*>(objectTwo)->TakeDamage(static_cast<CSpikeTrap*>(objectOne)->damage);
 		}
 	}
 }
