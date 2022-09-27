@@ -1,8 +1,7 @@
 #pragma once
 #include "CGameObject.h"
-#include "CPhysicsBody.h"
 
-class CSpikeTrap : public CGameObject, public CPhysicsBody
+class CSpikeTrap : public CGameObject
 {
 public:
 	static float damage;

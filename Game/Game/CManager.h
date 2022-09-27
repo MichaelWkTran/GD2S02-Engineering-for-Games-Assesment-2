@@ -26,11 +26,7 @@ private:
 
 	void Zoom(float _fZoomValue);
 
-	// collision methods
-	virtual void BeginContact(b2Contact* _pContact) override;
-	virtual void EndContact(b2Contact* _pContact) override;
-	virtual void PreSolve(b2Contact* _pContact, const b2Manifold* _pOldManifold) override;
-	virtual void PostSolve(b2Contact* _pContact, const b2ContactImpulse* _pImpulse) override;
+	virtual void BeginContact(b2Contact* _contact) override;
 
 	CLevelMaker* levelmaker = nullptr;
 
@@ -49,13 +45,12 @@ public:
 
 	// methods
 	CManager();
+	~CManager();
 	CManager(const CManager&) = delete;
 	CManager& operator= (const CManager&) = delete;
-	~CManager();
-
-	void DestroyImmediate(CUpdatedObject*&& _UpdatedObject);
+	
+	void DestroyImmediate(CUpdatedObject* _UpdatedObject);
 	void DestroyImmediate(CUpdatedObject*& _UpdatedObject);
-	void DestroyImmediate(unsigned int _index);
 	void Clear();
 	void Update();
 

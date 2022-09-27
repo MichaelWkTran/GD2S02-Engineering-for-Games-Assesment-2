@@ -9,6 +9,9 @@ class CPhysicsBody;
 class CGameObject : public CUpdatedObject
 {
 protected:
+	//Physics
+	CPhysicsBody* physicsBody;
+
 	//Drawing Variables
 	sf::Drawable* drawable;
 
@@ -26,6 +29,7 @@ public:
 	//GameObject Methods
 	CGameObject()
 	{
+		physicsBody = nullptr;
 		drawable = nullptr;
 		visible = true;
 	}
@@ -38,5 +42,6 @@ public:
 	virtual void Draw() override;
 
 	//Get Set Methods
+	CPhysicsBody* GetPhysicsBody() { return physicsBody; }
 	sf::Drawable* GetDrawable() { return drawable; }
 };

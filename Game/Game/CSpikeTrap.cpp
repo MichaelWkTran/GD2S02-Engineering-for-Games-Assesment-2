@@ -1,12 +1,12 @@
 #include "CSpikeTrap.h"
+#include "CPhysicsBody.h"
+#include "Box2D/box2d.h"
 #include "CManager.h"
 
 float CSpikeTrap::damage = 10.0f;
 
 CSpikeTrap::CSpikeTrap(sf::Vector2f _pos)
 {
-    tags.emplace("SpikeTrap");
-
     // setup sf::Drawable
     drawable = new sf::RectangleShape(sf::Vector2f(32.0f, 32.0f));
     sf::RectangleShape* rectangleShape = (sf::RectangleShape*)drawable;
@@ -17,24 +17,31 @@ CSpikeTrap::CSpikeTrap(sf::Vector2f _pos)
     transform.setPosition(_pos);
 
     // setup b2BodyDef
-    b2BodyDef bodyDef;
-    bodyDef.type = b2_staticBody;
-    bodyDef.position = GetManager().pixelToWorldScale * b2Vec2(transform.getPosition().x, transform.getPosition().y);
+    physicsBody = new CPhysicsBody;
+    physicsBody->bodyDef.type = b2_staticBody;
 
     // setup b2Shape
-    b2PolygonShape shape;
-    shape.SetAsBox
+    physicsBody->SetupShape<b2PolygonShape>();
+    b2PolygonShape* pPolygonShape = (b2PolygonShape*)&physicsBody->GetShape();
+    pPolygonShape->SetAsBox
     (
         (rectangleShape->getSize().x * GetManager().pixelToWorldScale) / 2.0f,
         (rectangleShape->getSize().y * GetManager().pixelToWorldScale) / 2.0f
     );
+    // setup b2Shape
+    physicsBody->bodyDef.position = b2Vec2(transform.getPosition().x * GetManager().pixelToWorldScale, transform.getPosition().y * GetManager().pixelToWorldScale);
 
     // setup b2FixtureDef
-    b2FixtureDef fixtureDef;
-    fixtureDef.isSensor = true;
-    fixtureDef.density = 1.0f;
-    fixtureDef.shape = &shape;
+    physicsBody->fixtureDef.isSensor = true;
+    physicsBody->fixtureDef.density = 1.0f;
 
     // setup b2Body
-    SetupBody(bodyDef, &fixtureDef, 1);
+    physicsBody->SetupBody();
+    physicsBody->GetBody().SetFixedRotation(true);
+    physicsBody->GetBody().GetUserData().pointer = (uintptr_t)static_cast<void*>(this);
+
+    // setup b2Body
+    physicsBody->SetupBody();
+
+    tags.emplace("SpikeTrap");
 }

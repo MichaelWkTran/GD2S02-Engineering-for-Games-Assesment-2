@@ -1,8 +1,8 @@
 #pragma once
 #include "CGameObject.h"
-#include "CPhysicsBody.h"
+#include "Box2D/b2_body.h"
 
-class CBullet : public CGameObject, public CPhysicsBody
+class CBullet : public CGameObject
 {
 public:
 	float damage;
@@ -15,3 +15,4 @@ public:
 
 	virtual void Update() override;
 };
+

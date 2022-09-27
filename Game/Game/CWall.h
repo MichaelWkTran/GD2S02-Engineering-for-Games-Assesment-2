@@ -1,9 +1,8 @@
 #pragma once
 #include "CMapPlaceBase.h"
-#include "CPhysicsBody.h"
 
 //[Delete later on] Tag of the wall has been changed from "UnbreakableWall" to "Wall"
-class CWall : public CMapPlaceBase, public CPhysicsBody
+class CWall : public CMapPlaceBase
 {
 public:
 	bool isBreakable;
