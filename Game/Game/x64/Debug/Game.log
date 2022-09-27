@@ -1,33 +1,10 @@
 ﻿  CBullet.cpp
-  CGround.cpp
-  CGun.cpp
-  CLevelMaker.cpp
-C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(6,10): fatal error C1083: Cannot open include file: 'atlbase.h': No such file or directory
-  CManager.cpp
-C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(65,70): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(65,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(132,53): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(132,53): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
-  CGameObject.cpp
-C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CGameObject.cpp(8,48): warning C4150: deletion of pointer to incomplete type 'CPhysicsBody'; no destructor called
-C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CGameObject.h(7): message : see declaration of 'CPhysicsBody'
-  CMapPlaceBase.cpp
-  CPhysicsBody.cpp
-  CUpdatedObject.cpp
-  CWall.cpp
-  main.cpp
   CPlayer.cpp
-C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(17,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(80,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(79,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(109,22): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+D:\Projects\GD2S02-Assesment\Game\Game\CPlayer.cpp(17,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Projects\GD2S02-Assesment\Game\Game\CPlayer.cpp(83,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Projects\GD2S02-Assesment\Game\Game\CPlayer.cpp(82,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Projects\GD2S02-Assesment\Game\Game\CPlayer.cpp(112,22): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+  CSpikeTrap.cpp
+  CWall.cpp
   Generating Code...
+  Game.vcxproj -> D:\Projects\GD2S02-Assesment\Game\x64\Debug\Game.exe

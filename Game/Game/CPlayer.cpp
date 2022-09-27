@@ -33,20 +33,23 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
 
     // setup b2BodyDef
     physicsBody = new CPhysicsBody;
-    physicsBody->bodyDef.type = b2_dynamicBody;
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_dynamicBody;
+    bodyDef.fixedRotation = true;
+    bodyDef.position = GetManager().pixelToWorldScale * b2Vec2(transform.getPosition().x, transform.getPosition().y);
 
     // setup b2Shape
-    physicsBody->SetupShape<b2CircleShape>();
-    physicsBody->GetShape().m_radius = radius * GetManager().pixelToWorldScale;
-    physicsBody->bodyDef.position = b2Vec2(transform.getPosition().x * GetManager().pixelToWorldScale, transform.getPosition().y * GetManager().pixelToWorldScale);
+    b2CircleShape shape;
+    shape.m_radius = radius * GetManager().pixelToWorldScale;
 
     // setup b2FixtureDef
-    physicsBody->fixtureDef.density = 1.0f;
+    b2FixtureDef fixtureDef;
+    fixtureDef.density = 1.0f;
+    fixtureDef.shape = &shape;
 
     // setup b2Body
-    physicsBody->SetupBody();
-    physicsBody->GetBody().SetFixedRotation(true);
-    physicsBody->GetBody().GetUserData().pointer = (uintptr_t)static_cast<void*>(this);
+    physicsBody->SetupBody(bodyDef, &fixtureDef, 1);
+    physicsBody->GetBody().GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 
     facingDirection = b2Vec2(1, 0);
     heldGun = new CGun(&facingDirection, this);

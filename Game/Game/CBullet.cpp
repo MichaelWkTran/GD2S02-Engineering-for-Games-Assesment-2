@@ -26,20 +26,23 @@ CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b
 
 	// setup b2BodyDef
 	physicsBody = new CPhysicsBody;
-	physicsBody->bodyDef.type = b2_dynamicBody;
-	physicsBody->bodyDef.bullet = true;
+	b2BodyDef bodyDef;
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.bullet = true;
+	bodyDef.position = GetManager().pixelToWorldScale * b2Vec2(transform.getPosition().x, transform.getPosition().y);
 
 	// setup b2Shape
-	physicsBody->SetupShape<b2CircleShape>();
-	physicsBody->GetShape().m_radius = radius * GetManager().pixelToWorldScale;
+	b2CircleShape shape;
+	shape.m_radius = radius * GetManager().pixelToWorldScale;
 
 	// setup b2FixtureDef
-	physicsBody->fixtureDef.density = 1.0f;
-	physicsBody->bodyDef.position = b2Vec2(transform.getPosition().x * GetManager().pixelToWorldScale, transform.getPosition().y * GetManager().pixelToWorldScale);
+	b2FixtureDef fixtureDef;
+	fixtureDef.density = 1.0f;
+	fixtureDef.shape = &shape;
 
 	// setup b2Body
-	physicsBody->SetupBody();
-	physicsBody->GetBody().GetUserData().pointer = (uintptr_t)static_cast<void*>(this);
+	physicsBody->SetupBody(bodyDef, &fixtureDef, 1);
+	physicsBody->GetBody().GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 }
 
 CBullet::~CBullet()
