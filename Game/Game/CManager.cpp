@@ -19,46 +19,50 @@ void CManager::Zoom(float _zoomValue)
 
 void CManager::BeginContact(b2Contact* _contact)
 {
-	void* objectOne = (void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer;
-	void* objectTwo = (void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer;
+	//Get data of collided objects if it exists.
+	CPhysicsBody* bodyUserDataA = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer);
+	CPhysicsBody* bodyUserDataB = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer);
+	if (bodyUserDataA == nullptr || bodyUserDataB == nullptr) return;
 
-	if (static_cast<CGameObject*>(objectOne) && static_cast<CGameObject*>(objectTwo))
-	{
-		//Player Bullet Collision
-		if (static_cast<CGameObject*>(objectOne)->TagExists("Player") && static_cast<CGameObject*>(objectTwo)->TagExists("Bullet"))
-		{
-			static_cast<CPlayer*>(objectOne)->TakeDamage(static_cast<CBullet*>(objectTwo)->damage);
-			static_cast<CGameObject*>(objectTwo)->DeleteObject();
-		}
-		//Bullet Player Collision
-		else if (static_cast<CGameObject*>(objectOne)->TagExists("Bullet") && static_cast<CGameObject*>(objectTwo)->TagExists("Player"))
-		{
-			static_cast<CPlayer*>(objectTwo)->TakeDamage(static_cast<CBullet*>(objectOne)->damage);
-			static_cast<CGameObject*>(objectOne)->DeleteObject();
-		}
-		//Bullet Wall Collision
-		else if (static_cast<CGameObject*>(objectOne)->TagExists("Bullet") && static_cast<CGameObject*>(objectTwo)->TagExists("Wall"))
-		{
-			static_cast<CWall*>(objectTwo)->TakeDamage(static_cast<CBullet*>(objectOne)->damage);
-			static_cast<CGameObject*>(objectOne)->DeleteObject();
-		}
-		//Wall Bullet Collision
-		else if (static_cast<CGameObject*>(objectOne)->TagExists("Wall") && static_cast<CGameObject*>(objectTwo)->TagExists("Bullet"))
-		{
-			static_cast<CWall*>(objectOne)->TakeDamage(10.0f);
-			static_cast<CGameObject*>(objectTwo)->DeleteObject();
-		}
-		//Player SpikeTrap Collision
-		else if (static_cast<CGameObject*>(objectOne)->TagExists("Player") && static_cast<CGameObject*>(objectTwo)->TagExists("SpikeTrap"))
-		{
-			static_cast<CPlayer*>(objectOne)->TakeDamage(static_cast<CSpikeTrap*>(objectTwo)->damage);
-		}
-		//SpikeTrap Player Collision
-		else if (static_cast<CGameObject*>(objectOne)->TagExists("SpikeTrap") && static_cast<CGameObject*>(objectTwo)->TagExists("Player"))
-		{
-			static_cast<CPlayer*>(objectTwo)->TakeDamage(static_cast<CSpikeTrap*>(objectOne)->damage);
-		}
-	}
+	//Call BeginContact() from the data found. 
+	bodyUserDataA->BeginContact(bodyUserDataB);
+	bodyUserDataB->BeginContact(bodyUserDataA);
+}
+
+void CManager::EndContact(b2Contact* _contact)
+{
+	//Get data of collided objects if it exists.
+	CPhysicsBody* bodyUserDataA = (CPhysicsBody*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer;
+	CPhysicsBody* bodyUserDataB = (CPhysicsBody*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer;
+	if (bodyUserDataA == nullptr || bodyUserDataB == nullptr) return;
+
+	//Call EndContact() from the data found. 
+	bodyUserDataA->EndContact(bodyUserDataB);
+	bodyUserDataB->EndContact(bodyUserDataA);
+}
+
+void CManager::PreSolve(b2Contact* _contact, const b2Manifold* _oldManifold)
+{
+	//Get data of collided objects if it exists.
+	CPhysicsBody* bodyUserDataA = (CPhysicsBody*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer;
+	CPhysicsBody* bodyUserDataB = (CPhysicsBody*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer;
+	if (bodyUserDataA == nullptr || bodyUserDataB == nullptr) return;
+
+	//Call PreSolve() from the data found. 
+	bodyUserDataA->PreSolve(bodyUserDataB, _oldManifold);
+	bodyUserDataB->PreSolve(bodyUserDataA, _oldManifold);
+}
+
+void CManager::PostSolve(b2Contact* _contact, const b2ContactImpulse* _impulse)
+{
+	//Get data of collided objects if it exists.
+	CPhysicsBody* bodyUserDataA = (CPhysicsBody*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer;
+	CPhysicsBody* bodyUserDataB = (CPhysicsBody*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer;
+	if (bodyUserDataA == nullptr || bodyUserDataB == nullptr) return;
+
+	//Call PostSolve() from the data found. 
+	bodyUserDataA->PostSolve(bodyUserDataB, _impulse);
+	bodyUserDataB->PostSolve(bodyUserDataA, _impulse);
 }
 
 CManager::CManager()
@@ -107,43 +111,59 @@ CManager::~CManager()
 	delete physicsWorld;
 }
 
-void CManager::DestroyImmediate(CUpdatedObject* _UpdatedObject)
+void CManager::DestroyImmediate(CUpdatedObject*&& _updatedObject)
 {
-	if (_UpdatedObject == nullptr)
+	// check whether the given object is valid
+	if (_updatedObject == nullptr)
 	{
 		std::cout << "ERROR: Can not use DestroyImmediate on nullptr";
 		return;
 	}
 
+	// seach though m_dequeUpdatedObject to find the object and delete it
 	for (int i = 0; i < (int)objectsInWorld.size(); i++)
 	{
-		if (objectsInWorld[i] != _UpdatedObject) continue;
+		if (objectsInWorld[i] != _updatedObject) continue;
 
 		objectsInWorld.erase(objectsInWorld.begin() + i);
-		delete _UpdatedObject;
+		delete _updatedObject;
 
 		return;
 	}
 }
 
-void CManager::DestroyImmediate(CUpdatedObject*& _UpdatedObject)
+void CManager::DestroyImmediate(CUpdatedObject*& _updatedObject)
 {
-	if (_UpdatedObject == nullptr)
+	// check whether the given object is valid
+	if (_updatedObject == nullptr)
 	{
 		std::cout << "ERROR: Can not use DestroyImmediate on nullptr";
 		return;
 	}
 
+	// seach though objectsInWorld to find the object and delete it
 	for (int i = 0; i < (int)objectsInWorld.size(); i++)
 	{
-		if (objectsInWorld[i] != _UpdatedObject) continue;
+		if (objectsInWorld[i] != _updatedObject) continue;
 
 		objectsInWorld.erase(objectsInWorld.begin() + i);
-		delete _UpdatedObject;
-		_UpdatedObject = nullptr;
+		delete _updatedObject;
+
+		// ensure that the given pointer refrence is set to nullptr
+		_updatedObject = nullptr;
 
 		return;
 	}
+}
+
+void CManager::DestroyImmediate(unsigned int _index)
+{
+	//Get the object to be deleted
+	CUpdatedObject* pUpdatedObject = objectsInWorld[_index];
+
+	//Delete the object and remove it from objectsInWorld
+	objectsInWorld.erase(objectsInWorld.begin() + _index);
+	delete pUpdatedObject;
 }
 
 void CManager::Clear()
@@ -197,15 +217,17 @@ void CManager::Update()
 	}
 
 	// update the transforms of physics objects
-	for (auto& pUpdatedObject : objectsInWorld)
+	for (auto& updatedObject : objectsInWorld)
 	{
-		CGameObject* pGameObject = dynamic_cast<CGameObject*>(pUpdatedObject);
-		if (pGameObject == nullptr) continue;
-		if (pGameObject->GetPhysicsBody() == nullptr) continue;
+		CGameObject* gameObject = dynamic_cast<CGameObject*>(updatedObject);
+		CPhysicsBody* physicsBody = dynamic_cast<CPhysicsBody*>(updatedObject);
 
-		b2Vec2 bv2Position = pGameObject->GetPhysicsBody()->GetBody().GetPosition();
-		pGameObject->transform.setPosition(bv2Position.x / pixelToWorldScale, bv2Position.y / pixelToWorldScale);
-		pGameObject->transform.setRotation((pGameObject->GetPhysicsBody()->GetBody().GetAngle() * 180.0f) / b2_pi);
+		if (gameObject == nullptr) continue;
+		if (physicsBody == nullptr) continue;
+
+		b2Vec2 position = physicsBody->GetBody().GetPosition();
+		gameObject->transform.setPosition(position.x / pixelToWorldScale, position.y / pixelToWorldScale);
+		gameObject->transform.setRotation((physicsBody->GetBody().GetAngle() * 180.0f) / b2_pi);
 	}
 
 	// clear screen
@@ -227,12 +249,7 @@ void CManager::Update()
 	{
 		if (!objectsInWorld[i]->GetDeleteObject()) continue;
 
-		CUpdatedObject* pDeletedGameObject = objectsInWorld[i];
-		objectsInWorld.erase(objectsInWorld.begin() + i);
-		if (((CGameObject*)pDeletedGameObject)->GetPhysicsBody() != nullptr)
-		{
-			physicsWorld->DestroyBody(&((CGameObject*)pDeletedGameObject)->GetPhysicsBody()->GetBody());
-		}
-		delete pDeletedGameObject;
+		DestroyImmediate(i);
+		i--;
 	}
 }

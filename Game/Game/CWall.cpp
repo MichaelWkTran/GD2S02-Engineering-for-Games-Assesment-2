@@ -9,6 +9,7 @@ CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
     isBreakable = _isBreakable;
     health = -1.0f;
     objType = MapPlaceableObjects::UnbreakableWall;
+    tags.emplace("Wall");
 
     // setup sf::Drawable
     drawable = new sf::RectangleShape(sf::Vector2f(32.0f, 32.0f));
@@ -21,32 +22,24 @@ CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
     transform.setRotation(_rotation);
 
     // setup b2BodyDef
-    physicsBody = new CPhysicsBody;
-    physicsBody->bodyDef.type = b2_staticBody;
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_staticBody;
+    bodyDef.position = GetManager().pixelToWorldScale * b2Vec2(transform.getPosition().x, transform.getPosition().y);
 
     // setup b2Shape
-    physicsBody->SetupShape<b2PolygonShape>();
-    b2PolygonShape* pPolygonShape = (b2PolygonShape*)&physicsBody->GetShape();
-    pPolygonShape->SetAsBox
+    b2PolygonShape shape;
+    shape.SetAsBox
     (
         (rectangleShape->getSize().x * GetManager().pixelToWorldScale) / 2.0f,
         (rectangleShape->getSize().y * GetManager().pixelToWorldScale) / 2.0f
     );
-    // setup b2Shape
-    physicsBody->bodyDef.position = b2Vec2(transform.getPosition().x * GetManager().pixelToWorldScale, transform.getPosition().y * GetManager().pixelToWorldScale);
 
     // setup b2FixtureDef
-    physicsBody->fixtureDef.density = 1.0f;
+    b2FixtureDef fixtureDef;
+    fixtureDef.density = 1.0f;
 
     // setup b2Body
-    physicsBody->SetupBody();
-    physicsBody->GetBody().SetFixedRotation(true);
-    physicsBody->GetBody().GetUserData().pointer = (uintptr_t)static_cast<void*>(this);
-
-    // setup b2Body
-    physicsBody->SetupBody();
-
-    tags.emplace("Wall");
+    SetupBody(bodyDef, &fixtureDef, 1);
 }
 
 void CWall::TakeDamage(float _damage)

@@ -1,10 +1,10 @@
 #pragma once
 #include "CGameObject.h"
-#include "Box2D/box2d.h"
+#include "CPhysicsBody.h"
 
 class CGun;
 
-class CPlayer : public CGameObject
+class CPlayer : public CGameObject, public CPhysicsBody
 {
 public:
 	int maxHealth;
