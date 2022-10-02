@@ -5,8 +5,12 @@
 #include "CGun.h"
 #include <iostream>
 
+std::set<CPlayer*> CPlayer::playersInWorld;
+
 CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::Key _left, sf::Keyboard::Key _right, sf::Keyboard::Key _shoot, sf::Vector2f _spawnPos, bool _isPlayerOne)
 {
+    playersInWorld.insert(this);
+
     up = _up;
     down = _down;
     left = _left;
@@ -71,6 +75,7 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
 
 CPlayer::~CPlayer()
 {
+    playersInWorld.erase(this);
 }
 
 void CPlayer::Update()

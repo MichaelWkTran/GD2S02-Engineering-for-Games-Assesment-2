@@ -24,9 +24,8 @@ private:
 	// physics variables
 	b2World* physicsWorld;
 
-	void Zoom(float _fZoomValue);
+	void Zoom(float _zoomValue);
 
-	//virtual void BeginContact(b2Contact* _contact) override;
 	virtual void BeginContact(b2Contact* _contact) override;
 	virtual void EndContact(b2Contact* _contact) override;
 	virtual void PreSolve(b2Contact* _contact, const b2Manifold* _oldManifold) override;
@@ -53,6 +52,7 @@ public:
 	CManager(const CManager&) = delete;
 	CManager& operator= (const CManager&) = delete;
 	
+
 	void DestroyImmediate(CUpdatedObject* _updatedObject);
 	void DestroyImmediate(CUpdatedObject*& _updatedObject);
 	void DestroyImmediate(unsigned int _index);

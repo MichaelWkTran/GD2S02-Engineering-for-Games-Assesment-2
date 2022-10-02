@@ -1,12 +1,15 @@
 #pragma once
 #include "CGameObject.h"
 #include "CPhysicsBody.h"
+#include <set>
 
 class CGun;
 
 class CPlayer : public CPhysicsBody, public CGameObject
 {
 public:
+	static std::set<CPlayer*> playersInWorld;
+
 	int maxHealth;
 	float moveSpeed;
 	float coolDown;

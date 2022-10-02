@@ -57,51 +57,6 @@ void CManager::PostSolve(b2Contact* _contact, const b2ContactImpulse* _impulse)
 	bodyUserDataB->PostSolve(bodyUserDataA, _impulse);
 }
 
-//void CManager::BeginContact(b2Contact* _contact)
-//{
-//	CPhysicsBody* objectOne = (CPhysicsBody*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer;
-//	CPhysicsBody* objectTwo = (CPhysicsBody*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer;
-//	if (objectOne == nullptr || objectTwo == nullptr) return;
-//
-//	if (dynamic_cast<CGameObject*>(objectOne) && dynamic_cast<CGameObject*>(objectTwo))
-//	{
-//		//Player Bullet Collision
-//		if (dynamic_cast<CGameObject*>(objectOne)->TagExists("Player") && dynamic_cast<CGameObject*>(objectTwo)->TagExists("Bullet"))
-//		{
-//			dynamic_cast<CPlayer*>(objectOne)->TakeDamage(dynamic_cast<CBullet*>(objectTwo)->damage);
-//			dynamic_cast<CGameObject*>(objectTwo)->DeleteObject();
-//		}
-//		//Bullet Player Collision
-//		else if (dynamic_cast<CGameObject*>(objectOne)->TagExists("Bullet") && dynamic_cast<CGameObject*>(objectTwo)->TagExists("Player"))
-//		{
-//			dynamic_cast<CPlayer*>(objectTwo)->TakeDamage(dynamic_cast<CBullet*>(objectOne)->damage);
-//			dynamic_cast<CGameObject*>(objectOne)->DeleteObject();
-//		}
-//		//Bullet Wall Collision
-//		else if (dynamic_cast<CGameObject*>(objectOne)->TagExists("Bullet") && dynamic_cast<CGameObject*>(objectTwo)->TagExists("Wall"))
-//		{
-//			dynamic_cast<CWall*>(objectTwo)->TakeDamage(dynamic_cast<CBullet*>(objectOne)->damage);
-//			dynamic_cast<CGameObject*>(objectOne)->DeleteObject();
-//		}
-//		//Wall Bullet Collision
-//		else if (dynamic_cast<CGameObject*>(objectOne)->TagExists("Wall") && dynamic_cast<CGameObject*>(objectTwo)->TagExists("Bullet"))
-//		{
-//			dynamic_cast<CWall*>(objectOne)->TakeDamage(10.0f);
-//			dynamic_cast<CGameObject*>(objectTwo)->DeleteObject();
-//		}
-//		//Player SpikeTrap Collision
-//		else if (dynamic_cast<CGameObject*>(objectOne)->TagExists("Player") && dynamic_cast<CGameObject*>(objectTwo)->TagExists("SpikeTrap"))
-//		{
-//			dynamic_cast<CPlayer*>(objectOne)->TakeDamage(dynamic_cast<CSpikeTrap*>(objectTwo)->damage);
-//		}
-//		//SpikeTrap Player Collision
-//		else if (dynamic_cast<CGameObject*>(objectOne)->TagExists("SpikeTrap") && dynamic_cast<CGameObject*>(objectTwo)->TagExists("Player"))
-//		{
-//			dynamic_cast<CPlayer*>(objectTwo)->TakeDamage(dynamic_cast<CSpikeTrap*>(objectOne)->damage);
-//		}
-//	}
-//}
-
 CManager::CManager()
 {
 	// check singleton
