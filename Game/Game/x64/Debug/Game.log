@@ -1,10 +1,1 @@
-﻿  CBullet.cpp
-  CPlayer.cpp
-D:\Projects\GD2S02-Assesment\Game\Game\CPlayer.cpp(17,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Projects\GD2S02-Assesment\Game\Game\CPlayer.cpp(83,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Projects\GD2S02-Assesment\Game\Game\CPlayer.cpp(82,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Projects\GD2S02-Assesment\Game\Game\CPlayer.cpp(112,22): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-  CSpikeTrap.cpp
-  CWall.cpp
-  Generating Code...
-  Game.vcxproj -> D:\Projects\GD2S02-Assesment\Game\x64\Debug\Game.exe
+﻿  Game.vcxproj -> D:\Projects\GitHub\GD2S02-Assesment\Game\x64\Debug\Game.exe

@@ -2,8 +2,9 @@
 #include "CPhysicsBody.h"
 #include "Box2D/box2d.h"
 #include "CManager.h"
+#include "CPlayer.h"
 
-float CSpikeTrap::damage = 10.0f;
+float CSpikeTrap::damage = 1.0f;
 
 CSpikeTrap::CSpikeTrap(sf::Vector2f _pos)
 {
@@ -41,4 +42,31 @@ CSpikeTrap::CSpikeTrap(sf::Vector2f _pos)
     physicsBody->GetBody().GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 
     tags.emplace("SpikeTrap");
+}
+
+void CSpikeTrap::Update()
+{
+    // gradually damage the player
+    for (b2ContactEdge* edge = physicsBody->GetBody().GetContactList(); edge; edge = edge->next)
+    {
+        CPlayer* player = nullptr;
+        
+        // Get the object that the trap has collided with
+        {
+            b2Contact* contact = edge->contact;
+            player = static_cast<CPlayer*>
+            (
+                (void*)contact->GetFixtureA()->GetUserData().pointer != this ?
+                (void*)contact->GetFixtureA()->GetUserData().pointer :
+                (void*)contact->GetFixtureB()->GetUserData().pointer
+            );
+        }
+        
+
+        // if the found object is not a player, ignore it
+        if (player == nullptr) continue;
+
+        // damage the player
+        player->health -= GetManager().deltatime * damage;
+    }
 }

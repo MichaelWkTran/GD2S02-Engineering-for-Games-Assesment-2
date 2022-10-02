@@ -7,5 +7,6 @@ public:
 	static float damage;
 
 	CSpikeTrap(sf::Vector2f _pos);
+	virtual void Update() override;
 };
 

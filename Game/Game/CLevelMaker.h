@@ -19,4 +19,3 @@ public:
 	void SaveLevel();
 	void LoadLevel();
 };
-
