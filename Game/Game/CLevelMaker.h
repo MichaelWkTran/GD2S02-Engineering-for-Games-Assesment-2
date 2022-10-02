@@ -6,17 +6,16 @@ class CLevelMaker
 {
 private:
 	int selectedPlacement = 0;
-	int arenaSizeX = 30;
-	int arenaSizeY = 30;
+	int arenaSizeX = 0;
+	int arenaSizeY = 0;
 	CMapPlaceBase*** arena = nullptr;
 
-	void CheckPlace(sf::Vector2f _mousePos);
+	void LoadLevel();
 public:
 	void Render();
 	CLevelMaker();
 
 	void Update();
-	void SaveLevel();
-	void LoadLevel();
+	void LoadLevel(std::string _path);
 };
 

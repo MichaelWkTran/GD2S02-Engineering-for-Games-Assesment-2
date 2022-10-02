@@ -7,6 +7,7 @@
 #include "CBullet.h"
 #include "CWall.h"
 #include "CSpikeTrap.h"
+#include "Level.h"
 #include <iostream>
 
 CManager* CManager::singleton = nullptr;
@@ -99,6 +100,10 @@ CManager::CManager()
 	font.loadFromFile("fonts/SansSerif.ttf");
 
 	levelmaker = new CLevelMaker();
+	Level* level = new Level("Levels/1.txt");
+	levelmaker->LoadLevel(level->GetPath());
+	delete level;
+	level = nullptr;
 }
 
 CManager::~CManager()

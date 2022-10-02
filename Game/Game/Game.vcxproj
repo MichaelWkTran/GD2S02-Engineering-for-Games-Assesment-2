@@ -162,6 +162,7 @@
     <ClCompile Include="CSpikeTrap.cpp" />
     <ClCompile Include="CUpdatedObject.cpp" />
     <ClCompile Include="CWall.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CPlayer.cpp" />
   </ItemGroup>
@@ -179,6 +180,7 @@
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CWall.h" />
     <ClInclude Include="GlobalEnumInclude.h" />
+    <ClInclude Include="Level.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

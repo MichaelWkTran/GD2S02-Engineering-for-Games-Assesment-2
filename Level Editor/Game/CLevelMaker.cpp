@@ -174,11 +174,12 @@ void CLevelMaker::SaveLevel()
 						std::string path = W2A(pszFilePath);
 						saveFile.open(path, std::ios::out | std::ios::trunc);
 
+						saveFile << arenaSizeX << "\n" << arenaSizeY << "\n";
 						for (int i = 0; i < arenaSizeX; i++)
 						{
 							for (int j = 0; j < arenaSizeY; j++)
 							{
-								saveFile << arena[i][j]->objType << "\n" << i << "\n" << j << "\n" << ((sf::Shape*)arena[i][j]->GetDrawable())->getRotation();
+								saveFile << arena[i][j]->objType << "\n" << i << "\n" << j << "\n" << ((sf::Shape*)arena[i][j]->GetDrawable())->getRotation() << "\n";
 							}
 						}
 
@@ -242,6 +243,32 @@ void CLevelMaker::LoadLevel()
 						int l;
 						float rotation;
 
+						for (int i = 0; i < arenaSizeY; i++)
+						{
+							delete arena[i];
+							arena[i] = nullptr;
+						}
+
+						delete arena;
+
+						inFile >> arenaSizeX;
+						inFile >> arenaSizeY;
+
+						arena = new CMapPlaceBase * *[arenaSizeX];
+
+						for (int i = 0; i < arenaSizeX; i++)
+						{
+							arena[i] = new CMapPlaceBase * [arenaSizeY];
+						}
+
+						for (int i = 0; i < arenaSizeX; i++)
+						{
+							for (int j = 0; j < arenaSizeY; j++)
+							{
+								arena[i][j] = nullptr;
+							}
+						}
+
 						while (inFile)
 						{
 							// read name, x, y, and rotation
@@ -254,11 +281,9 @@ void CLevelMaker::LoadLevel()
 							switch (objType)
 							{
 							case Ground:
-								arena[k][l]->DeleteObject();
 								arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l), rotation);
 								break;
 							case UnbreakableWall:
-								arena[k][l]->DeleteObject();
 								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l), rotation);
 								break;
 							default:

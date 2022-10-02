@@ -21,24 +21,6 @@ void CLevelMaker::Render()
 
 CLevelMaker::CLevelMaker()
 {
-	arena = new CMapPlaceBase * *[arenaSizeX];
-
-	for (int i = 0; i < arenaSizeY; i++)
-	{
-		arena[i] = new CMapPlaceBase * [arenaSizeY];
-	}
-
-	for (int i = 0; i < arenaSizeX; i++)
-	{
-		for (int j = 0; j < arenaSizeY; j++)
-		{
-			arena[i][j] = nullptr;
-		}
-	}
-}
-
-void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
-{
 	
 }
 
@@ -48,11 +30,6 @@ void CLevelMaker::Update()
 	{
 		LoadLevel();
 	}
-}
-
-void CLevelMaker::SaveLevel()
-{
-	
 }
 
 void CLevelMaker::LoadLevel()
@@ -101,6 +78,32 @@ void CLevelMaker::LoadLevel()
 						int l;
 						float rotation;
 
+						for (int i = 0; i < arenaSizeY; i++)
+						{
+							delete arena[i];
+							arena[i] = nullptr;
+						}
+
+						delete arena;
+
+						inFile >> arenaSizeX;
+						inFile >> arenaSizeY;
+
+						arena = new CMapPlaceBase * *[arenaSizeX];
+
+						for (int i = 0; i < arenaSizeX; i++)
+						{
+							arena[i] = new CMapPlaceBase * [arenaSizeY];
+						}
+
+						for (int i = 0; i < arenaSizeX; i++)
+						{
+							for (int j = 0; j < arenaSizeY; j++)
+							{
+								arena[i][j] = nullptr;
+							}
+						}
+
 						while (inFile)
 						{
 							// read name, x, y, and rotation
@@ -112,12 +115,10 @@ void CLevelMaker::LoadLevel()
 							switch (objType)
 							{
 							case Ground:
-								arena[k][l]->DeleteObject();
-								arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l), rotation);
+								arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l + 100), rotation);
 								break;
 							case UnbreakableWall:
-								arena[k][l]->DeleteObject();
-								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l), rotation);
+								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l + 100), rotation);
 								break;
 							default:
 								break;
@@ -132,4 +133,69 @@ void CLevelMaker::LoadLevel()
 		}
 		fileOpen->Release();
 	}
+}
+
+void CLevelMaker::LoadLevel(std::string _path)
+{
+	// set up the variables and open the file
+	std::fstream saveFile;
+	std::string Path = _path;
+	saveFile.open(Path, std::ios::in | std::ios::trunc);
+
+	std::ifstream inFile;
+	inFile.open(Path.c_str());
+
+	int objType;
+	int k;
+	int l;
+	float rotation;
+
+	for (int i = 0; i < arenaSizeY; i++)
+	{
+		delete arena[i];
+		arena[i] = nullptr;
+	}
+
+	delete arena;
+
+	inFile >> arenaSizeX;
+	inFile >> arenaSizeY;
+
+	arena = new CMapPlaceBase * *[arenaSizeX];
+
+	for (int i = 0; i < arenaSizeX; i++)
+	{
+		arena[i] = new CMapPlaceBase * [arenaSizeY];
+	}
+
+	for (int i = 0; i < arenaSizeX; i++)
+	{
+		for (int j = 0; j < arenaSizeY; j++)
+		{
+			arena[i][j] = nullptr;
+		}
+	}
+
+	while (inFile)
+	{
+		// read name, x, y, and rotation
+		inFile >> objType;
+		inFile >> k;
+		inFile >> l;
+		inFile >> rotation;
+
+		// decide which object to place
+		switch (objType)
+		{
+		case Ground:
+			arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l), rotation);
+			break;
+		case UnbreakableWall:
+			arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l), rotation);
+			break;
+		default:
+			break;
+		}
+	}
+	saveFile.close();
 }

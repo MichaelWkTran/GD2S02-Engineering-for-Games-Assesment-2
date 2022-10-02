@@ -6,8 +6,8 @@ class CLevelMaker
 {
 private:
 	int selectedPlacement = 0;
-	int arenaSizeX = 40;
-	int arenaSizeY = 20;
+	int arenaSizeX = 15;
+	int arenaSizeY = 15;
 	int rotationValue = 0;
 	CMapPlaceBase*** arena = nullptr;
 
