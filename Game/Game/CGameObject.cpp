@@ -5,7 +5,6 @@
 
 CGameObject::~CGameObject()
 {
-	if (physicsBody != nullptr) delete physicsBody;
 	if (drawable != nullptr) delete drawable;
 };
 

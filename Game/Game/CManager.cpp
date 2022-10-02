@@ -19,47 +19,88 @@ void CManager::Zoom(float _zoomValue)
 
 void CManager::BeginContact(b2Contact* _contact)
 {
-	void* objectOne = (void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer;
-	void* objectTwo = (void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer;
+	CPhysicsBody* pBodyUserDataA = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer);
+	CPhysicsBody* pBodyUserDataB = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer);
+	if (pBodyUserDataA == nullptr || pBodyUserDataB == nullptr) return;
 
-	if (static_cast<CGameObject*>(objectOne) && static_cast<CGameObject*>(objectTwo))
-	{
-		//Player Bullet Collision
-		if (static_cast<CGameObject*>(objectOne)->TagExists("Player") && static_cast<CGameObject*>(objectTwo)->TagExists("Bullet"))
-		{
-			static_cast<CPlayer*>(objectOne)->TakeDamage(static_cast<CBullet*>(objectTwo)->damage);
-			static_cast<CGameObject*>(objectTwo)->DeleteObject();
-		}
-		//Bullet Player Collision
-		else if (static_cast<CGameObject*>(objectOne)->TagExists("Bullet") && static_cast<CGameObject*>(objectTwo)->TagExists("Player"))
-		{
-			static_cast<CPlayer*>(objectTwo)->TakeDamage(static_cast<CBullet*>(objectOne)->damage);
-			static_cast<CGameObject*>(objectOne)->DeleteObject();
-		}
-		//Bullet Wall Collision
-		else if (static_cast<CGameObject*>(objectOne)->TagExists("Bullet") && static_cast<CGameObject*>(objectTwo)->TagExists("Wall"))
-		{
-			static_cast<CWall*>(objectTwo)->TakeDamage(static_cast<CBullet*>(objectOne)->damage);
-			static_cast<CGameObject*>(objectOne)->DeleteObject();
-		}
-		//Wall Bullet Collision
-		else if (static_cast<CGameObject*>(objectOne)->TagExists("Wall") && static_cast<CGameObject*>(objectTwo)->TagExists("Bullet"))
-		{
-			static_cast<CWall*>(objectOne)->TakeDamage(10.0f);
-			static_cast<CGameObject*>(objectTwo)->DeleteObject();
-		}
-		//Player SpikeTrap Collision
-		else if (static_cast<CGameObject*>(objectOne)->TagExists("Player") && static_cast<CGameObject*>(objectTwo)->TagExists("SpikeTrap"))
-		{
-			static_cast<CPlayer*>(objectOne)->TakeDamage(static_cast<CSpikeTrap*>(objectTwo)->damage);
-		}
-		//SpikeTrap Player Collision
-		else if (static_cast<CGameObject*>(objectOne)->TagExists("SpikeTrap") && static_cast<CGameObject*>(objectTwo)->TagExists("Player"))
-		{
-			static_cast<CPlayer*>(objectTwo)->TakeDamage(static_cast<CSpikeTrap*>(objectOne)->damage);
-		}
-	}
+	pBodyUserDataA->BeginContact(pBodyUserDataB);
+	pBodyUserDataB->BeginContact(pBodyUserDataA);
 }
+
+void CManager::EndContact(b2Contact* _contact)
+{
+	CPhysicsBody* pBodyUserDataA = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer);
+	CPhysicsBody* pBodyUserDataB = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer);
+	if (pBodyUserDataA == nullptr || pBodyUserDataB == nullptr) return;
+
+	pBodyUserDataA->EndContact(pBodyUserDataB);
+	pBodyUserDataB->EndContact(pBodyUserDataA);
+}
+
+void CManager::PreSolve(b2Contact* _contact, const b2Manifold* _pOldManifold)
+{
+	CPhysicsBody* pBodyUserDataA = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer);
+	CPhysicsBody* pBodyUserDataB = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer);
+	if (pBodyUserDataA == nullptr || pBodyUserDataB == nullptr) return;
+
+	pBodyUserDataA->PreSolve(pBodyUserDataB, _pOldManifold);
+	pBodyUserDataB->PreSolve(pBodyUserDataA, _pOldManifold);
+}
+
+void CManager::PostSolve(b2Contact* _contact, const b2ContactImpulse* _pImpulse)
+{
+	CPhysicsBody* pBodyUserDataA = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer);
+	CPhysicsBody* pBodyUserDataB = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer);
+	if (pBodyUserDataA == nullptr || pBodyUserDataB == nullptr) return;
+
+	pBodyUserDataA->PostSolve(pBodyUserDataB, _pImpulse);
+	pBodyUserDataB->PostSolve(pBodyUserDataA, _pImpulse);
+}
+
+//void CManager::BeginContact(b2Contact* _contact)
+//{
+//	CPhysicsBody* objectOne = (CPhysicsBody*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer;
+//	CPhysicsBody* objectTwo = (CPhysicsBody*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer;
+//	if (objectOne == nullptr || objectTwo == nullptr) return;
+//
+//	if (dynamic_cast<CGameObject*>(objectOne) && dynamic_cast<CGameObject*>(objectTwo))
+//	{
+//		//Player Bullet Collision
+//		if (dynamic_cast<CGameObject*>(objectOne)->TagExists("Player") && dynamic_cast<CGameObject*>(objectTwo)->TagExists("Bullet"))
+//		{
+//			dynamic_cast<CPlayer*>(objectOne)->TakeDamage(dynamic_cast<CBullet*>(objectTwo)->damage);
+//			dynamic_cast<CGameObject*>(objectTwo)->DeleteObject();
+//		}
+//		//Bullet Player Collision
+//		else if (dynamic_cast<CGameObject*>(objectOne)->TagExists("Bullet") && dynamic_cast<CGameObject*>(objectTwo)->TagExists("Player"))
+//		{
+//			dynamic_cast<CPlayer*>(objectTwo)->TakeDamage(dynamic_cast<CBullet*>(objectOne)->damage);
+//			dynamic_cast<CGameObject*>(objectOne)->DeleteObject();
+//		}
+//		//Bullet Wall Collision
+//		else if (dynamic_cast<CGameObject*>(objectOne)->TagExists("Bullet") && dynamic_cast<CGameObject*>(objectTwo)->TagExists("Wall"))
+//		{
+//			dynamic_cast<CWall*>(objectTwo)->TakeDamage(dynamic_cast<CBullet*>(objectOne)->damage);
+//			dynamic_cast<CGameObject*>(objectOne)->DeleteObject();
+//		}
+//		//Wall Bullet Collision
+//		else if (dynamic_cast<CGameObject*>(objectOne)->TagExists("Wall") && dynamic_cast<CGameObject*>(objectTwo)->TagExists("Bullet"))
+//		{
+//			dynamic_cast<CWall*>(objectOne)->TakeDamage(10.0f);
+//			dynamic_cast<CGameObject*>(objectTwo)->DeleteObject();
+//		}
+//		//Player SpikeTrap Collision
+//		else if (dynamic_cast<CGameObject*>(objectOne)->TagExists("Player") && dynamic_cast<CGameObject*>(objectTwo)->TagExists("SpikeTrap"))
+//		{
+//			dynamic_cast<CPlayer*>(objectOne)->TakeDamage(dynamic_cast<CSpikeTrap*>(objectTwo)->damage);
+//		}
+//		//SpikeTrap Player Collision
+//		else if (dynamic_cast<CGameObject*>(objectOne)->TagExists("SpikeTrap") && dynamic_cast<CGameObject*>(objectTwo)->TagExists("Player"))
+//		{
+//			dynamic_cast<CPlayer*>(objectTwo)->TakeDamage(dynamic_cast<CSpikeTrap*>(objectOne)->damage);
+//		}
+//	}
+//}
 
 CManager::CManager()
 {
@@ -146,6 +187,14 @@ void CManager::DestroyImmediate(CUpdatedObject*& _UpdatedObject)
 	}
 }
 
+void CManager::DestroyImmediate(unsigned int _uiIndex)
+{
+	CUpdatedObject* updatedObject = objectsInWorld[_uiIndex];
+
+	objectsInWorld.erase(objectsInWorld.begin() + _uiIndex);
+	delete updatedObject;
+}
+
 void CManager::Clear()
 {
 	const int iGameObjectsCount = objectsInWorld.size();
@@ -200,12 +249,14 @@ void CManager::Update()
 	for (auto& pUpdatedObject : objectsInWorld)
 	{
 		CGameObject* pGameObject = dynamic_cast<CGameObject*>(pUpdatedObject);
-		if (pGameObject == nullptr) continue;
-		if (pGameObject->GetPhysicsBody() == nullptr) continue;
+		CPhysicsBody* pPhysicsBody = dynamic_cast<CPhysicsBody*>(pUpdatedObject);
 
-		b2Vec2 bv2Position = pGameObject->GetPhysicsBody()->GetBody().GetPosition();
+		if (pGameObject == nullptr) continue;
+		if (pPhysicsBody == nullptr) continue;
+
+		b2Vec2 bv2Position = pPhysicsBody->GetBody().GetPosition();
 		pGameObject->transform.setPosition(bv2Position.x / pixelToWorldScale, bv2Position.y / pixelToWorldScale);
-		pGameObject->transform.setRotation((pGameObject->GetPhysicsBody()->GetBody().GetAngle() * 180.0f) / b2_pi);
+		pGameObject->transform.setRotation((pPhysicsBody->GetBody().GetAngle() * 180.0f) / b2_pi);
 	}
 
 	// clear screen
@@ -229,10 +280,16 @@ void CManager::Update()
 
 		CUpdatedObject* pDeletedGameObject = objectsInWorld[i];
 		objectsInWorld.erase(objectsInWorld.begin() + i);
-		if (((CGameObject*)pDeletedGameObject)->GetPhysicsBody() != nullptr)
-		{
-			physicsWorld->DestroyBody(&((CGameObject*)pDeletedGameObject)->GetPhysicsBody()->GetBody());
-		}
+		//if (((CGameObject*)pDeletedGameObject)->GetPhysicsBody() != nullptr)
+		//{
+		//	physicsWorld->DestroyBody(&((CGameObject*)pDeletedGameObject)->GetPhysicsBody()->GetBody());
+		//}
 		delete pDeletedGameObject;
+
+
+		//if (!objectsInWorld[i]->GetDeleteObject()) continue;
+
+		//DestroyImmediate(i);
+		i--;
 	}
 }

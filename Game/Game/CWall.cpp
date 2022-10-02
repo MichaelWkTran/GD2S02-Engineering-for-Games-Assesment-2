@@ -21,7 +21,6 @@ CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
     transform.setRotation(_rotation);
 
     // setup b2BodyDef
-    physicsBody = new CPhysicsBody;
     b2BodyDef bodyDef;
     bodyDef.type = b2_staticBody;
     bodyDef.position = GetManager().pixelToWorldScale * b2Vec2(transform.getPosition().x, transform.getPosition().y);
@@ -41,8 +40,8 @@ CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
     fixtureDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
 
     // setup b2Body
-    physicsBody->SetupBody(bodyDef, &fixtureDef, 1); 
-    physicsBody->GetBody().GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
+    SetupBody(bodyDef, &fixtureDef, 1); 
+    body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 
     tags.emplace("Wall");
 }

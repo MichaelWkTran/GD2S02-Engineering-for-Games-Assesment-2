@@ -25,7 +25,6 @@ CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b
 	transform.setPosition(_spawnPosition);
 
 	// setup b2BodyDef
-	physicsBody = new CPhysicsBody;
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
 	bodyDef.bullet = true;
@@ -41,13 +40,12 @@ CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b
 	fixtureDef.shape = &shape;
 
 	// setup b2Body
-	physicsBody->SetupBody(bodyDef, &fixtureDef, 1);
-	physicsBody->GetBody().GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
+	SetupBody(bodyDef, &fixtureDef, 1);
+	body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 }
 
 CBullet::~CBullet()
 {
-	
 }
 
 void CBullet::Update()
@@ -57,5 +55,5 @@ void CBullet::Update()
 	{
 		DeleteObject();
 	}
-	physicsBody->GetBody().SetLinearVelocity(velocity);
+	body->SetLinearVelocity(velocity);
 }

@@ -26,7 +26,11 @@ private:
 
 	void Zoom(float _fZoomValue);
 
+	//virtual void BeginContact(b2Contact* _contact) override;
 	virtual void BeginContact(b2Contact* _contact) override;
+	virtual void EndContact(b2Contact* _contact) override;
+	virtual void PreSolve(b2Contact* _contact, const b2Manifold* _pOldManifold) override;
+	virtual void PostSolve(b2Contact* _contact, const b2ContactImpulse* _pImpulse) override;
 
 	CLevelMaker* levelmaker = nullptr;
 
@@ -51,6 +55,7 @@ public:
 	
 	void DestroyImmediate(CUpdatedObject* _UpdatedObject);
 	void DestroyImmediate(CUpdatedObject*& _UpdatedObject);
+	void DestroyImmediate(unsigned int _uiIndex);
 	void Clear();
 	void Update();
 
