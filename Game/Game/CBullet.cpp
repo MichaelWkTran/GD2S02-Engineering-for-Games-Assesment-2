@@ -45,8 +45,6 @@ CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b
 	body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 }
 
-
-
 void CBullet::Update()
 {
 	lifeTime -= GetManager().deltatime;

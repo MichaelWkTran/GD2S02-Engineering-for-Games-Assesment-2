@@ -29,8 +29,8 @@ private:
 	//virtual void BeginContact(b2Contact* _contact) override;
 	virtual void BeginContact(b2Contact* _contact) override;
 	virtual void EndContact(b2Contact* _contact) override;
-	virtual void PreSolve(b2Contact* _contact, const b2Manifold* _pOldManifold) override;
-	virtual void PostSolve(b2Contact* _contact, const b2ContactImpulse* _pImpulse) override;
+	virtual void PreSolve(b2Contact* _contact, const b2Manifold* _oldManifold) override;
+	virtual void PostSolve(b2Contact* _contact, const b2ContactImpulse* _impulse) override;
 
 	CLevelMaker* levelmaker = nullptr;
 
@@ -53,9 +53,9 @@ public:
 	CManager(const CManager&) = delete;
 	CManager& operator= (const CManager&) = delete;
 	
-	void DestroyImmediate(CUpdatedObject* _UpdatedObject);
-	void DestroyImmediate(CUpdatedObject*& _UpdatedObject);
-	void DestroyImmediate(unsigned int _uiIndex);
+	void DestroyImmediate(CUpdatedObject* _updatedObject);
+	void DestroyImmediate(CUpdatedObject*& _updatedObject);
+	void DestroyImmediate(unsigned int _index);
 	void Clear();
 	void Update();
 

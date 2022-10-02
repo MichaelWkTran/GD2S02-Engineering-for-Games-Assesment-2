@@ -1,2 +1,51 @@
-﻿  CSpikeTrap.cpp
-  Game.vcxproj -> D:\Projects\GitHub\GD2S02-Assesment\Game\x64\Debug\Game.exe
+﻿  CBullet.cpp
+  CGameObject.cpp
+  CGround.cpp
+  CGun.cpp
+  CLevelMaker.cpp
+D:\Projects\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(116,65): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(116,55): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(120,63): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(120,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  CManager.cpp
+D:\Projects\GD2S02-Assesment\Game\Game\CManager.cpp(125,70): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\GD2S02-Assesment\Game\Game\CManager.cpp(125,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\GD2S02-Assesment\Game\Game\CManager.cpp(199,48): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Projects\GD2S02-Assesment\Game\Game\CManager.cpp(199,48): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+  CMapPlaceBase.cpp
+  CPhysicsBody.cpp
+  CPlayer.cpp
+D:\Projects\GD2S02-Assesment\Game\Game\CPlayer.cpp(17,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Projects\GD2S02-Assesment\Game\Game\CPlayer.cpp(82,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Projects\GD2S02-Assesment\Game\Game\CPlayer.cpp(81,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Projects\GD2S02-Assesment\Game\Game\CPlayer.cpp(111,22): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+  CSpikeTrap.cpp
+  CUpdatedObject.cpp
+  CWall.cpp
+  main.cpp
+  Generating Code...
+  Game.vcxproj -> D:\Projects\GD2S02-Assesment\Game\x64\Debug\Game.exe

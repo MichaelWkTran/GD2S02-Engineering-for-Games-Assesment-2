@@ -19,42 +19,42 @@ void CManager::Zoom(float _zoomValue)
 
 void CManager::BeginContact(b2Contact* _contact)
 {
-	CPhysicsBody* pBodyUserDataA = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer);
-	CPhysicsBody* pBodyUserDataB = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer);
-	if (pBodyUserDataA == nullptr || pBodyUserDataB == nullptr) return;
+	CPhysicsBody* bodyUserDataA = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer);
+	CPhysicsBody* bodyUserDataB = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer);
+	if (bodyUserDataA == nullptr || bodyUserDataB == nullptr) return;
 
-	pBodyUserDataA->BeginContact(pBodyUserDataB);
-	pBodyUserDataB->BeginContact(pBodyUserDataA);
+	bodyUserDataA->BeginContact(bodyUserDataB);
+	bodyUserDataB->BeginContact(bodyUserDataA);
 }
 
 void CManager::EndContact(b2Contact* _contact)
 {
-	CPhysicsBody* pBodyUserDataA = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer);
-	CPhysicsBody* pBodyUserDataB = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer);
-	if (pBodyUserDataA == nullptr || pBodyUserDataB == nullptr) return;
+	CPhysicsBody* bodyUserDataA = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer);
+	CPhysicsBody* bodyUserDataB = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer);
+	if (bodyUserDataA == nullptr || bodyUserDataB == nullptr) return;
 
-	pBodyUserDataA->EndContact(pBodyUserDataB);
-	pBodyUserDataB->EndContact(pBodyUserDataA);
+	bodyUserDataA->EndContact(bodyUserDataB);
+	bodyUserDataB->EndContact(bodyUserDataA);
 }
 
-void CManager::PreSolve(b2Contact* _contact, const b2Manifold* _pOldManifold)
+void CManager::PreSolve(b2Contact* _contact, const b2Manifold* _oldManifold)
 {
-	CPhysicsBody* pBodyUserDataA = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer);
-	CPhysicsBody* pBodyUserDataB = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer);
-	if (pBodyUserDataA == nullptr || pBodyUserDataB == nullptr) return;
+	CPhysicsBody* bodyUserDataA = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer);
+	CPhysicsBody* bodyUserDataB = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer);
+	if (bodyUserDataA == nullptr || bodyUserDataB == nullptr) return;
 
-	pBodyUserDataA->PreSolve(pBodyUserDataB, _pOldManifold);
-	pBodyUserDataB->PreSolve(pBodyUserDataA, _pOldManifold);
+	bodyUserDataA->PreSolve(bodyUserDataB, _oldManifold);
+	bodyUserDataB->PreSolve(bodyUserDataA, _oldManifold);
 }
 
-void CManager::PostSolve(b2Contact* _contact, const b2ContactImpulse* _pImpulse)
+void CManager::PostSolve(b2Contact* _contact, const b2ContactImpulse* _impulse)
 {
-	CPhysicsBody* pBodyUserDataA = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer);
-	CPhysicsBody* pBodyUserDataB = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer);
-	if (pBodyUserDataA == nullptr || pBodyUserDataB == nullptr) return;
+	CPhysicsBody* bodyUserDataA = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureA()->GetBody()->GetUserData().pointer);
+	CPhysicsBody* bodyUserDataB = static_cast<CPhysicsBody*>((void*)_contact->GetFixtureB()->GetBody()->GetUserData().pointer);
+	if (bodyUserDataA == nullptr || bodyUserDataB == nullptr) return;
 
-	pBodyUserDataA->PostSolve(pBodyUserDataB, _pImpulse);
-	pBodyUserDataB->PostSolve(pBodyUserDataA, _pImpulse);
+	bodyUserDataA->PostSolve(bodyUserDataB, _impulse);
+	bodyUserDataB->PostSolve(bodyUserDataA, _impulse);
 }
 
 //void CManager::BeginContact(b2Contact* _contact)
@@ -126,8 +126,7 @@ CManager::CManager()
 	event = sf::Event();
 	
 	// set up physics
-	b2Vec2 v2Gravity(0.0, 0.f);
-	physicsWorld = new b2World(v2Gravity);
+	physicsWorld = new b2World(b2Vec2(0.0f, 0.0f));
 	pixelToWorldScale = 1.0f / 30.0f;
 	timeStep = 1 / 60.0f;
 	maxFrameTime = 0.25f;
@@ -197,8 +196,8 @@ void CManager::DestroyImmediate(unsigned int _uiIndex)
 
 void CManager::Clear()
 {
-	const int iGameObjectsCount = objectsInWorld.size();
-	for (int i = 0; i < iGameObjectsCount; i++)
+	const int objectsCount = objectsInWorld.size();
+	for (int i = 0; i < objectsCount; i++)
 	{
 		delete objectsInWorld.front();
 		objectsInWorld.pop_front();
@@ -235,9 +234,9 @@ void CManager::Update()
 	deltatime = deltaTimeClock.restart().asSeconds();
 
 	// update physics
-	float fFrameTime = GetManager().deltatime;
-	if (fFrameTime > maxFrameTime) fFrameTime = maxFrameTime;
-	accumulatedTime += fFrameTime;
+	float frameTime = GetManager().deltatime;
+	if (frameTime > maxFrameTime) frameTime = maxFrameTime;
+	accumulatedTime += frameTime;
 
 	while (accumulatedTime > timeStep)
 	{
@@ -248,15 +247,15 @@ void CManager::Update()
 	// update the transforms of physics objects
 	for (auto& pUpdatedObject : objectsInWorld)
 	{
-		CGameObject* pGameObject = dynamic_cast<CGameObject*>(pUpdatedObject);
-		CPhysicsBody* pPhysicsBody = dynamic_cast<CPhysicsBody*>(pUpdatedObject);
+		CGameObject* gameObject = dynamic_cast<CGameObject*>(pUpdatedObject);
+		CPhysicsBody* physicsBody = dynamic_cast<CPhysicsBody*>(pUpdatedObject);
 
-		if (pGameObject == nullptr) continue;
-		if (pPhysicsBody == nullptr) continue;
+		if (gameObject == nullptr) continue;
+		if (physicsBody == nullptr) continue;
 
-		b2Vec2 bv2Position = pPhysicsBody->GetBody().GetPosition();
-		pGameObject->transform.setPosition(bv2Position.x / pixelToWorldScale, bv2Position.y / pixelToWorldScale);
-		pGameObject->transform.setRotation((pPhysicsBody->GetBody().GetAngle() * 180.0f) / b2_pi);
+		b2Vec2 bv2Position = physicsBody->GetBody().GetPosition();
+		gameObject->transform.setPosition(bv2Position.x / pixelToWorldScale, bv2Position.y / pixelToWorldScale);
+		gameObject->transform.setRotation((physicsBody->GetBody().GetAngle() * 180.0f) / b2_pi);
 	}
 
 	// clear screen
@@ -276,20 +275,11 @@ void CManager::Update()
 	// delete updated objects
 	for (int i = 0; i < (int)objectsInWorld.size(); i++)
 	{
+		// ignore objects that have not been tagged for deletion
 		if (!objectsInWorld[i]->GetDeleteObject()) continue;
 
-		CUpdatedObject* pDeletedGameObject = objectsInWorld[i];
-		objectsInWorld.erase(objectsInWorld.begin() + i);
-		//if (((CGameObject*)pDeletedGameObject)->GetPhysicsBody() != nullptr)
-		//{
-		//	physicsWorld->DestroyBody(&((CGameObject*)pDeletedGameObject)->GetPhysicsBody()->GetBody());
-		//}
-		delete pDeletedGameObject;
-
-
-		//if (!objectsInWorld[i]->GetDeleteObject()) continue;
-
-		//DestroyImmediate(i);
+		// delete the object
+		DestroyImmediate(i);
 		i--;
 	}
 }

@@ -7,21 +7,21 @@
 class CGameObject : public CUpdatedObject
 {
 protected:
-	//Drawing Variables
+	// drawing variables
 	sf::Drawable* drawable;
 
 public:
-	//Refrencing Variables
+	// refrencing variables
 	std::set<const char*> tags;
 
-	//Transform Variables
+	// transform variables
 	sf::Transformable transform;
 
-	//Drawing Variables
+	// drawing variables
 	std::shared_ptr<sf::Texture> texture;
 	bool visible;
 
-	//GameObject Methods
+	// gameObject methods
 	CGameObject()
 	{
 		drawable = nullptr;
@@ -35,6 +35,6 @@ public:
 	}
 	virtual void Draw() override;
 
-	//Get Set Methods
+	// get set methods
 	sf::Drawable* GetDrawable() { return drawable; }
 };
