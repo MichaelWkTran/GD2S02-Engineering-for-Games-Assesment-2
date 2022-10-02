@@ -2,7 +2,6 @@
 #include "CPlayer.h"
 #include "CSpikeTrap.h" 
 
-
 int main()
 {
 	CManager* manager = new CManager();

@@ -1,6 +1,7 @@
 #include "CBullet.h"
 #include "CPhysicsBody.h"
 #include "CManager.h"
+#include "CPlayer.h"
 #include <iostream>
 
 CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b2Vec2 _velocity)
@@ -44,9 +45,7 @@ CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b
 	body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 }
 
-CBullet::~CBullet()
-{
-}
+
 
 void CBullet::Update()
 {
@@ -56,4 +55,19 @@ void CBullet::Update()
 		DeleteObject();
 	}
 	body->SetLinearVelocity(velocity);
+}
+
+void CBullet::BeginContact(CPhysicsBody* _other)
+{
+	// collision with player
+	{
+		CPlayer* player = dynamic_cast<CPlayer*>(_other);
+		if (player) { player->TakeDamage(damage); DeleteObject(); }
+	}
+	
+	// collision with wall
+	{
+		CWall* wall = dynamic_cast<CWall*>(_other);
+		if (wall) { DeleteObject(); }
+	}
 }

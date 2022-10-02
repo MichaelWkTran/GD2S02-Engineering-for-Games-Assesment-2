@@ -12,8 +12,9 @@ public:
 	b2Vec2 velocity;
 
 	CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b2Vec2 _velocity);
-	virtual ~CBullet();
 
 	virtual void Update() override;
+
+	virtual void BeginContact(CPhysicsBody* _other) override;
 };
 
