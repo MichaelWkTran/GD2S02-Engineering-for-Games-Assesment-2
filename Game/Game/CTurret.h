@@ -1,8 +1,7 @@
 #pragma once
 #include "CGameObject.h"
-#include "CPhysicsBody.h"
 
-class CTurret : public CPhysicsBody, public CGameObject
+class CTurret : public CGameObject
 {
 public:
 	static float bulletDamage;
@@ -13,7 +12,7 @@ public:
 	float coolDownTimer;
 
 	CTurret();
-	~CTurret();
+	virtual ~CTurret();
 
 	virtual void Update() override;
 };

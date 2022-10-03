@@ -2,17 +2,23 @@
 #include "CBullet.h"
 #include "CManager.h"
 #include "CPlayer.h"
+#include "MathUtils.h"
 
-#define PI 3.14159265359
-
-float CTurret::bulletDamage = 0.0f;
-float CTurret::bulletSpeed = 0.0f;
-float CTurret::coolDown = 0.0f;
-float CTurret::sightDistance = 0.0f;
+float CTurret::bulletDamage = 1.0f;
+float CTurret::bulletSpeed = 4.0f;
+float CTurret::coolDown = 1.0f;
+float CTurret::sightDistance = 400.0f;
 
 CTurret::CTurret()
 {
 	coolDownTimer = coolDown;
+	
+	texture = std::make_shared<sf::Texture>();
+	texture->loadFromFile("Assets/Sprites/Goon6.png");
+
+	transform.setOrigin(sf::Vector2f(texture->getSize()) / 2.0f);
+	drawable = new sf::Sprite(*texture);
+
 }
 
 CTurret::~CTurret()
@@ -21,27 +27,39 @@ CTurret::~CTurret()
 
 void CTurret::Update()
 {
-	// face towards closest player
+	// get the closest player position
 	sf::Vector2f playerPos;
+	bool seePlayer = false;
 	{
-		float closestPlayerDistance = 0;
+		float closestPlayerDistance = INFINITY;
 		for (auto& player : CPlayer::playersInWorld)
 		{
-			sf::Vector2f differenceVector = transform.getPosition() - playerPos;
-			float playerDistance = sqrtf((differenceVector.x * differenceVector.x) + (differenceVector.y * differenceVector.y));
-
-			if (closestPlayerDistance == 0 || playerDistance < closestPlayerDistance)
+			// get the distance between the turret and the player
+			float playerDistance = sf::Distance(transform.getPosition(), player->transform.getPosition());
+			
+			// check whether the player is outside sight distance
+			if (playerDistance > CTurret::sightDistance) continue;
+			
+			// check whether the found player is closer than the previous player found
+			if (playerDistance < closestPlayerDistance)
 			{
-				playerPos = differenceVector;
+				playerPos = player->transform.getPosition();
 				closestPlayerDistance = playerDistance;
+				seePlayer = true;
 			}
 		}
 	}
 	
+	// dont do anything if it does not see a player
+	if (!seePlayer) return;
 
-	//Update timer
+	// face towards closest player
+	sf::Vector2f facingDirection = sf::Normalise(playerPos - transform.getPosition());
+	transform.setRotation(atan2f(facingDirection.y, facingDirection.x) * 180.0f / PI);
+
+	//Update cooldown timer
 	coolDownTimer -= GetManager().deltatime;
-
+	
 	//Shoot projectile
 	if (coolDownTimer <= 0)
 	{
@@ -51,13 +69,9 @@ void CTurret::Update()
 			bulletDamage,
 			bulletSpeed,
 			transform.getPosition(),
-			bulletSpeed * b2Vec2
-			(
-				cosf(transform.getRotation() * PI / 180.0f),
-				sinf(transform.getRotation() * PI / 180.0f)
-			)
+			bulletSpeed * b2Vec2(facingDirection.x, facingDirection.y)
 		);
-
+	
 		// reset timer
 		coolDownTimer = coolDown;
 	}
