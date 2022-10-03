@@ -10,5 +10,6 @@ public:
 	float health;
 
 	CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable = false);
-	void TakeDamage(float _damage);
+
+	virtual void BeginContact(CPhysicsBody* _other);
 };

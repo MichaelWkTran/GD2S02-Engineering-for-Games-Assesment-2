@@ -2,12 +2,13 @@
 #include "Box2D/box2d.h"
 #include "CPhysicsBody.h"
 #include "CManager.h"
+#include "CBullet.h"
 
 //[Delete later on] Tag of the wall has been changed from "UnbreakableWall" to "Wall"
 CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
 {
     isBreakable = _isBreakable;
-    health = -1.0f;
+    health = 10.0f;
     objType = MapPlaceableObjects::UnbreakableWall;
 
     // setup sf::Drawable
@@ -15,7 +16,7 @@ CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
     sf::RectangleShape* rectangleShape = (sf::RectangleShape*)drawable;
     rectangleShape->setFillColor(sf::Color().Black);
 
-    //The the origin of the SFML transform
+    // set the origin of the SFML transform
     transform.setOrigin(rectangleShape->getSize() / 2.0f);
     transform.setPosition(_pos);
     transform.setRotation(_rotation);
@@ -46,10 +47,18 @@ CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
     tags.emplace("Wall");
 }
 
-void CWall::TakeDamage(float _damage)
+void CWall::BeginContact(CPhysicsBody* _other)
 {
-    health -= _damage;
+    // ensure the wall is breakable
+    if (!isBreakable) return;
+    
+    // check whether the collided object is a bullet
+    CBullet* bullet = dynamic_cast<CBullet*>(_other);
+    if (bullet == nullptr) return;
 
-    //Delete the wall if it is breakable and it have no health
-    if (isBreakable && health <= 0) DeleteObject();
+    // damage the wall
+    health -= bullet->damage;
+
+    // delete the wall if it has no health
+    if (health <= 0) DeleteObject();
 }
