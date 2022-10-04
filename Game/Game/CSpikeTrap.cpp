@@ -48,7 +48,7 @@ void CSpikeTrap::Update()
     // gradually damage the player
     for (auto& player : playersCollidedWith)
     {
-        player->TakeDamage(GetManager().deltatime * damage);
+        player->TakeDamage(GetManager().deltaTime * damage);
         if (player->GetDeleteObject())
         {
             playersCollidedWith.erase(player);

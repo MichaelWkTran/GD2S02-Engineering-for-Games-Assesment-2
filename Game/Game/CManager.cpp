@@ -70,7 +70,7 @@ CManager::CManager()
 
 	// initialize manager
 	isRunning = true;
-	deltatime = 0.0f;
+	deltaTime = 0.0f;
 
 	// sets up the window
 	// sets up the view
@@ -94,9 +94,9 @@ CManager::CManager()
 
 	font.loadFromFile("fonts/SansSerif.ttf");
 
-	levelmaker = new CLevelMaker();
+	levelMaker = new CLevelMaker();
 	Level* level = new Level("Levels/1.txt");
-	levelmaker->LoadLevel(level->GetPath());
+	levelMaker->LoadLevel(level->GetPath());
 	delete level;
 	level = nullptr;
 }
@@ -105,53 +105,6 @@ CManager::~CManager()
 {
 	Clear();
 	delete physicsWorld;
-}
-
-void CManager::DestroyImmediate(CUpdatedObject* _UpdatedObject)
-{
-	if (_UpdatedObject == nullptr)
-	{
-		std::cout << "ERROR: Can not use DestroyImmediate on nullptr";
-		return;
-	}
-
-	for (int i = 0; i < (int)objectsInWorld.size(); i++)
-	{
-		if (objectsInWorld[i] != _UpdatedObject) continue;
-
-		objectsInWorld.erase(objectsInWorld.begin() + i);
-		delete _UpdatedObject;
-
-		return;
-	}
-}
-
-void CManager::DestroyImmediate(CUpdatedObject*& _UpdatedObject)
-{
-	if (_UpdatedObject == nullptr)
-	{
-		std::cout << "ERROR: Can not use DestroyImmediate on nullptr";
-		return;
-	}
-
-	for (int i = 0; i < (int)objectsInWorld.size(); i++)
-	{
-		if (objectsInWorld[i] != _UpdatedObject) continue;
-
-		objectsInWorld.erase(objectsInWorld.begin() + i);
-		delete _UpdatedObject;
-		_UpdatedObject = nullptr;
-
-		return;
-	}
-}
-
-void CManager::DestroyImmediate(unsigned int _uiIndex)
-{
-	CUpdatedObject* updatedObject = objectsInWorld[_uiIndex];
-
-	objectsInWorld.erase(objectsInWorld.begin() + _uiIndex);
-	delete updatedObject;
 }
 
 void CManager::Clear()
@@ -191,10 +144,10 @@ void CManager::Update()
 	}
 
 	// update deltatime
-	deltatime = deltaTimeClock.restart().asSeconds();
+	deltaTime = deltaTimeClock.restart().asSeconds();
 
 	// update physics
-	float frameTime = GetManager().deltatime;
+	float frameTime = GetManager().deltaTime;
 	if (frameTime > maxFrameTime) frameTime = maxFrameTime;
 	accumulatedTime += frameTime;
 
@@ -220,7 +173,7 @@ void CManager::Update()
 
 	// clear screen
 	window->clear(sf::Color::White);
-	levelmaker->Update();
+	levelMaker->Update();
 
 	// call updated object methods
 	for (auto& pUpdatedObject : objectsInWorld) pUpdatedObject->Start();
@@ -239,7 +192,9 @@ void CManager::Update()
 		if (!objectsInWorld[i]->GetDeleteObject()) continue;
 
 		// delete the object
-		DestroyImmediate(i);
+		CUpdatedObject* deletedObject = objectsInWorld[i];
+		objectsInWorld.erase(objectsInWorld.begin() + i);
+		delete deletedObject;
 		i--;
 	}
 }
