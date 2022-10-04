@@ -8,7 +8,7 @@ CGround::CGround(sf::Vector2f _pos, float _rotation)
     sf::RectangleShape* rectangleShape = (sf::RectangleShape*)drawable;
     rectangleShape->setFillColor(sf::Color(255, 136, 77, 255));
 
-    //The the origin of the SFML transform
+    // set the SFML transform
     transform.setOrigin(sf::Vector2f(rectangleShape->getSize().x, rectangleShape->getSize().y) / 2.0f);
     transform.setPosition(_pos);
     transform.setRotation(_rotation);

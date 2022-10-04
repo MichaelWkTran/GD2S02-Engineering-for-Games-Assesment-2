@@ -10,6 +10,7 @@ private:
 
 public:
 	CUpdatedObject();
+	virtual ~CUpdatedObject() {}
 
 	const bool GetDeleteObject() const
 	{

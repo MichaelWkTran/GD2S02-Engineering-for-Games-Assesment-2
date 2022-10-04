@@ -5,7 +5,6 @@
 
 CGameObject::~CGameObject()
 {
-	if (physicsBody != nullptr) delete physicsBody;
 	if (drawable != nullptr) delete drawable;
 };
 
@@ -13,7 +12,7 @@ void CGameObject::Draw()
 {
 	if (!visible) return;
 
-	// transform the drawable to m_Transfrom
+	// transform the drawable to transform
 	sf::Transformable* drawableTransform = dynamic_cast<sf::Transformable*>(drawable);
 	if (drawableTransform == nullptr)
 	{
