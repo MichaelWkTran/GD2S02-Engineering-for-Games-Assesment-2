@@ -5,8 +5,12 @@
 #include "CGun.h"
 #include <iostream>
 
+std::set<CPlayer*> CPlayer::playersInWorld;
+
 CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::Key _left, sf::Keyboard::Key _right, sf::Keyboard::Key _shoot, sf::Vector2f _spawnPos, bool _isPlayerOne)
 {
+    playersInWorld.insert(this);
+
     up = _up;
     down = _down;
     left = _left;
@@ -32,20 +36,23 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
 	transform.setPosition(_spawnPos);
 
     // setup b2BodyDef
-    physicsBody = new CPhysicsBody;
-    physicsBody->bodyDef.type = b2_dynamicBody;
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_dynamicBody;
+    bodyDef.fixedRotation = true;
+    bodyDef.position = GetManager().pixelToWorldScale * b2Vec2(transform.getPosition().x, transform.getPosition().y);
 
     // setup b2Shape
-    physicsBody->SetupShape<b2CircleShape>();
-    physicsBody->GetShape().m_radius = radius * GetManager().pixelToWorldScale;
-    physicsBody->bodyDef.position = b2Vec2(transform.getPosition().x * GetManager().pixelToWorldScale, transform.getPosition().y * GetManager().pixelToWorldScale);
+    b2CircleShape shape;
+    shape.m_radius = radius * GetManager().pixelToWorldScale;
 
     // setup b2FixtureDef
-    physicsBody->fixtureDef.density = 1.0f;
+    b2FixtureDef fixtureDef;
+    fixtureDef.density = 1.0f;
+    fixtureDef.shape = &shape;
 
     // setup b2Body
-    physicsBody->SetupBody();
-    physicsBody->GetBody().SetFixedRotation(true);
+    SetupBody(bodyDef, &fixtureDef, 1);
+    body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 
     facingDirection = b2Vec2(1, 0);
     heldGun = new CGun(&facingDirection, this);
@@ -68,6 +75,7 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
 
 CPlayer::~CPlayer()
 {
+    playersInWorld.erase(this);
 }
 
 void CPlayer::Update()
@@ -81,7 +89,7 @@ void CPlayer::Update()
     movement.Normalize();
     movement *= moveSpeed;
     
-    physicsBody->GetBody().SetLinearVelocity(movement);
+    body->SetLinearVelocity(movement);
     
     if (movement != b2Vec2(0, 0))
     {
@@ -90,9 +98,6 @@ void CPlayer::Update()
 
     // cap player health
     if (health > maxHealth) health = maxHealth;
-    
-    // player death
-    if (health < 0.0f) DeleteObject();
 
     // shoot projectile
     if (sf::Keyboard::isKeyPressed(shoot))
@@ -103,12 +108,29 @@ void CPlayer::Update()
 
 void CPlayer::AddGunToRender()
 {
-    GetManager().objectsInWorld.push_back(heldGun);
+    //GetManager().objectsInWorld.push_back(heldGun);
 }
 
 void CPlayer::TakeDamage(float _damage)
 {
     health -= _damage;
+    if (isPlayerOne)
+    {
+        healthString = "Player One Health: " + std::to_string(health);
+    }
+    else
+    {
+        healthString = "Player Two Health: " + std::to_string(health);
+    }
+    healthText.setString(healthString);
+
+    // player death
+    if (health <= 0.0f)
+    {
+        DeleteObject();
+        heldGun->DeleteObject();
+        heldGun->ownerPlayer = nullptr;
+    }
 }
 
 void CPlayer::Draw()

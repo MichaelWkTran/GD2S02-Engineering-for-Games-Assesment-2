@@ -2,44 +2,63 @@
 #include "Box2D/box2d.h"
 #include "CPhysicsBody.h"
 #include "CManager.h"
+#include "CBullet.h"
 
-CWall::CWall()
+//[Delete later on] Tag of the wall has been changed from "UnbreakableWall" to "Wall"
+CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
 {
-    health = -1.0f;
+    isBreakable = _isBreakable;
+    health = 10.0f;
+    objType = MapPlaceableObjects::UnbreakableWall;
 
     // setup sf::Drawable
     drawable = new sf::RectangleShape(sf::Vector2f(32.0f, 32.0f));
     sf::RectangleShape* rectangleShape = (sf::RectangleShape*)drawable;
     rectangleShape->setFillColor(sf::Color().Black);
 
-    //The the origin of the SFML transform
-    transform.setOrigin(sf::Vector2f(rectangleShape->getSize().x, rectangleShape->getSize().y) / 2.0f);
+    // set the origin of the SFML transform
+    transform.setOrigin(rectangleShape->getSize() / 2.0f);
+    transform.setPosition(_pos);
+    transform.setRotation(_rotation);
 
     // setup b2BodyDef
-    physicsBody = new CPhysicsBody;
-    physicsBody->bodyDef.type = b2_staticBody;
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_staticBody;
+    bodyDef.position = GetManager().pixelToWorldScale * b2Vec2(transform.getPosition().x, transform.getPosition().y);
 
     // setup b2Shape
-    physicsBody->SetupShape<b2PolygonShape>();
-    b2PolygonShape* pPolygonShape = (b2PolygonShape*)&physicsBody->GetShape();
-    pPolygonShape->SetAsBox
+    b2PolygonShape shape;
+    shape.SetAsBox
     (
         (rectangleShape->getSize().x * GetManager().pixelToWorldScale) / 2.0f,
         (rectangleShape->getSize().y * GetManager().pixelToWorldScale) / 2.0f
     );
-
+    
     // setup b2FixtureDef
-    physicsBody->fixtureDef.density = 1.0f;
+    b2FixtureDef fixtureDef;
+    fixtureDef.density = 1.0f;
+    fixtureDef.shape = &shape;
+    fixtureDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
 
     // setup b2Body
-    physicsBody->SetupBody();
+    SetupBody(bodyDef, &fixtureDef, 1); 
+    body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
+
+    tags.emplace("Wall");
 }
 
-CWall::~CWall()
+void CWall::BeginContact(CPhysicsBody* _other)
 {
+    // ensure the wall is breakable
+    if (!isBreakable) return;
+    
+    // check whether the collided object is a bullet
+    CBullet* bullet = dynamic_cast<CBullet*>(_other);
+    if (bullet == nullptr) return;
 
-}
+    // damage the wall
+    health -= bullet->damage;
 
-void CWall::Update()
-{
+    // delete the wall if it has no health
+    if (health <= 0) DeleteObject();
 }

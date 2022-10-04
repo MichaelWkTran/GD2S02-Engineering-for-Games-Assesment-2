@@ -1,12 +1,15 @@
 #pragma once
 #include "CGameObject.h"
-#include "Box2D/box2d.h"
+#include "CPhysicsBody.h"
+#include <set>
 
 class CGun;
 
-class CPlayer : public CGameObject
+class CPlayer : public CPhysicsBody, public CGameObject
 {
 public:
+	static std::set<CPlayer*> playersInWorld;
+
 	int maxHealth;
 	float moveSpeed;
 	float coolDown;

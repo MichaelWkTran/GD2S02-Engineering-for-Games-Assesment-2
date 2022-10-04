@@ -4,36 +4,30 @@
 #include <set>
 #include <memory>
 
-class CPhysicsBody;
-
 class CGameObject : public CUpdatedObject
 {
 protected:
-	//Physics
-	CPhysicsBody* physicsBody;
-
-	//Drawing Variables
+	// drawing variables
 	sf::Drawable* drawable;
 
 public:
-	//Refrencing Variables
+	// refrencing variables
 	std::set<const char*> tags;
 
-	//Transform Variables
+	// transform variables
 	sf::Transformable transform;
 
-	//Drawing Variables
+	// drawing variables
 	std::shared_ptr<sf::Texture> texture;
 	bool visible;
 
-	//GameObject Methods
+	// gameObject methods
 	CGameObject()
 	{
-		physicsBody = nullptr;
 		drawable = nullptr;
 		visible = true;
 	}
-	~CGameObject();
+	virtual ~CGameObject();
 	const bool TagExists(const char* _tagName)
 	{
 		if (tags.find(_tagName) != tags.end()) return true;
@@ -41,7 +35,6 @@ public:
 	}
 	virtual void Draw() override;
 
-	//Get Set Methods
-	CPhysicsBody* GetPhysicsBody() { return physicsBody; }
+	// get set methods
 	sf::Drawable* GetDrawable() { return drawable; }
 };

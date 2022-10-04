@@ -1,6 +1,7 @@
 #include "CBullet.h"
 #include "CPhysicsBody.h"
 #include "CManager.h"
+#include "CPlayer.h"
 #include <iostream>
 
 CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b2Vec2 _velocity)
@@ -25,24 +26,23 @@ CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b
 	transform.setPosition(_spawnPosition);
 
 	// setup b2BodyDef
-	physicsBody = new CPhysicsBody;
-	physicsBody->bodyDef.type = b2_dynamicBody;
-	physicsBody->bodyDef.bullet = true;
+	b2BodyDef bodyDef;
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.bullet = true;
+	bodyDef.position = GetManager().pixelToWorldScale * b2Vec2(transform.getPosition().x, transform.getPosition().y);
 
 	// setup b2Shape
-	physicsBody->SetupShape<b2CircleShape>();
-	physicsBody->GetShape().m_radius = radius * GetManager().pixelToWorldScale;
+	b2CircleShape shape;
+	shape.m_radius = radius * GetManager().pixelToWorldScale;
 
 	// setup b2FixtureDef
-	physicsBody->fixtureDef.density = 1.0f;
-	physicsBody->bodyDef.position = b2Vec2(transform.getPosition().x * GetManager().pixelToWorldScale, transform.getPosition().y * GetManager().pixelToWorldScale);
+	b2FixtureDef fixtureDef;
+	fixtureDef.density = 1.0f;
+	fixtureDef.shape = &shape;
 
 	// setup b2Body
-	physicsBody->SetupBody();
-}
-
-CBullet::~CBullet()
-{
+	SetupBody(bodyDef, &fixtureDef, 1);
+	body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 }
 
 void CBullet::Update()
@@ -52,5 +52,20 @@ void CBullet::Update()
 	{
 		DeleteObject();
 	}
-	physicsBody->GetBody().SetLinearVelocity(velocity);
+	body->SetLinearVelocity(velocity);
+}
+
+void CBullet::BeginContact(CPhysicsBody* _other)
+{
+	// collision with player
+	{
+		CPlayer* player = dynamic_cast<CPlayer*>(_other);
+		if (player) { player->TakeDamage(damage); DeleteObject(); }
+	}
+	
+	// collision with wall
+	{
+		CWall* wall = dynamic_cast<CWall*>(_other);
+		if (wall) { DeleteObject(); }
+	}
 }
