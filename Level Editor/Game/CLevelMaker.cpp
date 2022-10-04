@@ -174,7 +174,9 @@ void CLevelMaker::SaveLevel()
 						std::string path = W2A(pszFilePath);
 						saveFile.open(path, std::ios::out | std::ios::trunc);
 
+						// save the arena size
 						saveFile << arenaSizeX << "\n" << arenaSizeY << "\n";
+						//save each spot in the arena
 						for (int i = 0; i < arenaSizeX; i++)
 						{
 							for (int j = 0; j < arenaSizeY; j++)
@@ -238,11 +240,13 @@ void CLevelMaker::LoadLevel()
 						std::ifstream inFile;
 						inFile.open(Path.c_str());
 
+						// variables to store info
 						int objType;
 						int k;
 						int l;
 						float rotation;
 
+						// delete the current arena
 						for (int i = 0; i < arenaSizeY; i++)
 						{
 							delete arena[i];
@@ -251,9 +255,11 @@ void CLevelMaker::LoadLevel()
 
 						delete arena;
 
+						// get the new arena size
 						inFile >> arenaSizeX;
 						inFile >> arenaSizeY;
 
+						// set up the arena
 						arena = new CMapPlaceBase * *[arenaSizeX];
 
 						for (int i = 0; i < arenaSizeX; i++)
@@ -261,6 +267,7 @@ void CLevelMaker::LoadLevel()
 							arena[i] = new CMapPlaceBase * [arenaSizeY];
 						}
 
+						// initialize as nullptrs
 						for (int i = 0; i < arenaSizeX; i++)
 						{
 							for (int j = 0; j < arenaSizeY; j++)

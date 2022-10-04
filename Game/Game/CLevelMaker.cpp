@@ -73,11 +73,13 @@ void CLevelMaker::LoadLevel()
 						std::ifstream inFile;
 						inFile.open(Path.c_str());
 
+						// variables to set up arena
 						int objType;
 						int k;
 						int l;
 						float rotation;
 
+						// delete the current arena
 						for (int i = 0; i < arenaSizeY; i++)
 						{
 							delete arena[i];
@@ -86,9 +88,11 @@ void CLevelMaker::LoadLevel()
 
 						delete arena;
 
+						// get the new arena size
 						inFile >> arenaSizeX;
 						inFile >> arenaSizeY;
 
+						// set up the arena
 						arena = new CMapPlaceBase * *[arenaSizeX];
 
 						for (int i = 0; i < arenaSizeX; i++)
@@ -96,6 +100,7 @@ void CLevelMaker::LoadLevel()
 							arena[i] = new CMapPlaceBase * [arenaSizeY];
 						}
 
+						// initialise as nullptrs
 						for (int i = 0; i < arenaSizeX; i++)
 						{
 							for (int j = 0; j < arenaSizeY; j++)
