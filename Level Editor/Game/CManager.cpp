@@ -5,6 +5,7 @@
 #include "box2d\box2D.h"
 #include "CPlayer.h";
 #include "CBullet.h"
+#include "CHealthBar.h"
 #include <iostream>
 
 CManager* CManager::singleton = nullptr;
