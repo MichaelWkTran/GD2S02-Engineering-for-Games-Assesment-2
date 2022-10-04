@@ -1,5 +1,8 @@
 #include "CManager.h"
 #include "CPlayer.h"
+#include "CSpikeTrap.h" 
+#include "CTurret.h"
+#include "CWall.h"
 
 int main()
 {

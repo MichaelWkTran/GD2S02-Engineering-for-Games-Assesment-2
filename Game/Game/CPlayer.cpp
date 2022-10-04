@@ -5,8 +5,12 @@
 #include "CGun.h"
 #include <iostream>
 
+std::set<CPlayer*> CPlayer::playersInWorld;
+
 CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::Key _left, sf::Keyboard::Key _right, sf::Keyboard::Key _shoot, sf::Vector2f _spawnPos, bool _isPlayerOne)
 {
+    playersInWorld.insert(this);
+
     up = _up;
     down = _down;
     left = _left;
@@ -32,7 +36,6 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
 	transform.setPosition(_spawnPos);
 
     // setup b2BodyDef
-    physicsBody = new CPhysicsBody;
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
     bodyDef.fixedRotation = true;
@@ -48,8 +51,8 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
     fixtureDef.shape = &shape;
 
     // setup b2Body
-    physicsBody->SetupBody(bodyDef, &fixtureDef, 1);
-    physicsBody->GetBody().GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
+    SetupBody(bodyDef, &fixtureDef, 1);
+    body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 
     facingDirection = b2Vec2(1, 0);
     heldGun = new CGun(&facingDirection, this);
@@ -72,6 +75,7 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
 
 CPlayer::~CPlayer()
 {
+    playersInWorld.erase(this);
 }
 
 void CPlayer::Update()
@@ -85,7 +89,7 @@ void CPlayer::Update()
     movement.Normalize();
     movement *= moveSpeed;
     
-    physicsBody->GetBody().SetLinearVelocity(movement);
+    body->SetLinearVelocity(movement);
     
     if (movement != b2Vec2(0, 0))
     {

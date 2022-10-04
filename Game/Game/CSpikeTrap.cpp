@@ -2,8 +2,9 @@
 #include "CPhysicsBody.h"
 #include "Box2D/box2d.h"
 #include "CManager.h"
+#include "CPlayer.h"
 
-float CSpikeTrap::damage = 10.0f;
+float CSpikeTrap::damage = 0.1f;
 
 CSpikeTrap::CSpikeTrap(sf::Vector2f _pos)
 {
@@ -17,7 +18,6 @@ CSpikeTrap::CSpikeTrap(sf::Vector2f _pos)
     transform.setPosition(_pos);
 
     // setup b2BodyDef
-    physicsBody = new CPhysicsBody;
     b2BodyDef bodyDef;
     bodyDef.type = b2_staticBody;
     bodyDef.position = GetManager().pixelToWorldScale * b2Vec2(transform.getPosition().x, transform.getPosition().y);
@@ -37,8 +37,38 @@ CSpikeTrap::CSpikeTrap(sf::Vector2f _pos)
     fixtureDef.shape = &shape;
 
     // setup b2Body
-    physicsBody->SetupBody(bodyDef, &fixtureDef, 1);
-    physicsBody->GetBody().GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
+    SetupBody(bodyDef, &fixtureDef, 1);
+    body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 
     tags.emplace("SpikeTrap");
+}
+
+void CSpikeTrap::Update()
+{
+    // gradually damage the player
+    for (auto& player : playersCollidedWith)
+    {
+        player->TakeDamage(GetManager().deltatime * damage);
+        if (player->GetDeleteObject())
+        {
+            playersCollidedWith.erase(player);
+            break;
+        }
+    }
+}
+
+void CSpikeTrap::BeginContact(CPhysicsBody* _contact)
+{
+    CPlayer* player = dynamic_cast<CPlayer*>(_contact);
+    if (player == nullptr) return;
+
+    playersCollidedWith.insert(player);
+}
+
+void CSpikeTrap::EndContact(CPhysicsBody* _contact)
+{
+    CPlayer* player = dynamic_cast<CPlayer*>(_contact);
+    if (player == nullptr) return;
+
+    playersCollidedWith.erase(player);
 }
