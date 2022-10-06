@@ -71,7 +71,7 @@ void CGun::Update()
 {
 	if (counterFireRate < fireRate)
 	{
-		counterFireRate += GetManager().deltatime;
+		counterFireRate += GetManager().deltaTime;
 	}
 
 	// update the current rotation

@@ -47,7 +47,7 @@ CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b
 
 void CBullet::Update()
 {
-	lifeTime -= GetManager().deltatime;
+	lifeTime -= GetManager().deltaTime;
 	if (lifeTime < 0)
 	{
 		DeleteObject();
