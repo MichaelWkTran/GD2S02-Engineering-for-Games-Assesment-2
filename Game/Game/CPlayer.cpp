@@ -5,10 +5,21 @@
 #include "CGun.h"
 #include <iostream>
 
+#include "WinScene.h"
+
 std::set<CPlayer*> CPlayer::playersInWorld;
+
+int WinScene::playerOneScore = 0;
+int WinScene::playerTwoScore = 0;
+
+bool WinScene::playerOneRoundWin = false;
+bool WinScene::playerTwoRoundWin = false;
 
 CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::Key _left, sf::Keyboard::Key _right, sf::Keyboard::Key _shoot, sf::Vector2f _spawnPos, bool _isPlayerOne)
 {
+    WinScene::playerOneRoundWin = false; // resets when new player is created
+    WinScene::playerTwoRoundWin = false; // resets when new player is created
+
     playersInWorld.insert(this);
 
     up = _up;
@@ -130,6 +141,17 @@ void CPlayer::TakeDamage(float _damage)
         DeleteObject();
         heldGun->DeleteObject();
         heldGun->ownerPlayer = nullptr;
+
+        if (isPlayerOne)
+        {
+            WinScene::playerTwoScore++;
+            WinScene::playerTwoRoundWin = true;
+        }
+        else
+        {
+            WinScene::playerOneScore++;
+            WinScene::playerOneRoundWin = true;
+        }
     }
 }
 
