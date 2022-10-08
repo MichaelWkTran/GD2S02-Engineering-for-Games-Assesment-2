@@ -58,7 +58,7 @@ void CTurret::Update()
 	transform.setRotation(atan2f(facingDirection.y, facingDirection.x) * 180.0f / PI);
 
 	//Update cooldown timer
-	coolDownTimer -= GetManager().deltatime;
+	coolDownTimer -= GetManager().deltaTime;
 	
 	//Shoot projectile
 	if (coolDownTimer <= 0)
