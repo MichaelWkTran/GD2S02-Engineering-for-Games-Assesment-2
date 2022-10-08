@@ -118,7 +118,7 @@ void WinScene::Update()
 {
     mousePos = GetMousePos();
 
-    std::cout << mousePos.x << "    " << mousePos.y << "\n";
+    //std::cout << mousePos.x << "    " << mousePos.y << "\n";
 
     if (playerOneRoundWin || playerTwoRoundWin)
     {

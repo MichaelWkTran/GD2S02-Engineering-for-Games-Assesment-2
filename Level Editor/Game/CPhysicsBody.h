@@ -6,27 +6,23 @@ class CPhysicsBody
 {
 protected:
 	b2Body* body = nullptr;
-	b2Shape* shape = nullptr;
+	unsigned int fixtureCount;
 
 public:
-	b2BodyDef bodyDef;
-	b2FixtureDef fixtureDef;
-
 	CPhysicsBody();
-	~CPhysicsBody();
+	virtual ~CPhysicsBody();
 
-	void SetupBody();
-	template <class T>
-	void SetupShape();
+	// setup methods
+	void SetupBody(const b2BodyDef& _BodyDef, const b2FixtureDef* _pFixtureDef, unsigned int _uiSize);
 
+	// collision Methods
+	virtual void BeginContact(CPhysicsBody* _other) {};
+	virtual void EndContact(CPhysicsBody* _other) {};
+	virtual void PreSolve(CPhysicsBody* _other, const b2Manifold* _oldManifold) {};
+	virtual void PostSolve(CPhysicsBody* _other, const b2ContactImpulse* _impulse) {};
+
+	// get set methods
 	b2Body& GetBody() const { return *body; }
-	b2Shape& GetShape() const { return *shape; }
-};
-
-// the template class, T, must inherit from b2Shape
-template<class T>
-inline void CPhysicsBody::SetupShape()
-{
-	shape = new T;
-	fixtureDef.shape = shape;
+	operator b2Body* () const { return body; }
+	const unsigned int GetFixtureCount() const { return fixtureCount; }
 };

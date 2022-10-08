@@ -155,35 +155,37 @@
     <ClCompile Include="CBullet.cpp" />
     <ClCompile Include="CGround.cpp" />
     <ClCompile Include="CGun.cpp" />
-    <ClCompile Include="CHealthBar.cpp" />
     <ClCompile Include="CLevelMaker.cpp" />
     <ClCompile Include="CManager.cpp" />
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CMapPlaceBase.cpp" />
     <ClCompile Include="CPhysicsBody.cpp" />
+    <ClCompile Include="CSpikeTrap.cpp" />
+    <ClCompile Include="CTurret.cpp" />
     <ClCompile Include="CUpdatedObject.cpp" />
     <ClCompile Include="CWall.cpp" />
-    <ClCompile Include="CWeaponBox.cpp" />
-    <ClCompile Include="CWeapons.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CPlayer.cpp" />
+    <ClCompile Include="MathUtils.cpp" />
+    <ClCompile Include="WinScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CBullet.h" />
     <ClInclude Include="CGround.h" />
     <ClInclude Include="CGun.h" />
-    <ClInclude Include="CHealthBar.h" />
     <ClInclude Include="CLevelMaker.h" />
     <ClInclude Include="CManager.h" />
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CMapPlaceBase.h" />
     <ClInclude Include="CPhysicsBody.h" />
+    <ClInclude Include="CSpikeTrap.h" />
+    <ClInclude Include="CTurret.h" />
     <ClInclude Include="CUpdatedObject.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CWall.h" />
-    <ClInclude Include="CWeaponBox.h" />
-    <ClInclude Include="CWeapons.h" />
     <ClInclude Include="GlobalEnumInclude.h" />
+    <ClInclude Include="MathUtils.h" />
+    <ClInclude Include="WinScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

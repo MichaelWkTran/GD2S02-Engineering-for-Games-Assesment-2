@@ -1,11 +1,11 @@
 #pragma once
-#include "CGameObject.h"
+#include "CMapPlaceBase.h"
 #include "CPhysicsBody.h"
 #include <set>
 
 class CPlayer;
 
-class CSpikeTrap : public CPhysicsBody, public CGameObject
+class CSpikeTrap : public CPhysicsBody, public CMapPlaceBase
 {
 public:
 	std::set<CPlayer*> playersCollidedWith;

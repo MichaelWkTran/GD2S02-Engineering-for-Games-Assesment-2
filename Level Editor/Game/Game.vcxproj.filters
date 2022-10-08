@@ -51,13 +51,16 @@
     <ClCompile Include="CGround.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CWeapons.cpp">
+    <ClCompile Include="CTurret.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CHealthBar.cpp">
+    <ClCompile Include="CSpikeTrap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CWeaponBox.cpp">
+    <ClCompile Include="MathUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -98,13 +101,16 @@
     <ClInclude Include="GlobalEnumInclude.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CWeapons.h">
+    <ClInclude Include="CSpikeTrap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CHealthBar.h">
+    <ClInclude Include="CTurret.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CWeaponBox.h">
+    <ClInclude Include="MathUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

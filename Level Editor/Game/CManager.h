@@ -24,15 +24,18 @@ private:
 	// physics variables
 	b2World* physicsWorld;
 
-	void Zoom(float _fZoomValue);
+	void Zoom(float _zoomValue);
 
 	virtual void BeginContact(b2Contact* _contact) override;
+	virtual void EndContact(b2Contact* _contact) override;
+	virtual void PreSolve(b2Contact* _contact, const b2Manifold* _oldManifold) override;
+	virtual void PostSolve(b2Contact* _contact, const b2ContactImpulse* _impulse) override;
 
-	CLevelMaker* levelmaker = nullptr;
+	CLevelMaker* levelMaker = nullptr;
 
 public:
 	bool isRunning;
-	float deltatime;
+	float deltaTime;
 	sf::Font font;
 
 	// physics variables
@@ -48,9 +51,7 @@ public:
 	~CManager();
 	CManager(const CManager&) = delete;
 	CManager& operator= (const CManager&) = delete;
-	
-	void DestroyImmediate(CUpdatedObject* _UpdatedObject);
-	void DestroyImmediate(CUpdatedObject*& _UpdatedObject);
+
 	void Clear();
 	void Update();
 

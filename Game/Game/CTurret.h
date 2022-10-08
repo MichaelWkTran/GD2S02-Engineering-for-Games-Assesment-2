@@ -1,7 +1,8 @@
 #pragma once
 #include "CGameObject.h"
+#include "CMapPlaceBase.h"
 
-class CTurret : public CGameObject
+class CTurret : public CMapPlaceBase
 {
 public:
 	static float bulletDamage;
@@ -12,6 +13,7 @@ public:
 	float coolDownTimer;
 
 	CTurret();
+	CTurret(sf::Vector2f _pos);
 	virtual ~CTurret();
 
 	virtual void Update() override;

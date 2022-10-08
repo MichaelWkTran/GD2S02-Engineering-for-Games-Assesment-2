@@ -1,6 +1,8 @@
 #include "CLevelMaker.h"
 #include "CGround.h"
 #include "CManager.h"
+#include "CSpikeTrap.h"
+#include "CTurret.h"
 #include <Shobjidl.h.>
 #include <Shlwapi.h>
 #include <atlbase.h>
@@ -125,7 +127,14 @@ void CLevelMaker::LoadLevel()
 							case UnbreakableWall:
 								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l + 100), rotation);
 								break;
-							default:
+							case BreakableWall:
+								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l + 100), rotation, true);
+								break;
+							case SpikeTrap:
+								arena[k][l] = new CSpikeTrap(sf::Vector2f(32 * k + 200, 32 * l + 100));
+								break;
+							case Turret:
+								arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l + 100), 0);
 								break;
 							}
 						}
@@ -193,12 +202,19 @@ void CLevelMaker::LoadLevel(std::string _path)
 		switch (objType)
 		{
 		case Ground:
-			arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l), rotation);
+			arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l + 100), rotation);
 			break;
 		case UnbreakableWall:
-			arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l), rotation);
+			arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l + 100), rotation);
 			break;
-		default:
+		case BreakableWall:
+			arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l + 100), rotation, true);
+			break;
+		case SpikeTrap:
+			arena[k][l] = new CSpikeTrap(sf::Vector2f(32 * k + 200, 32 * l + 100));
+			break;
+		case Turret:
+			arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l + 100), 0);
 			break;
 		}
 	}

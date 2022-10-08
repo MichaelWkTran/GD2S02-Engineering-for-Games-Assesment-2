@@ -5,4 +5,6 @@ enum MapPlaceableObjects
 	Ground,
 	UnbreakableWall,
 	BreakableWall,
+	SpikeTrap,
+	Turret,
 };

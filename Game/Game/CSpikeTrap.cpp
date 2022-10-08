@@ -13,6 +13,8 @@ CSpikeTrap::CSpikeTrap(sf::Vector2f _pos)
     sf::RectangleShape* rectangleShape = (sf::RectangleShape*)drawable;
     rectangleShape->setFillColor(sf::Color().Red);
 
+    objType = MapPlaceableObjects::SpikeTrap;
+
     //The the origin of the SFML transform
     transform.setOrigin(rectangleShape->getSize() / 2.0f);
     transform.setPosition(_pos);

@@ -1,5 +1,5 @@
 #pragma once
-#include "CWall.h"
+#include "CMapPlaceBase.h"
 #include "GlobalEnumInclude.h"
 
 class CLevelMaker

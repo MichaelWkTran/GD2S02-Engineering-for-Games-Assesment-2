@@ -9,7 +9,14 @@ CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
 {
     isBreakable = _isBreakable;
     health = 10.0f;
-    objType = MapPlaceableObjects::UnbreakableWall;
+    if (!isBreakable)
+    {
+        objType = MapPlaceableObjects::UnbreakableWall;
+    }
+    else
+    {
+        objType = MapPlaceableObjects::BreakableWall;
+    }
 
     // setup sf::Drawable
     drawable = new sf::RectangleShape(sf::Vector2f(32.0f, 32.0f));

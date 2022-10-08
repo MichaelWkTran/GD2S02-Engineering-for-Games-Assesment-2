@@ -1,6 +1,9 @@
 #include "CLevelMaker.h"
 #include "CGround.h"
 #include "CManager.h"
+#include "CSpikeTrap.h"
+#include "CTurret.h"
+#include "CWall.h"
 #include <Shobjidl.h.>
 #include <Shlwapi.h>
 #include <atlbase.h>
@@ -43,11 +46,11 @@ CLevelMaker::CLevelMaker()
 		{
 			if (i == 0 || i == arenaSizeX - 1 || j == 0 || j == arenaSizeY - 1)
 			{
-				arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j), 0);
+				arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j + 100), 0);
 			}
 			else
 			{
-				arena[i][j] = new CGround(sf::Vector2f(32 * i + 200, 32 * j), 0);
+				arena[i][j] = new CGround(sf::Vector2f(32 * i + 200, 32 * j + 100), 0);
 			}
 		}
 	}
@@ -72,13 +75,23 @@ void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 				{
 				case Ground:
 					arena[i][j]->DeleteObject();
-					arena[i][j] = new CGround(sf::Vector2f(32 * i + 200, 32 * j), rotationValue);
+					arena[i][j] = new CGround(sf::Vector2f(32 * i + 200, 32 * j + 100), rotationValue);
 					break;
 				case UnbreakableWall:
 					arena[i][j]->DeleteObject();
-					arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j), rotationValue);
+					arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j + 100), rotationValue, false);
 					break;
 				case BreakableWall:
+					arena[i][j]->DeleteObject();
+					arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j + 100), rotationValue, true);
+					break;
+				case SpikeTrap:
+					arena[i][j]->DeleteObject();
+					arena[i][j] = new CSpikeTrap(sf::Vector2f(32 * i + 200, 32 * j + 100));
+					break;
+				case Turret:
+					arena[i][j]->DeleteObject();
+					arena[i][j] = new CTurret(sf::Vector2f(32 * i + 200, 32 * j + 100));
 					break;
 				}
 				// get out of the for loops
@@ -108,6 +121,18 @@ void CLevelMaker::Update()
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
 	{
 		selectedPlacement = UnbreakableWall;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
+	{
+		selectedPlacement = BreakableWall;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4))
+	{
+		selectedPlacement = SpikeTrap;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num5))
+	{
+		selectedPlacement = Turret;
 	}
 
 	// rotate left and right
@@ -288,12 +313,19 @@ void CLevelMaker::LoadLevel()
 							switch (objType)
 							{
 							case Ground:
-								arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l), rotation);
+								arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l + 100), rotation);
 								break;
 							case UnbreakableWall:
-								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l), rotation);
+								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l + 100), rotation);
 								break;
-							default:
+							case BreakableWall:
+								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l + 100), rotationValue, true);
+								break;
+							case SpikeTrap:
+								arena[k][l] = new CSpikeTrap(sf::Vector2f(32 * k + 200, 32 * l + 100));
+								break;
+							case Turret:
+								arena[k][l] = new CTurret(sf::Vector2f(32 * k + 200, 32 * l + 100));
 								break;
 							}
 						}

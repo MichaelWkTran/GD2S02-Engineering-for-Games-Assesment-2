@@ -5,8 +5,23 @@
 #include "CGun.h"
 #include <iostream>
 
+#include "WinScene.h"
+
+std::set<CPlayer*> CPlayer::playersInWorld;
+
+int WinScene::playerOneScore = 0;
+int WinScene::playerTwoScore = 0;
+
+bool WinScene::playerOneRoundWin = false;
+bool WinScene::playerTwoRoundWin = false;
+
 CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::Key _left, sf::Keyboard::Key _right, sf::Keyboard::Key _shoot, sf::Vector2f _spawnPos, bool _isPlayerOne)
 {
+    WinScene::playerOneRoundWin = false; // resets when new player is created
+    WinScene::playerTwoRoundWin = false; // resets when new player is created
+
+    playersInWorld.insert(this);
+
     up = _up;
     down = _down;
     left = _left;
@@ -15,38 +30,40 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
     isPlayerOne = _isPlayerOne;
 
     maxHealth = health = 10.0f;
-	moveSpeed = 6.0f;
-	coolDown = 0.0f;
+    moveSpeed = 6.0f;
+    coolDown = 0.0f;
 
     tags.emplace("Player");
 
     // setup CGameObject
-	float radius = 16.0f;
+    float radius = 16.0f;
 
     // set the origin of the SFML transform
-	transform.setOrigin(radius, radius);
+    transform.setOrigin(radius, radius);
 
     // setup sf::Drawable
-	drawable = new sf::RectangleShape(sf::Vector2f(radius, radius) * 2.0f);
-	((sf::RectangleShape*)drawable)->setFillColor(sf::Color().Red);
-	transform.setPosition(_spawnPos);
+    drawable = new sf::RectangleShape(sf::Vector2f(radius, radius) * 2.0f);
+    ((sf::RectangleShape*)drawable)->setFillColor(sf::Color().Red);
+    transform.setPosition(_spawnPos);
 
     // setup b2BodyDef
-    physicsBody = new CPhysicsBody;
-    physicsBody->bodyDef.type = b2_dynamicBody;
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_dynamicBody;
+    bodyDef.fixedRotation = true;
+    bodyDef.position = GetManager().pixelToWorldScale * b2Vec2(transform.getPosition().x, transform.getPosition().y);
 
     // setup b2Shape
-    physicsBody->SetupShape<b2CircleShape>();
-    physicsBody->GetShape().m_radius = radius * GetManager().pixelToWorldScale;
-    physicsBody->bodyDef.position = b2Vec2(transform.getPosition().x * GetManager().pixelToWorldScale, transform.getPosition().y * GetManager().pixelToWorldScale);
+    b2CircleShape shape;
+    shape.m_radius = radius * GetManager().pixelToWorldScale;
 
     // setup b2FixtureDef
-    physicsBody->fixtureDef.density = 1.0f;
+    b2FixtureDef fixtureDef;
+    fixtureDef.density = 1.0f;
+    fixtureDef.shape = &shape;
 
     // setup b2Body
-    physicsBody->SetupBody();
-    physicsBody->GetBody().SetFixedRotation(true);
-    physicsBody->GetBody().GetUserData().pointer = (uintptr_t)static_cast<void*>(this);
+    SetupBody(bodyDef, &fixtureDef, 1);
+    body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 
     facingDirection = b2Vec2(1, 0);
     heldGun = new CGun(&facingDirection, this);
@@ -69,6 +86,7 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
 
 CPlayer::~CPlayer()
 {
+    playersInWorld.erase(this);
 }
 
 void CPlayer::Update()
@@ -76,14 +94,14 @@ void CPlayer::Update()
     // player movement
     b2Vec2 movement = b2Vec2
     (
-        sf::Keyboard::isKeyPressed(right) - sf::Keyboard::isKeyPressed(left), 
+        sf::Keyboard::isKeyPressed(right) - sf::Keyboard::isKeyPressed(left),
         sf::Keyboard::isKeyPressed(down) - sf::Keyboard::isKeyPressed(up)
     );
     movement.Normalize();
     movement *= moveSpeed;
-    
-    physicsBody->GetBody().SetLinearVelocity(movement);
-    
+
+    body->SetLinearVelocity(movement);
+
     if (movement != b2Vec2(0, 0))
     {
         facingDirection = b2Vec2(movement.x, movement.y);
@@ -123,6 +141,17 @@ void CPlayer::TakeDamage(float _damage)
         DeleteObject();
         heldGun->DeleteObject();
         heldGun->ownerPlayer = nullptr;
+
+        if (isPlayerOne)
+        {
+            WinScene::playerTwoScore++;
+            WinScene::playerTwoRoundWin = true;
+        }
+        else
+        {
+            WinScene::playerOneScore++;
+            WinScene::playerOneRoundWin = true;
+        }
     }
 }
 
