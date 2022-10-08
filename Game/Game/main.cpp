@@ -13,6 +13,8 @@ int main()
 	CPlayer* player2 = new CPlayer(sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Slash, { 800, 500 }, false);
 	WinScene* winScene = new WinScene();
 
+	new CTurret;
+
 	while (manager->isRunning)
 	{
 		manager->Update();
