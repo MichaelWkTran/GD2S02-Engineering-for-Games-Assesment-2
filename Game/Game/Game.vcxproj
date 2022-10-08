@@ -29,7 +29,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -48,7 +48,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -160,11 +160,13 @@
     <ClCompile Include="CMapPlaceBase.cpp" />
     <ClCompile Include="CPhysicsBody.cpp" />
     <ClCompile Include="CSpikeTrap.cpp" />
+    <ClCompile Include="CTurret.cpp" />
     <ClCompile Include="CUpdatedObject.cpp" />
     <ClCompile Include="CWall.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CPlayer.cpp" />
+    <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="WinScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -177,11 +179,13 @@
     <ClInclude Include="CMapPlaceBase.h" />
     <ClInclude Include="CPhysicsBody.h" />
     <ClInclude Include="CSpikeTrap.h" />
+    <ClInclude Include="CTurret.h" />
     <ClInclude Include="CUpdatedObject.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CWall.h" />
     <ClInclude Include="GlobalEnumInclude.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="MathUtils.h" />
     <ClInclude Include="WinScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

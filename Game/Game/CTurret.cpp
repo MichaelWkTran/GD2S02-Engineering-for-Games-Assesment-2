@@ -47,39 +47,39 @@ void CTurret::Update()
 	sf::Vector2f playerPos;
 	bool seePlayer = false;
 	{
-		//float closestPlayerDistance = INFINITY;
-		//for (auto& player : CPlayer::playersInWorld)
-		//{
-		//	// get the distance between the turret and the player
-		//	float playerDistance = sf::Distance(transform.getPosition(), player->transform.getPosition());
-		//	
-		//	// check whether the player is outside sight distance
-		//	if (playerDistance > CTurret::sightDistance) continue;
-		//	
-		//	// check whether the found player is closer than the previous player found
-		//	if (playerDistance < closestPlayerDistance)
-		//	{
-		//		playerPos = player->transform.getPosition();
-		//		closestPlayerDistance = playerDistance;
-		//		seePlayer = true;
-		//	}
-		//}
+		float closestPlayerDistance = INFINITY;
+		for (auto& player : CPlayer::playersInWorld)
+		{
+			// get the distance between the turret and the player
+			float playerDistance = sf::Distance(transform.getPosition(), player->transform.getPosition());
+			
+			// check whether the player is outside sight distance
+			if (playerDistance > CTurret::sightDistance) continue;
+			
+			// check whether the found player is closer than the previous player found
+			if (playerDistance < closestPlayerDistance)
+			{
+				playerPos = player->transform.getPosition();
+				closestPlayerDistance = playerDistance;
+				seePlayer = true;
+			}
+		}
 	}
 	
 	// dont do anything if it does not see a player
 	if (!seePlayer) return;
 
 	// face towards closest player
-	/*sf::Vector2f facingDirection = sf::Normalise(playerPos - transform.getPosition());
-	transform.setRotation(atan2f(facingDirection.y, facingDirection.x) * 180.0f / PI);*/
+	sf::Vector2f facingDirection = sf::Normalise(playerPos - transform.getPosition());
+	transform.setRotation(atan2f(facingDirection.y, facingDirection.x) * 180.0f / PI);
 
-	//Update cooldown timer
+	// update cooldown timer
 	coolDownTimer -= GetManager().deltaTime;
 	
-	//Shoot projectile
+	// shoot projectile
 	if (coolDownTimer <= 0)
 	{
-		//Shoot projectile
+		// create and launch projectile
 		new CBullet
 		(
 			bulletDamage,
