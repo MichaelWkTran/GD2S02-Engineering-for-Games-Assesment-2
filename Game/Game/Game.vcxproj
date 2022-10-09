@@ -159,6 +159,7 @@
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CMapPlaceBase.cpp" />
     <ClCompile Include="CPhysicsBody.cpp" />
+    <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CSpikeTrap.cpp" />
     <ClCompile Include="CTurret.cpp" />
     <ClCompile Include="CUpdatedObject.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CMapPlaceBase.h" />
     <ClInclude Include="CPhysicsBody.h" />
+    <ClInclude Include="CSound.h" />
     <ClInclude Include="CSpikeTrap.h" />
     <ClInclude Include="CTurret.h" />
     <ClInclude Include="CUpdatedObject.h" />
