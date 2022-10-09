@@ -143,7 +143,7 @@ void CManager::Update()
 		}
 	}
 
-	// update deltatime
+	// update deltaTime
 	deltaTime = deltaTimeClock.restart().asSeconds();
 
 	// update physics

@@ -79,12 +79,16 @@ void CTurret::Update()
 	// shoot projectile
 	if (coolDownTimer <= 0)
 	{
+		float projectileMomentum = 1.f;
+		float projectileRange = 10.f;
 		// create and launch projectile
 		new CBullet
 		(
-			bulletDamage,
-			bulletSpeed,
-			transform.getPosition(),
+			bulletDamage, 
+			bulletSpeed, 
+			projectileMomentum, 
+			projectileRange, 
+			transform.getPosition(), 
 			bulletSpeed * b2Vec2(facingDirection.x, facingDirection.y)
 		);
 	

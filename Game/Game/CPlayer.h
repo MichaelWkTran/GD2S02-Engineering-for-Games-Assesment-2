@@ -1,9 +1,11 @@
 #pragma once
 #include "CGameObject.h"
 #include "CPhysicsBody.h"
+//#include "CWeapons.h"
 #include <set>
 
 class CGun;
+class CWeapons;
 
 class CPlayer : public CPhysicsBody, public CGameObject
 {
@@ -15,7 +17,10 @@ public:
 	float coolDown;
 	bool isPlayerOne;
 	b2Vec2 facingDirection;
-	CGun* heldGun = nullptr;
+	//CGun* heldGun = nullptr;
+	CWeapons* heldWeapon = nullptr;
+	int heldWeaponInt;
+	
 
 	// input variables
 	sf::Keyboard::Key up;

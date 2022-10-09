@@ -3,6 +3,7 @@
 #include "CPhysicsBody.h"
 #include "CBullet.h"
 #include "CGun.h"
+#include "CWeapons.h"
 #include <iostream>
 
 #include "WinScene.h"
@@ -28,6 +29,8 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
     right = _right;
     shoot = _shoot;
     isPlayerOne = _isPlayerOne;
+
+    heldWeaponInt = 0;
 
     maxHealth = health = 10.0f;
 	moveSpeed = 6.0f;
@@ -66,7 +69,8 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
     body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 
     facingDirection = b2Vec2(1, 0);
-    heldGun = new CGun(&facingDirection, this);
+    //heldGun = new CGun(&facingDirection, this);
+    heldWeapon = new CWeapons(&facingDirection, this, heldWeaponInt);
 
     if (isPlayerOne)
     {
@@ -113,7 +117,8 @@ void CPlayer::Update()
     // shoot projectile
     if (sf::Keyboard::isKeyPressed(shoot))
     {
-        heldGun->Shoot();
+        //heldGun->Shoot();
+        heldWeapon->Shoot();
     }
 }
 
@@ -139,8 +144,10 @@ void CPlayer::TakeDamage(float _damage)
     if (health <= 0.0f)
     {
         DeleteObject();
-        heldGun->DeleteObject();
-        heldGun->ownerPlayer = nullptr;
+        //heldGun->DeleteObject();
+        //heldGun->ownerPlayer = nullptr;
+        heldWeapon->DeleteObject();
+        heldWeapon->playerObject = nullptr;
 
         if (isPlayerOne)
         {

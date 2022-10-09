@@ -4,11 +4,13 @@
 #include "CPlayer.h"
 #include <iostream>
 
-CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b2Vec2 _velocity)
+CBullet::CBullet(float _damage, float _moveSpeed, float _momentum, float _projectileRange, sf::Vector2f _spawnPosition, b2Vec2 _velocity)
 {
 	damage = _damage;
 	moveSpeed = _moveSpeed;
 	velocity = _velocity;
+	projectileMomentum = _momentum;
+	projectileRange = _projectileRange;
 
 	velocity *= moveSpeed;
 
@@ -37,7 +39,7 @@ CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b
 
 	// setup b2FixtureDef
 	b2FixtureDef fixtureDef;
-	fixtureDef.density = 1.0f;
+	fixtureDef.density = projectileMomentum;
 	fixtureDef.shape = &shape;
 
 	// setup b2Body
@@ -47,8 +49,8 @@ CBullet::CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b
 
 void CBullet::Update()
 {
-	lifeTime -= GetManager().deltaTime;
-	if (lifeTime < 0)
+	projectileRange -= GetManager().deltaTime;
+	if (projectileRange < 0)
 	{
 		DeleteObject();
 	}
