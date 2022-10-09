@@ -4,9 +4,6 @@
 #include "CPhysicsBody.h"
 #include "box2d\box2D.h"
 #include "CPlayer.h"
-#include "CBullet.h"
-#include "CWall.h"
-#include "CSpikeTrap.h"
 #include "Level.h"
 #include <iostream>
 

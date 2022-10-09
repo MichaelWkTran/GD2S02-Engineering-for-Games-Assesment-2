@@ -4,6 +4,10 @@
 #include "CBullet.h"
 #include "CGun.h"
 #include "CWeapons.h"
+#include "CHealthBar.h"
+#include "CGameObject.h"
+#include "CUpdatedObject.h"
+#include "CWeaponUI.h"
 #include <iostream>
 
 #include "WinScene.h"
@@ -76,16 +80,21 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
     {
         healthString = "Player One Health: " + std::to_string(health);
         healthText.setPosition({ 10, 10 });
+        playerHealthBar = new CHealthBar(sf::Vector2f(5.f, 625.f), this);
+        playerWeaponUI = new CWeaponUI(sf::Vector2f(0.f, 645.f), sf::Vector2f(5.f, 655.f), sf::Vector2f(10.f, 695.f), this);
     }
     else
     {
         healthString = "Player Two Health: " + std::to_string(health);
         healthText.setPosition({ 1000, 10 });
+        playerHealthBar = new CHealthBar(sf::Vector2f(1125.f, 625.f), this);
+        playerWeaponUI = new CWeaponUI(sf::Vector2f(1125.f, 645.f), sf::Vector2f(1130.f, 655.f), sf::Vector2f(1135.f, 695.f), this);
     }
     healthText.setString(healthString);
     healthText.setFillColor(sf::Color::Black);
     healthText.setFont(GetManager().font);
     healthText.setCharacterSize(20);
+
 }
 
 CPlayer::~CPlayer()
@@ -119,6 +128,10 @@ void CPlayer::Update()
     {
         //heldGun->Shoot();
         heldWeapon->Shoot();
+        // apply recoil
+        //b2Vec2 recoil;
+        //recoil *= (heldWeapon->recoilForce * movement.x, heldWeapon->recoilForce * movement.y);
+        //body->SetLinearVelocity(recoil);
     }
 }
 
@@ -162,6 +175,14 @@ void CPlayer::TakeDamage(float _damage)
     }
 }
 
+void CPlayer::NewWeapon(int _heldWeaponInt)
+{
+    heldWeapon->DeleteObject();
+    heldWeapon = new CWeapons(&facingDirection, this, _heldWeaponInt);
+    heldWeaponInt = _heldWeaponInt;
+    // play weapon pickup sound
+}
+
 void CPlayer::Draw()
 {
     if (!visible) return;
@@ -170,7 +191,7 @@ void CPlayer::Draw()
     sf::Transformable* drawableTransform = dynamic_cast<sf::Transformable*>(drawable);
     if (drawableTransform == nullptr)
     {
-        std::cout << "ERROR: m_pDrawable in CGameObject must inherit from sf::Transformable\n";
+        std::cout << "ERROR: _Drawable in CGameObject must inherit from sf::Transformable\n";
         return;
     }
 

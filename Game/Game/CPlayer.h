@@ -1,11 +1,12 @@
 #pragma once
 #include "CGameObject.h"
 #include "CPhysicsBody.h"
-//#include "CWeapons.h"
 #include <set>
 
 class CGun;
 class CWeapons;
+class CHealthBar;
+class CWeaponUI;
 
 class CPlayer : public CPhysicsBody, public CGameObject
 {
@@ -20,7 +21,9 @@ public:
 	//CGun* heldGun = nullptr;
 	CWeapons* heldWeapon = nullptr;
 	int heldWeaponInt;
-	
+
+	CHealthBar* playerHealthBar = nullptr;
+	CWeaponUI* playerWeaponUI = nullptr;
 
 	// input variables
 	sf::Keyboard::Key up;
@@ -41,6 +44,7 @@ public:
 	void AddGunToRender();
 
 	void TakeDamage(float _damage);
+	void NewWeapon(int _heldWeaponInt);
 
 	virtual void Draw() override;
 };
