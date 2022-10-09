@@ -2,6 +2,7 @@
 #include "CManager.h"
 #include "CPlayer.h"
 #include "CBullet.h"
+#include "CSound.h"
 #include <iostream>
 
 CGun::CGun(b2Vec2* _playerFaceDirection, CPlayer* _player)
@@ -134,6 +135,7 @@ void CGun::Shoot()
 		sf::Vector2f bulletSpawnPos = sf::Vector2f(dynamic_cast<sf::Transformable*>(drawable)->getPosition().x + playerFacingDirection->x * multiplier, dynamic_cast<sf::Transformable*>(drawable)->getPosition().y + playerFacingDirection->y * multiplier);
 		for (int i = 0; i < bulletCount; i++)
 		{
+			new CSound("gun1.wav");
 			new CBullet(damage, bulletSpeed, bulletSpawnPos, *playerFacingDirection);
 		}
 		counterFireRate = 0;

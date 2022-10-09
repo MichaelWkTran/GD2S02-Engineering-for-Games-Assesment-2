@@ -1,8 +1,8 @@
 #include "CSound.h"
 #include <string>
 
-const char* const CSound::soundDirective = "";
-std::map<const char*, sf::SoundBuffer> CSound::soundBuffers;
+const char* const CSound::soundDirective = "Assets/Sounds/";
+std::map<const char*, sf::SoundBuffer*> CSound::soundBuffers;
 
 CSound::CSound(const char* const _soundDirectory, bool _startOnConstructor, bool _deleteWhenFinished)
 {
@@ -15,12 +15,14 @@ CSound::CSound(const char* const _soundDirectory, bool _startOnConstructor, bool
 	auto bufferIterator = soundBuffers.find(fullSoundDirectory.c_str());
 	if (bufferIterator == soundBuffers.end())
 	{
-		soundBuffers.emplace(fullSoundDirectory, sf::SoundBuffer()).
-			first->second.loadFromFile(fullSoundDirectory);
+		sf::SoundBuffer* soundBuffer = new sf::SoundBuffer;
+		soundBuffer->loadFromFile(fullSoundDirectory);
+
+		soundBuffers.emplace(fullSoundDirectory.c_str(), soundBuffer);
 	}
 	
 	// set the sound buffer to the stored sf::Sound
-	sound.setBuffer(soundBuffers.at(fullSoundDirectory.c_str()));
+	sound.setBuffer(*soundBuffers.at(fullSoundDirectory.c_str()));
 
 	// play the sound when it is created
 	if (_startOnConstructor) sound.play();
