@@ -1,8 +1,17 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+// (c) 2022 Media Design School
+//
+// File Name: CWall.h
+// Description: CWall initialization file
+// Authors: Michael Wai Kit Tran
+
 #pragma once
 #include "CMapPlaceBase.h"
 #include "CPhysicsBody.h"
 
-//[Delete later on] Tag of the wall has been changed from "UnbreakableWall" to "Wall"
 class CWall : public CPhysicsBody, public CMapPlaceBase
 {
 public:

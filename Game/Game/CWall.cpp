@@ -1,10 +1,19 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+// (c) 2022 Media Design School
+//
+// File Name: CWall.cpp
+// Description: CWall declaration file
+// Authors: Michael Wai Kit Tran
+
 #include "CWall.h"
 #include "Box2D/box2d.h"
 #include "CPhysicsBody.h"
 #include "CManager.h"
 #include "CBullet.h"
 
-//[Delete later on] Tag of the wall has been changed from "UnbreakableWall" to "Wall"
 CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
 {
     isBreakable = _isBreakable;

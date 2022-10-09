@@ -1,3 +1,13 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+// (c) 2022 Media Design School
+//
+// File Name: MathUtils.cpp
+// Description: Math utils declaration file
+// Authors: Michael Wai Kit Tran
+
 #include "MathUtils.h"
 #include "SFML/System/Vector2.hpp"
 #include "SFML/System/Vector3.hpp"

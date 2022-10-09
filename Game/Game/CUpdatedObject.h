@@ -1,3 +1,13 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+// (c) 2022 Media Design School
+//
+// File Name: CUpdatedObject.h
+// Description: CUpdatedObject initialization file
+// Authors: Michael Wai Kit Tran
+
 #pragma once
 #include <SFML/Graphics/RenderWindow.hpp>
 class CManager;

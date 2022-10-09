@@ -1,3 +1,13 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+// (c) 2022 Media Design School
+//
+// File Name: CManager.h
+// Description: CManager initialization file
+// Authors: Michael Wai Kit Tran
+
 #pragma once
 #include "box2d\box2D.h"
 #include <SFML/Graphics.hpp>

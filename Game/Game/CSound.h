@@ -1,3 +1,13 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+// (c) 2022 Media Design School
+//
+// File Name: CSound.h
+// Description: CSound initialization file
+// Authors: Michael Wai Kit Tran
+
 #pragma once
 #include "CUpdatedObject.h"
 #include <SFML/Audio.hpp>
