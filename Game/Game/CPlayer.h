@@ -14,6 +14,9 @@
 #include <set>
 
 class CGun;
+class CWeapons;
+class CHealthBar;
+class CWeaponUI;
 
 class CPlayer : public CPhysicsBody, public CGameObject
 {
@@ -25,7 +28,12 @@ public:
 	float coolDown;
 	bool isPlayerOne;
 	b2Vec2 facingDirection;
-	CGun* heldGun = nullptr;
+	//CGun* heldGun = nullptr;
+	CWeapons* heldWeapon = nullptr;
+	int heldWeaponInt;
+
+	CHealthBar* playerHealthBar = nullptr;
+	CWeaponUI* playerWeaponUI = nullptr;
 
 	// input variables
 	sf::Keyboard::Key up;
@@ -46,6 +54,7 @@ public:
 	void AddGunToRender();
 
 	void TakeDamage(float _damage);
+	void NewWeapon(int _heldWeaponInt);
 
 	virtual void Draw() override;
 };

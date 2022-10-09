@@ -8,10 +8,11 @@ class CBullet : public CPhysicsBody, public CGameObject
 public:
 	float damage;
 	float moveSpeed;
-	float lifeTime = 5.0f;
+	float projectileMomentum;
+	float projectileRange;
 	b2Vec2 velocity;
 
-	CBullet(float _damage, float _moveSpeed, sf::Vector2f _spawnPosition, b2Vec2 _velocity);
+	CBullet(float _damage, float _moveSpeed, float _momentum, float _projectileRange, sf::Vector2f _spawnPosition, b2Vec2 _velocity);
 
 	virtual void Update() override;
 
