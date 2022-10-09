@@ -134,7 +134,7 @@ void CLevelMaker::LoadLevel()
 								arena[k][l] = new CSpikeTrap(sf::Vector2f(32 * k + 200, 32 * l + 100));
 								break;
 							case Turret:
-								arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l + 100), 0);
+								arena[k][l] = new CTurret(sf::Vector2f(32 * k + 200, 32 * l + 100));
 								break;
 							}
 						}
@@ -214,7 +214,7 @@ void CLevelMaker::LoadLevel(std::string _path)
 			arena[k][l] = new CSpikeTrap(sf::Vector2f(32 * k + 200, 32 * l + 100));
 			break;
 		case Turret:
-			arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l + 100), 0);
+			arena[k][l] = new CTurret(sf::Vector2f(32 * k + 200, 32 * l + 100));
 			break;
 		}
 	}
