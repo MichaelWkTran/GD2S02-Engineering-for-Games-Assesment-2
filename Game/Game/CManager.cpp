@@ -1,3 +1,13 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+// (c) 2022 Media Design School
+//
+// File Name: CManager.cpp
+// Description: CManager declaration file
+// Authors: Michael Wai Kit Tran
+
 #include "CManager.h"
 #include "CUpdatedObject.h"
 #include "CGameObject.h"

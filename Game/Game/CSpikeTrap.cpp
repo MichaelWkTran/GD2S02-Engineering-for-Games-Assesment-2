@@ -1,3 +1,13 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+// (c) 2022 Media Design School
+//
+// File Name: CSpikeTrap.cpp
+// Description: CSpikeTrap declaration file
+// Authors: Michael Wai Kit Tran
+
 #include "CSpikeTrap.h"
 #include "CPhysicsBody.h"
 #include "Box2D/box2d.h"

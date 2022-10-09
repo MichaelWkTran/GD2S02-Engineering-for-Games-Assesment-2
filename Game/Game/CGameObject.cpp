@@ -1,3 +1,13 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+// (c) 2022 Media Design School
+//
+// File Name: CGameObject.cpp
+// Description: CGameObject declaration file
+// Authors: Michael Wai Kit Tran
+
 #include "CGameObject.h"
 #include "CManager.h"
 #include <SFML/Graphics.hpp>

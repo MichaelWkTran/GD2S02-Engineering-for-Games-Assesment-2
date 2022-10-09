@@ -1,3 +1,13 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+// (c) 2022 Media Design School
+//
+// File Name: CTurret.cpp
+// Description: CTurret declaration file
+// Authors: Michael Wai Kit Tran
+
 #include "CTurret.h"
 #include "CBullet.h"
 #include "CManager.h"

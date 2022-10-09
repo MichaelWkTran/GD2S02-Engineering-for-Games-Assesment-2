@@ -1,3 +1,13 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+// (c) 2022 Media Design School
+//
+// File Name: CPlayer.h
+// Description: CPlayer initialization file
+// Authors: Michael Wai Kit Tran
+
 #pragma once
 #include "CGameObject.h"
 #include "CPhysicsBody.h"
