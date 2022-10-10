@@ -55,6 +55,7 @@ public:
 
 	void TakeDamage(float _damage);
 	void NewWeapon(int _heldWeaponInt);
+	void ApplyRecoil(b2Vec2 _recoil);
 
 	virtual void Draw() override;
 };

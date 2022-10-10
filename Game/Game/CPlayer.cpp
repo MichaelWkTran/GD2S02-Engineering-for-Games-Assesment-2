@@ -122,9 +122,13 @@ void CPlayer::Update()
     );
     movement.Normalize();
     movement *= moveSpeed;
+    if (movement.x > 6) { movement.x = 6; }
+    if (movement.y > 6) { movement.y = 6; }
     
-    body->SetLinearVelocity(movement);
     
+    //body->SetLinearVelocity(movement);
+    body->ApplyForceToCenter(movement, true);
+    body->SetLinearDamping(8.f);
     if (movement != b2Vec2(0, 0))
     {
         facingDirection = b2Vec2(movement.x, movement.y);
@@ -138,10 +142,7 @@ void CPlayer::Update()
     {
         //heldGun->Shoot();
         heldWeapon->Shoot();
-        // apply recoil
-        //b2Vec2 recoil;
-        //recoil *= (heldWeapon->recoilForce * movement.x, heldWeapon->recoilForce * movement.y);
-        //body->SetLinearVelocity(recoil);
+        
     }
 }
 
@@ -191,6 +192,11 @@ void CPlayer::NewWeapon(int _heldWeaponInt)
     heldWeapon = new CWeapons(&facingDirection, this, _heldWeaponInt);
     heldWeaponInt = _heldWeaponInt;
     // play weapon pickup sound
+}
+
+void CPlayer::ApplyRecoil(b2Vec2 _recoil)
+{
+    body->ApplyLinearImpulseToCenter(_recoil, false);
 }
 
 void CPlayer::Draw()
