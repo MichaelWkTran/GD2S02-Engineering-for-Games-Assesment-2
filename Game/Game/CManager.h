@@ -62,6 +62,7 @@ public:
 	CManager(const CManager&) = delete;
 	CManager& operator= (const CManager&) = delete;
 	
+	void PlaceObjectAtFront(CUpdatedObject* _object);
 	void Clear();
 	void Update();
 

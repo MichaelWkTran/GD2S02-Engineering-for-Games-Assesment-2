@@ -102,6 +102,18 @@ CManager::~CManager()
 	delete physicsWorld;
 }
 
+void CManager::PlaceObjectAtFront(CUpdatedObject* _object)
+{
+	for (int i = 0; i < objectsInWorld.size(); i++)
+	{
+		if (objectsInWorld[i] == _object)
+		{
+			objectsInWorld.erase(objectsInWorld.begin() + i);
+			objectsInWorld.push_front(_object);
+		}
+	}
+}
+
 void CManager::Clear()
 {
 	const int objectsCount = objectsInWorld.size();

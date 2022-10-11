@@ -359,6 +359,30 @@ void CLevelMaker::LoadLevel()
 							}
 						}
 						saveFile.close();
+
+						for (int i = 0; i < 2; i++)
+						{
+							for (int j = 0; j < arenaSizeX; j++)
+							{
+								for (int p = 0; p < arenaSizeY; p++)
+								{
+									if (i == 0)
+									{
+										if (dynamic_cast<CTurret*>(arena[j][p]))
+										{
+											GetManager().PlaceObjectAtFront(arena[j][p]);
+										}
+									}
+									else
+									{
+										if (!dynamic_cast<CTurret*>(arena[j][p]))
+										{
+											GetManager().PlaceObjectAtFront(arena[j][p]);
+										}
+									}
+								}
+							}
+						}
 					}
 					CoTaskMemFree(pszFilePath);
 				}

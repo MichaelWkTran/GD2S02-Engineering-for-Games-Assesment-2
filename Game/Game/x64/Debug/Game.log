@@ -1,8 +1,152 @@
-﻿  CWeapons.cpp
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CWeapons.cpp(242,16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CWeapons.cpp(248,16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CWeapons.cpp(249,154): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CWeapons.cpp(249,16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CWeapons.cpp(250,127): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CWeapons.cpp(250,16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Game.vcxproj -> C:\Users\Admin\Documents\GD2S02-Assesment\Game\x64\Debug\Game.exe
+﻿  CBullet.cpp
+  CGround.cpp
+  CGun.cpp
+  CHealthBar.cpp
+  CLevelMaker.cpp
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(138,64): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(138,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(141,62): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(141,48): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(144,62): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(144,48): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(147,67): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(147,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(150,64): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CLevelMaker.cpp(150,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  CManager.cpp
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(88,70): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(88,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(131,48): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(131,48): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+  CGameObject.cpp
+  CMapPlaceBase.cpp
+  CPhysicsBody.cpp
+  CSound.cpp
+  CSpikeTrap.cpp
+  CTurret.cpp
+  CUpdatedObject.cpp
+  CWall.cpp
+  CWeaponBox.cpp
+  CWeapons.cpp
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CWeapons.cpp(242,16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CWeapons.cpp(248,16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CWeapons.cpp(249,154): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CWeapons.cpp(249,16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CWeapons.cpp(250,127): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CWeapons.cpp(250,16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  CWeaponUI.cpp
+  Level.cpp
+  main.cpp
+  CPlayer.cpp
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(49,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(121,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(120,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(156,22): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  Compiling...
+  MathUtils.cpp
+  WinScene.cpp
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\WinScene.cpp(142,28): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\WinScene.cpp(142,25): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
+box2d-d.lib(b2_broad_phase.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_broad_phase.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_chain_shape.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_chain_shape.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_circle_shape.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_circle_shape.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_collide_circle.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_collide_circle.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_collide_edge.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_collide_edge.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_collide_polygon.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_collide_polygon.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_collision.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_collision.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_distance.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_distance.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_dynamic_tree.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_dynamic_tree.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_edge_shape.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_edge_shape.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_polygon_shape.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_polygon_shape.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_time_of_impact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_time_of_impact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_block_allocator.obj) : warning LNK4099: PDB '' was not found with 'box2d-d.lib(b2_block_allocator.obj)' or at ''; linking object as if no debug info
+box2d-d.lib(b2_draw.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_draw.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_math.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_math.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_settings.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_settings.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_stack_allocator.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_stack_allocator.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_timer.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_timer.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_body.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_body.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_chain_circle_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_chain_circle_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_chain_polygon_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_chain_polygon_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_circle_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_circle_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_contact_manager.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_contact_manager.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_contact_solver.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_contact_solver.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_distance_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_distance_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_edge_circle_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_edge_circle_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_edge_polygon_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_edge_polygon_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_fixture.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_fixture.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_friction_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_friction_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_gear_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_gear_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_island.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_island.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_motor_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_motor_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_mouse_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_mouse_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_polygon_circle_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_polygon_circle_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_polygon_contact.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_polygon_contact.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_prismatic_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_prismatic_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_pulley_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_pulley_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_revolute_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_revolute_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_weld_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_weld_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_wheel_joint.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_wheel_joint.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_world.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_world.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+box2d-d.lib(b2_world_callbacks.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_world_callbacks.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+  Game.vcxproj -> C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\Game.exe
