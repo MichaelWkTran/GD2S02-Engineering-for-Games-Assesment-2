@@ -1,6 +1,1 @@
-﻿  CPlayer.cpp
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CPlayer.cpp(49,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CPlayer.cpp(121,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CPlayer.cpp(120,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CPlayer.cpp(156,22): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-  Game.vcxproj -> C:\Users\Admin\Documents\GD2S02-Assesment\Game\x64\Debug\Game.exe
+﻿  Game.vcxproj -> C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\Game.exe

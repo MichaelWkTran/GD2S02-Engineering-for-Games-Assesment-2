@@ -65,80 +65,7 @@ void CLevelMaker::LoadLevel()
 
 					if (temp == ".txt")
 					{
-						// clear the lists so no etra objects
-
-						// set up the variables and open the file
-						std::fstream saveFile;
-						std::string Path = W2A(pszFilePath);
-						saveFile.open(Path, std::ios::in | std::ios::trunc);
-
-						std::ifstream inFile;
-						inFile.open(Path.c_str());
-
-						// variables to set up arena
-						int objType;
-						int k;
-						int l;
-						float rotation;
-
-						// delete the current arena
-						for (int i = 0; i < arenaSizeY; i++)
-						{
-							delete arena[i];
-							arena[i] = nullptr;
-						}
-
-						delete arena;
-
-						// get the new arena size
-						inFile >> arenaSizeX;
-						inFile >> arenaSizeY;
-
-						// set up the arena
-						arena = new CMapPlaceBase * *[arenaSizeX];
-
-						for (int i = 0; i < arenaSizeX; i++)
-						{
-							arena[i] = new CMapPlaceBase * [arenaSizeY];
-						}
-
-						// initialise as nullptrs
-						for (int i = 0; i < arenaSizeX; i++)
-						{
-							for (int j = 0; j < arenaSizeY; j++)
-							{
-								arena[i][j] = nullptr;
-							}
-						}
-
-						while (inFile)
-						{
-							// read name, x, y, and rotation
-							inFile >> objType;
-							inFile >> k;
-							inFile >> l;
-							inFile >> rotation;
-
-							switch (objType)
-							{
-							case Ground:
-								arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l + 100), rotation);
-								break;
-							case UnbreakableWall:
-								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l + 100), rotation);
-								break;
-							case BreakableWall:
-								arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l + 100), rotation, true);
-								break;
-							case SpikeTrap:
-								arena[k][l] = new CSpikeTrap(sf::Vector2f(32 * k + 200, 32 * l + 100));
-								break;
-							case Turret:
-								arena[k][l] = new CTurret(sf::Vector2f(32 * k + 200, 32 * l + 100));
-								break;
-							}
-						}
-						saveFile.close();
+						LoadLevel(W2A(pszFilePath));
 					}
 					CoTaskMemFree(pszFilePath);
 				}
@@ -189,6 +116,12 @@ void CLevelMaker::LoadLevel(std::string _path)
 			arena[i][j] = nullptr;
 		}
 	}
+
+	// get player spawn positions
+	inFile >> playerSpawns[0].x;
+	inFile >> playerSpawns[0].y;
+	inFile >> playerSpawns[1].x;
+	inFile >> playerSpawns[1].y;
 
 	while (inFile)
 	{
