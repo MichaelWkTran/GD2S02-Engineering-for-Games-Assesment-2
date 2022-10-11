@@ -1,8 +1,12 @@
-﻿  CWeapons.cpp
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CWeapons.cpp(242,16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CWeapons.cpp(248,16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CWeapons.cpp(249,154): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CWeapons.cpp(249,16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CWeapons.cpp(250,127): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CWeapons.cpp(250,16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Game.vcxproj -> C:\Users\Admin\Documents\GD2S02-Assesment\Game\x64\Debug\Game.exe
+﻿  WinScene.cpp
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\WinScene.cpp(176,28): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\WinScene.cpp(176,25): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Game.vcxproj -> C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\x64\Debug\Game.exe
