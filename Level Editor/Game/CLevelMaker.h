@@ -10,7 +10,6 @@ private:
 	int arenaSizeY = 15;
 	int rotationValue = 0;
 	CMapPlaceBase*** arena = nullptr;
-	sf::Vector2f playerSpawns[2];
 
 	void CheckPlace(sf::Vector2f _mousePos);
 public:
