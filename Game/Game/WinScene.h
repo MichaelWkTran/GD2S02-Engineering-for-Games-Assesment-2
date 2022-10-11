@@ -5,18 +5,8 @@
 class WinScene : public CGameObject
 {
 public:
-	sf::Text winText;
-	sf::String winString;
-	sf::String winRoundString;
-
-	sf::Text nextRoundText;
-	sf::String nextRoundString;
-
-	sf::Drawable* restart;
-
 	// transform variables
 	sf::Transformable restartTransform;
-
 
 	static int playerOneScore;
 	static int playerTwoScore;
@@ -36,5 +26,17 @@ public:
 
 
 private:
+	sf::Text winText;
+	sf::String winString;
+	sf::String winRoundString;
+
+	sf::Text nextRoundText;
+	sf::String nextRoundString;
+
+	// health info
+	sf::Text scoreText[2];
+	sf::String scoreString[2];
+
+	sf::Drawable* restart;
 };
 

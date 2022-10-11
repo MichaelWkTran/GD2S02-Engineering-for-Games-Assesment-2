@@ -144,6 +144,27 @@ void CPlayer::Update()
         heldWeapon->Shoot();
         
     }
+
+
+    if (WinScene::playerOneRoundWin)
+    {
+        if (isPlayerOne)
+        {
+            DeleteObject();
+            heldWeapon->DeleteObject();
+            heldWeapon->playerObject = nullptr;
+        }
+    }
+    if (WinScene::playerTwoRoundWin)
+    {
+        if (!isPlayerOne)
+        {
+            DeleteObject();
+            heldWeapon->DeleteObject();
+            heldWeapon->playerObject = nullptr;
+        }
+    }
+
 }
 
 void CPlayer::AddGunToRender()
@@ -219,5 +240,5 @@ void CPlayer::Draw()
     // draw drawable
     GetManager().GetWindow().draw(*drawable);
 
-    GetManager().GetWindow().draw(healthText);
+    //GetManager().GetWindow().draw(healthText);
 }

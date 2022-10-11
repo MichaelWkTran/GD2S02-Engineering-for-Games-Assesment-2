@@ -1,3 +1,13 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+// (c) 2022 Media Design School
+//
+// File Name: WinScene.cpp
+// Description: WinScene declaration file
+// Authors: Sean David Palmer
+
 #include "WinScene.h"
 #include "CPlayer.h"
 #include <iostream>
@@ -13,34 +23,32 @@ WinScene::WinScene()
 
     mousePos = sf::Vector2f(0, 0);
 
-	// setup CGameObject
-	float radius = 500.0f;
+    // setup CGameObject
+    float radius = 500.0f;
 
-	// set the origin of the SFML transform
-	transform.setOrigin(radius / 2, radius / 2);
+    // set the origin of the SFML transform
+    transform.setOrigin(radius / 2, radius / 2);
 
-	// setup sf::Drawable
-	drawable = new sf::RectangleShape(sf::Vector2f(radius, radius));
-	((sf::RectangleShape*)drawable)->setFillColor(sf::Color().Blue);
-	transform.setPosition(640, 360);
+    // setup sf::Drawable
+    drawable = new sf::RectangleShape(sf::Vector2f(radius, radius));
+    ((sf::RectangleShape*)drawable)->setFillColor(sf::Color().Blue);
+    transform.setPosition(640, 360);
 
     restart = new sf::RectangleShape(sf::Vector2f(100, 100)); // restart button
-	((sf::RectangleShape*)restart)->setFillColor(sf::Color().Red);
+    ((sf::RectangleShape*)restart)->setFillColor(sf::Color().Red);
     restartTransform.setPosition(640, 450);
     restartTransform.setOrigin(50, 50);
-    
+
     winRoundString = "PLAYER WINS THE ROUND";
     winString = "PLAYER WINS";
 
     nextRoundString = "NEXT ROUND";
 
-    // text setup
-    if (playerOneScore < 2 && playerTwoScore < 2)
-    {
-        winText.setString(winRoundString); // win round
-    }
-    else { winText.setString(winString); } // win overall game
-    
+    scoreString[0] = "Player One Score: " + std::to_string(playerOneScore);
+    scoreString[1] = "Player Two Score: " + std::to_string(playerTwoScore);
+
+    winText.setString(winRoundString); // win round
+
     winText.setFillColor(sf::Color::Black);
     winText.setFont(GetManager().font);
     winText.setCharacterSize(20);
@@ -51,6 +59,21 @@ WinScene::WinScene()
     nextRoundText.setFont(GetManager().font);
     nextRoundText.setCharacterSize(12);
     nextRoundText.setPosition(restartTransform.getPosition().x - 40, restartTransform.getPosition().y);
+
+    // player one score display
+    scoreText[0].setString(scoreString[0]);
+    scoreText[0].setFillColor(sf::Color::Black);
+    scoreText[0].setFont(GetManager().font);
+    scoreText[0].setCharacterSize(20);
+    scoreText[0].setPosition(10, 10);
+
+    // player two score display
+    scoreText[1].setString(scoreString[1]);
+    scoreText[1].setFillColor(sf::Color::Black);
+    scoreText[1].setFont(GetManager().font);
+    scoreText[1].setCharacterSize(20);
+    scoreText[1].setPosition(1000, 10);
+
 }
 
 
@@ -74,6 +97,7 @@ void WinScene::Draw()
         return;
     }
 
+    // set values of transforms
     drawableTransform->setPosition(transform.getPosition());
     drawableTransform->setScale(transform.getScale());
     drawableTransform->setRotation(transform.getRotation());
@@ -94,22 +118,21 @@ void WinScene::Draw()
         GetManager().GetWindow().draw(nextRoundText);
     }
 
+    GetManager().GetWindow().draw(scoreText[0]);
+    GetManager().GetWindow().draw(scoreText[1]);
 }
 
 
 void WinScene::NextRound()
 {
-    if (playerOneRoundWin) // if player one won the game
+    if (playerOneRoundWin || playerTwoRoundWin) // if player one won the game
     {
+        // create new player 1 object
+        CPlayer* player1 = new CPlayer(sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::A,
+            sf::Keyboard::D, sf::Keyboard::V, { 800, 200 }, true);
         // create new player 2 object
         CPlayer* player2 = new CPlayer(sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Left,
             sf::Keyboard::Right, sf::Keyboard::Slash, { 800, 500 }, false);
-    }
-    if (playerTwoRoundWin) // if player two won the game
-    {
-        // create new player 1 object
-        CPlayer* player1 = new CPlayer(sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::A, 
-            sf::Keyboard::D, sf::Keyboard::V, { 800, 200 }, true);
     }
 }
 
@@ -118,7 +141,18 @@ void WinScene::Update()
 {
     mousePos = GetMousePos();
 
-    //std::cout << mousePos.x << "    " << mousePos.y << "\n";
+    scoreString[0] = "Player One Score: " + std::to_string(playerOneScore);
+    scoreText[0].setString(scoreString[0]);
+
+    scoreString[1] = "Player Two Score: " + std::to_string(playerTwoScore);
+    scoreText[1].setString(scoreString[1]);
+
+    // round/overall win text setup
+    if (playerOneScore == 3 || playerTwoScore == 3)
+    {
+        winText.setString(winString); // win overall game
+    }
+    else { winText.setString(winRoundString); } // win round
 
     if (playerOneRoundWin || playerTwoRoundWin)
     {
@@ -130,7 +164,7 @@ void WinScene::Update()
             }
         }
     }
-    
+
 }
 
 
