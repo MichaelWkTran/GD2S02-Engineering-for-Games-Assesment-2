@@ -23,7 +23,7 @@ public:
 	virtual ~CPhysicsBody();
 
 	// setup methods
-	void SetupBody(const b2BodyDef& _BodyDef, const b2FixtureDef* _pFixtureDef, unsigned int _uiSize);
+	void SetupBody(const b2BodyDef& _BodyDef, const b2FixtureDef* _pFixtureDef, unsigned int _size);
 
 	// collision Methods
 	virtual void BeginContact(CPhysicsBody* _other) {};
