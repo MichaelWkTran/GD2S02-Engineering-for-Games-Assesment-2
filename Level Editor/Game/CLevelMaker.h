@@ -6,8 +6,8 @@ class CLevelMaker
 {
 private:
 	int selectedPlacement = 0;
-	int arenaSizeX = 15;
-	int arenaSizeY = 15;
+	int arenaSizeX = 30;
+	int arenaSizeY = 20;
 	int rotationValue = 0;
 	CMapPlaceBase*** arena = nullptr;
 	sf::Vector2f playerSpawns[2];
