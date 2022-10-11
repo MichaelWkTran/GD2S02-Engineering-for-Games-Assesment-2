@@ -30,6 +30,10 @@ void CLevelMaker::Render()
 /// </summary>
 CLevelMaker::CLevelMaker()
 {
+	// initialize player spawn locations
+	playerSpawns[0] = { 0, 0 };
+	playerSpawns[1] = { 10, 10 };
+
 	// make an array of pointers to arrays
 	arena = new CMapPlaceBase**[arenaSizeX];
 
@@ -116,11 +120,25 @@ void CLevelMaker::Update()
 	// sawp the object currently being place to the one the user switched to
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
 	{
-		selectedPlacement = Ground;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+		{
+			playerSpawns[0] = GetManager().GetWindow().mapPixelToCoords(sf::Mouse::getPosition(GetManager().GetWindow()));
+		}
+		else
+		{
+			selectedPlacement = Ground;
+		}
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
 	{
-		selectedPlacement = UnbreakableWall;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+		{
+			playerSpawns[1] = GetManager().GetWindow().mapPixelToCoords(sf::Mouse::getPosition(GetManager().GetWindow()));
+		}
+		else
+		{
+			selectedPlacement = UnbreakableWall;
+		}
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
 	{
@@ -201,6 +219,11 @@ void CLevelMaker::SaveLevel()
 
 						// save the arena size
 						saveFile << arenaSizeX << "\n" << arenaSizeY << "\n";
+
+						// save player spawn positions
+						saveFile << playerSpawns[0].x << "\n" << playerSpawns[0].y << "\n";
+						saveFile << playerSpawns[1].x << "\n" << playerSpawns[1].y << "\n";
+
 						//save each spot in the arena
 						for (int i = 0; i < arenaSizeX; i++)
 						{
@@ -300,6 +323,12 @@ void CLevelMaker::LoadLevel()
 								arena[i][j] = nullptr;
 							}
 						}
+
+						// get player spawn positions
+						inFile >> playerSpawns[0].x;
+						inFile >> playerSpawns[0].y;
+						inFile >> playerSpawns[1].x;
+						inFile >> playerSpawns[1].y;
 
 						while (inFile)
 						{
