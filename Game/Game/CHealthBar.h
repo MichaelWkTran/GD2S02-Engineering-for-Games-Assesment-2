@@ -25,8 +25,8 @@ private:
 	sf::Vector2f barSize;
 
 
-	int playerHealth;
-	int maxPlayerHealth;
+	float playerHealth;
+	float maxPlayerHealth;
 
 	CPlayer* playerObject = nullptr;
 
