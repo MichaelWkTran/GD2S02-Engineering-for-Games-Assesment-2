@@ -13,6 +13,7 @@
 #include "CBullet.h"
 #include "CPlayer.h"
 #include "CSound.h"
+#include "SFML/Graphics.hpp"
 #include <iostream>
 
 // contstructor
@@ -33,7 +34,8 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 		projectileMomentum = 1;
 		projectileRange = 5;
 		damage = 1;
-		//gunTex->loadFromFile("");
+		gunTex = new sf::Texture();
+		gunTex->loadFromFile("Assets/Sprites/weaponSprites/topDownPistol2.png");
 	}
 
 	// If weapon is Rifle
@@ -46,7 +48,8 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 		projectileMomentum = 2;
 		projectileRange = 7;
 		damage = 2;
-		//gunTex->loadFromFile("");
+		gunTex = new sf::Texture();
+		gunTex->loadFromFile("Assets/Sprites/weaponSprites/topDownRifle2.png");
 	}
 
 	// If weapon is Sniper
@@ -59,7 +62,8 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 		projectileMomentum = 6;
 		projectileRange = 100;
 		damage = 5;
-		//gunTex->loadFromFile("");
+		gunTex = new sf::Texture();
+		gunTex->loadFromFile("Assets/Sprites/weaponSprites/topDownSniper2.png");
 	}
 
 	// If weapon is Shotgun
@@ -72,20 +76,22 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 		projectileMomentum = 6;
 		projectileRange = 3;
 		damage = 3;
-		//gunTex->loadFromFile("");
+		gunTex = new sf::Texture();
+		gunTex->loadFromFile("Assets/Sprites/weaponSprites/topDownShotgun2.png");
 	}
 
 	currentWeapon = _weaponInt;
 	// set up game object
 	float radius = 40.f;
 
-	transform.setOrigin(sf::Vector2f(radius / 4, radius));
+	transform.setOrigin(sf::Vector2f(12.f, 75.f));
 
 	// set up drawable
 	// will need to add sprite
-	gunBox = new sf::RectangleShape(sf::Vector2f(radius / 2, radius));
-	((sf::CircleShape*)gunBox)->setFillColor(sf::Color().Transparent);
+	gunBox = new sf::RectangleShape(sf::Vector2f(24.f, 60.f));
+	((sf::CircleShape*)gunBox)->setFillColor(sf::Color().White);
 	transform.setPosition(playerObject->transform.getPosition());
+	gunBox->setTexture(gunTex);
 
 	// rotate drawable based on player facing vector
 	switch ((int)playerFacingVector->x)
