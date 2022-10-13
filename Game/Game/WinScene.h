@@ -1,3 +1,13 @@
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+// (c) 2022 Media Design School
+//
+// File Name: WinScene.h
+// Description: WinScene header file
+// Authors: Sean David Palmer
+
 #pragma once
 #include "CManager.h"
 #include <SFML/Graphics.hpp>
@@ -21,8 +31,9 @@ public:
 	void Draw();
 	void NextRound();
 	void Update();
+	void SetTransformValues(sf::Transformable _transform, sf::Drawable* _drawable);
 
-	sf::Vector2f GetMousePos();
+	static sf::Vector2f GetMousePos();
 
 
 private:

@@ -81,6 +81,9 @@
     <ClCompile Include="CWeaponUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CManager.h">
@@ -147,6 +150,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CWeaponUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
