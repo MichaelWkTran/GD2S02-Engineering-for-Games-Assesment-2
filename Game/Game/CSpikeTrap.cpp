@@ -50,7 +50,6 @@ CSpikeTrap::CSpikeTrap(sf::Vector2f _pos)
 
     // setup b2Body
     SetupBody(bodyDef, &fixtureDef, 1);
-    body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 
     tags.emplace("SpikeTrap");
 }

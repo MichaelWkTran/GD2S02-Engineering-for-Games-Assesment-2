@@ -80,7 +80,6 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
 
     // setup b2Body
     SetupBody(bodyDef, &fixtureDef, 1);
-    body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 
     facingDirection = b2Vec2(1, 0);
     //heldGun = new CGun(&facingDirection, this);

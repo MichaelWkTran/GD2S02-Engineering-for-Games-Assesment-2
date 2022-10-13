@@ -54,11 +54,9 @@ CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
     b2FixtureDef fixtureDef;
     fixtureDef.density = 1.0f;
     fixtureDef.shape = &shape;
-    fixtureDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
 
     // setup b2Body
-    SetupBody(bodyDef, &fixtureDef, 1); 
-    body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
+    SetupBody(bodyDef, &fixtureDef, 1);
 
     tags.emplace("Wall");
 }

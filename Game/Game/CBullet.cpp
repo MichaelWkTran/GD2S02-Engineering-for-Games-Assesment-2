@@ -44,7 +44,6 @@ CBullet::CBullet(float _damage, float _moveSpeed, float _momentum, float _projec
 
 	// setup b2Body
 	SetupBody(bodyDef, &fixtureDef, 1);
-	body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 }
 
 void CBullet::Update()

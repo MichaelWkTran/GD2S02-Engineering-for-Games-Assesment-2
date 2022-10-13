@@ -29,7 +29,7 @@ CPhysicsBody::~CPhysicsBody()
 void CPhysicsBody::SetupBody(const b2BodyDef& _bodyDef, const b2FixtureDef* _fixtureDef, unsigned int _size)
 {
 	body = GetManager().GetPhysicsWorld().CreateBody(&_bodyDef);
-	body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this); //(uintptr_t)static_cast<void*>(this);
+	body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 
 	for (unsigned int i = 0; i < _size; i++) body->CreateFixture(_fixtureDef + i);
 	fixtureCount = _size;
