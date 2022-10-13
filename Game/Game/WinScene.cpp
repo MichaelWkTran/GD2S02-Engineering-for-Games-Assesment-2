@@ -29,7 +29,7 @@ WinScene::WinScene()
     // set the origin of the SFML transform
     transform.setOrigin(radius / 2, radius / 2);
 
-    // setup sf::Drawable
+    // setup sf::Drawable (WIN SCENE)
     drawable = new sf::RectangleShape(sf::Vector2f(radius, radius));
     ((sf::RectangleShape*)drawable)->setFillColor(sf::Color().Blue);
     transform.setPosition(640, 360);
@@ -81,39 +81,13 @@ void WinScene::Draw()
 {
     if (!visible) return;
 
-    // transform the drawable to m_Transfrom
-    sf::Transformable* drawableTransform = dynamic_cast<sf::Transformable*>(drawable);
-    if (drawableTransform == nullptr)
-    {
-        std::cout << "ERROR: m_pDrawable in CGameObject must inherit from sf::Transformable\n";
-        return;
-    }
-
-    // transform the drawable to m_Transfrom
-    sf::Transformable* drawableTransform2 = dynamic_cast<sf::Transformable*>(restart);
-    if (drawableTransform == nullptr)
-    {
-        std::cout << "ERROR: m_pDrawable in CGameObject must inherit from sf::Transformable\n";
-        return;
-    }
-
-    // set values of transforms
-    drawableTransform->setPosition(transform.getPosition());
-    drawableTransform->setScale(transform.getScale());
-    drawableTransform->setRotation(transform.getRotation());
-    drawableTransform->setOrigin(transform.getOrigin());
-
-    drawableTransform2->setPosition(restartTransform.getPosition());
-    drawableTransform2->setScale(restartTransform.getScale());
-    drawableTransform2->setRotation(restartTransform.getRotation());
-    drawableTransform2->setOrigin(restartTransform.getOrigin());
-
 
     if (playerOneRoundWin || playerTwoRoundWin)
     {
+        SetTransformValues(transform, drawable);
+        SetTransformValues(restartTransform, restart);
+
         // draw drawable and text
-        GetManager().GetWindow().draw(*drawable);
-        GetManager().GetWindow().draw(*restart);
         GetManager().GetWindow().draw(winText);
         GetManager().GetWindow().draw(nextRoundText);
     }
@@ -165,6 +139,26 @@ void WinScene::Update()
         }
     }
 
+}
+
+
+void WinScene::SetTransformValues(sf::Transformable _transform, sf::Drawable* _drawable)
+{
+    // transform the drawable to m_Transfrom
+    sf::Transformable* drawableTransform = dynamic_cast<sf::Transformable*>(_drawable);
+    if (drawableTransform == nullptr)
+    {
+        std::cout << "ERROR: m_pDrawable in CGameObject must inherit from sf::Transformable\n";
+        return;
+    }
+
+    // set values of transforms
+    drawableTransform->setPosition(_transform.getPosition());
+    drawableTransform->setScale(_transform.getScale());
+    drawableTransform->setRotation(_transform.getRotation());
+    drawableTransform->setOrigin(_transform.getOrigin());
+
+    GetManager().GetWindow().draw(*_drawable);
 }
 
 
