@@ -22,7 +22,6 @@ public:
 
 	float coolDownTimer;
 
-	CTurret();
 	CTurret(sf::Vector2f _pos);
 	virtual ~CTurret();
 

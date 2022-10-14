@@ -19,29 +19,15 @@ float CTurret::bulletSpeed = 4.0f;
 float CTurret::coolDown = 1.0f;
 float CTurret::sightDistance = 400.0f;
 
-CTurret::CTurret()
-{
-	coolDownTimer = coolDown;
-	
-	texture = std::make_shared<sf::Texture>();
-	texture->loadFromFile("Assets/Sprites/Goon6.png");
-
-	transform.setOrigin(sf::Vector2f(texture->getSize()) / 2.0f);
-	drawable = new sf::Sprite(*texture);
-
-	objType = MapPlaceableObjects::Turret;
-
-}
-
 CTurret::CTurret(sf::Vector2f _pos)
 {
 	coolDownTimer = coolDown;
 
 	texture = std::make_shared<sf::Texture>();
-	texture->loadFromFile("Assets/Sprites/Goon6.png");
-
-	transform.setOrigin(sf::Vector2f(texture->getSize()) / 2.0f);
+	texture->loadFromFile("Assets/Sprites/weaponSprites/topDownTurret.png");
+	transform.setOrigin(sf::Vector2f(5.0f, 5.0f));
 	transform.setPosition(_pos);
+	transform.setScale(3.0f, 3.0f);
 	drawable = new sf::Sprite(*texture);
 
 	objType = MapPlaceableObjects::Turret;
