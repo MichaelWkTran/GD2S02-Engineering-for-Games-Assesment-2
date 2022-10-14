@@ -78,6 +78,7 @@ CManager::CManager()
 	// initialize manager
 	isRunning = true;
 	deltaTime = 0.0f;
+	timeScale = 1.0f;
 
 	// sets up the window
 	// sets up the view
@@ -163,7 +164,7 @@ void CManager::Update()
 	}
 
 	// update deltaTime
-	deltaTime = deltaTimeClock.restart().asSeconds();
+	deltaTime = deltaTimeClock.restart().asSeconds() * timeScale;
 
 	// update physics
 	float frameTime = GetManager().deltaTime;

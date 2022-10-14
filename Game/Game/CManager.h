@@ -46,6 +46,7 @@ private:
 public:
 	bool isRunning;
 	float deltaTime;
+	float timeScale;
 	sf::Font font;
 
 	// physics variables
