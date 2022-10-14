@@ -23,7 +23,6 @@ public:
 	float coolDownTimer;
 
 	CTurret(sf::Vector2f _pos);
-	virtual ~CTurret();
 
 	virtual void Update() override;
 };

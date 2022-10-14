@@ -33,10 +33,6 @@ CTurret::CTurret(sf::Vector2f _pos)
 	objType = MapPlaceableObjects::Turret;
 }
 
-CTurret::~CTurret()
-{
-}
-
 void CTurret::Update()
 {
 	// get the closest player position
