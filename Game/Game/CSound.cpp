@@ -9,30 +9,30 @@
 // Authors: Michael Wai Kit Tran
 
 #include "CSound.h"
-#include <string>
 
 const char* const CSound::soundDirective = "Assets/Sounds/";
-std::map<const char*, sf::SoundBuffer*> CSound::soundBuffers;
+std::map<std::string, sf::SoundBuffer*> CSound::soundBuffers;
 
 CSound::CSound(const char* const _soundDirectory, bool _startOnConstructor, bool _deleteWhenFinished)
 {
 	deleteWhenFinished = _deleteWhenFinished;
 
 	// get the full sound directory
-	std::string fullSoundDirectory = std::string(soundDirective) + _soundDirectory;
-	
+	std::string fullSoundDirectory = std::string(soundDirective);
+	fullSoundDirectory += std::string(_soundDirectory);
+
 	// if the requested sound buffer exists, otherwise create a new one and load the sound
-	auto bufferIterator = soundBuffers.find(fullSoundDirectory.c_str());
+	auto bufferIterator = soundBuffers.find(fullSoundDirectory);
 	if (bufferIterator == soundBuffers.end())
 	{
 		sf::SoundBuffer* soundBuffer = new sf::SoundBuffer;
 		soundBuffer->loadFromFile(fullSoundDirectory);
 
-		soundBuffers.emplace(fullSoundDirectory.c_str(), soundBuffer);
+		soundBuffers.emplace(fullSoundDirectory, soundBuffer);
 	}
 	
 	// set the sound buffer to the stored sf::Sound
-	sound.setBuffer(*soundBuffers.at(fullSoundDirectory.c_str()));
+	sound.setBuffer(*soundBuffers.at(fullSoundDirectory));
 
 	// play the sound when it is created
 	if (_startOnConstructor) sound.play();
