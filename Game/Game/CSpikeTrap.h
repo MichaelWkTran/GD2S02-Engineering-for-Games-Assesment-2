@@ -18,6 +18,7 @@ class CPlayer;
 class CSpikeTrap : public CPhysicsBody, public CMapPlaceBase
 {
 public:
+	static std::shared_ptr<sf::Texture> spikeTexture;
 	std::set<CPlayer*> playersCollidedWith;
 	static float damage;
 

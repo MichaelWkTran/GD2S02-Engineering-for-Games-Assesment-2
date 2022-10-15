@@ -14,14 +14,22 @@
 #include "CManager.h"
 #include "CPlayer.h"
 
-float CSpikeTrap::damage = 0.1f;
+std::shared_ptr<sf::Texture> CSpikeTrap::spikeTexture;
+float CSpikeTrap::damage = 0.5f;
 
 CSpikeTrap::CSpikeTrap(sf::Vector2f _pos)
 {
+    // setup textures
+    if (spikeTexture.get() == nullptr)
+    {
+        spikeTexture = std::make_shared<sf::Texture>();
+        spikeTexture->loadFromFile("Assets/Sprites/tileSprites/Spikes.png");
+    }
+
     // setup sf::Drawable
     drawable = new sf::RectangleShape(sf::Vector2f(32.0f, 32.0f));
     sf::RectangleShape* rectangleShape = (sf::RectangleShape*)drawable;
-    rectangleShape->setFillColor(sf::Color().Red);
+    rectangleShape->setTexture(spikeTexture.get());
 
     objType = MapPlaceableObjects::SpikeTrap;
 
@@ -59,12 +67,12 @@ void CSpikeTrap::Update()
     // gradually damage the player
     for (auto& player : playersCollidedWith)
     {
-        player->TakeDamage(GetManager().deltaTime * damage);
         if (player->GetDeleteObject())
         {
             playersCollidedWith.erase(player);
             break;
         }
+        player->TakeDamage(GetManager().deltaTime * damage);
     }
 }
 
