@@ -14,6 +14,9 @@
 #include "CManager.h"
 #include "CBullet.h"
 
+std::shared_ptr<sf::Texture> CWall::breakableWallTexture;
+std::shared_ptr<sf::Texture> CWall::unbreakableWallTexture;
+
 CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
 {
     isBreakable = _isBreakable;
@@ -27,11 +30,23 @@ CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
         objType = MapPlaceableObjects::BreakableWall;
     }
 
+    // setup textures
+    if (breakableWallTexture.get() == nullptr)
+    {
+        breakableWallTexture = std::make_shared<sf::Texture>();
+        breakableWallTexture->loadFromFile("Assets/Sprites/tileSprites/box_5.png");
+    }
+    if (unbreakableWallTexture.get() == nullptr)
+    {
+        unbreakableWallTexture = std::make_shared<sf::Texture>();
+        unbreakableWallTexture->loadFromFile("Assets/Sprites/tileSprites/metalCrate.png");
+    }
+
     // setup sf::Drawable
     drawable = new sf::RectangleShape(sf::Vector2f(32.0f, 32.0f));
     sf::RectangleShape* rectangleShape = (sf::RectangleShape*)drawable;
-    rectangleShape->setFillColor(sf::Color().Black);
-
+    rectangleShape->setTexture(isBreakable ? breakableWallTexture.get() : unbreakableWallTexture.get());
+    
     // set the origin of the SFML transform
     transform.setOrigin(rectangleShape->getSize() / 2.0f);
     transform.setPosition(_pos);

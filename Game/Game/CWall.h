@@ -15,6 +15,9 @@
 class CWall : public CPhysicsBody, public CMapPlaceBase
 {
 public:
+	static std::shared_ptr<sf::Texture> breakableWallTexture;
+	static std::shared_ptr<sf::Texture> unbreakableWallTexture;
+
 	bool isBreakable;
 	float health;
 
