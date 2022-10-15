@@ -12,6 +12,7 @@
 #include "CBullet.h"
 #include "CManager.h"
 #include "CPlayer.h"
+#include "CSound.h"
 #include "MathUtils.h"
 
 float CTurret::bulletDamage = 1.0f;
@@ -84,6 +85,9 @@ void CTurret::Update()
 			bulletSpeed * b2Vec2(facingDirection.x, facingDirection.y)
 		);
 	
+		// create sound effect
+		(new CSound("gun1.wav"))->sound.setVolume(10.0f);
+
 		// reset timer
 		coolDownTimer = coolDown;
 	}

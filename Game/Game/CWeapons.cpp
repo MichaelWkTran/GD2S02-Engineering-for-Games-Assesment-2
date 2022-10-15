@@ -240,7 +240,7 @@ void CWeapons::Shoot()
 		{
 			// spawn bullet
 			new CBullet(damage, projectileSpeed, projectileMomentum, projectileRange, projectileSpawnPos, *playerFacingVector);
-			new CSound("gun1.wav");
+			new CSound("gun7.wav");
 		}
 		else if (numberOfProjectiles == 3)
 		{
