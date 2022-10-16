@@ -47,13 +47,13 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
     heldWeaponInt = 0;
 
     maxHealth = health = 10.0f;
-	moveSpeed = 6.0f;
+	moveSpeed = 4.0f;
 	coolDown = 0.0f;
 
     tags.emplace("Player");
 
     // setup CGameObject
-	float radius = 16.0f;
+	float radius = 14.0f;
 
     // set the origin of the SFML transform
 	transform.setOrigin(radius, radius);
@@ -111,6 +111,10 @@ CPlayer::~CPlayer()
     playersInWorld.erase(this);
 }
 
+void CPlayer::SetPosition(sf::Vector2f _pos)
+{
+}
+
 void CPlayer::Update()
 {
     // player movement
@@ -121,8 +125,8 @@ void CPlayer::Update()
     );
     movement.Normalize();
     movement *= moveSpeed;
-    if (movement.x > 6) { movement.x = 6; }
-    if (movement.y > 6) { movement.y = 6; }
+    if (movement.x > moveSpeed) { movement.x = moveSpeed; }
+    if (movement.y > moveSpeed) { movement.y = moveSpeed; }
     
     
     //body->SetLinearVelocity(movement);
