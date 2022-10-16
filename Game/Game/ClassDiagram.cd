@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="CManager">
+    <Position X="13.25" Y="3.25" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAYwAAkAAEEAgBBBMAAEgAQQAQAEAAIIEQAgEATgAAA=</HashCode>
+      <FileName>CManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGameObject">
+    <Position X="18.25" Y="7.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAACAAAIEAiAAAABACIAAAEA=</HashCode>
+      <FileName>CGameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CUpdatedObject">
+    <Position X="20.75" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAIAICCAAgAAAAIQIAAAAAAAAAAAAAAAAAIgAAA=</HashCode>
+      <FileName>CUpdatedObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGround">
+    <Position X="19.25" Y="13.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CGround.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGun">
+    <Position X="28.75" Y="12" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAAAAIAhgBAAAAAAAAQAAAgAAAAAAQAAAAABAA=</HashCode>
+      <FileName>CGun.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CHealthBar">
+    <Position X="3.25" Y="11.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAABAAAAAAgACAAACAAAAAAAAABAAAAAEAAABABA=</HashCode>
+      <FileName>CHealthBar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CLevelMaker">
+    <Position X="28.75" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAMAABAAAAAAEAAEAEAAAABAIAAAAAAA=</HashCode>
+      <FileName>CLevelMaker.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CMapPlaceBase">
+    <Position X="21.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>CMapPlaceBase.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CMenu">
+    <Position X="33" Y="12" Width="8.75" />
+    <TypeIdentifier>
+      <HashCode>QkRCAAIBAAEIAgABAMYAAQAAACIgAAACAEgABAEASQA=</HashCode>
+      <FileName>CMenu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPhysicsBody">
+    <Position X="0.5" Y="15.5" Width="6.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAIAAAgAABAAgAgAAAAQAAAAAAEQAAAAEBAQA=</HashCode>
+      <FileName>CPhysicsBody.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPlayer">
+    <Position X="10.75" Y="19.75" Width="6.25" />
+    <TypeIdentifier>
+      <HashCode>AISAAEAMEAACAkAAAAAAAAQEAAAoAAgACAEgggAggIg=</HashCode>
+      <FileName>CPlayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSound">
+    <Position X="22.25" Y="7.75" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAAEAAAgAAAAAAAAAAAAAAAEAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>CSound.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSpikeTrap">
+    <Position X="14.5" Y="15.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAAgAAAAAAAAAAAAAAAAAgAEAAAAAAEAAA=</HashCode>
+      <FileName>CSpikeTrap.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CTurret">
+    <Position X="26.25" Y="13.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAABBAAAAAAgAACAAAAAAACAACAAAAAAA=</HashCode>
+      <FileName>CTurret.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CWall">
+    <Position X="22" Y="15.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAEAAgAAgAAAABAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>CWall.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CWeaponBox">
+    <Position X="18.25" Y="15.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAACAAAggQDAAAAAIAAAAAIkAEAQAABAAEQACA=</HashCode>
+      <FileName>CWeaponBox.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CWeapons">
+    <Position X="7.25" Y="11.75" Width="5" />
+    <TypeIdentifier>
+      <HashCode>IAQgAAYAAAICjpACQAAAAAAEEAgFAABAAEAAAAAAAAA=</HashCode>
+      <FileName>CWeapons.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CWeaponUI">
+    <Position X="12.75" Y="11.75" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>IAQAAAAgCAAAAgACAAAAAAAAABCAAAAAgAAACAAAAAA=</HashCode>
+      <FileName>CWeaponUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Level">
+    <Position X="31.75" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAACAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Level.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinScene">
+    <Position X="42.25" Y="12" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAQBABAAAKAAAwAAAkAEAAAAQAAAAAACAhQAAAEECAI=</HashCode>
+      <FileName>WinScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CBullet" Collapsed="true">
+    <Position X="24.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAEAAAiAAAQAAAAAAAAAAAAAAAAAQAAAAAIAA=</HashCode>
+      <FileName>CBullet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
