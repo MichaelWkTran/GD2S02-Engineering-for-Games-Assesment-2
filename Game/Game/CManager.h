@@ -73,6 +73,7 @@ public:
 	void Update();
 
 	void SetPlayerPos(int player, sf::Vector2f _pos);
+	void LoadNewLevel(std::string _path);
 
 	// get set methods
 	static CManager& GetSingleton() { return *singleton; };

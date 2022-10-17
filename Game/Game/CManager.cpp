@@ -103,10 +103,6 @@ CManager::CManager()
 	font.loadFromFile("fonts/SansSerif.ttf");
 
 	levelMaker = new CLevelMaker();
-	Level* level = new Level("Levels/2.txt");
-	levelMaker->LoadLevel(level->GetPath());
-	delete level;
-	level = nullptr;
 }
 
 CManager::~CManager()
@@ -222,4 +218,12 @@ void CManager::Update()
 void CManager::SetPlayerPos(int player, sf::Vector2f _pos)
 {
 	players[player]->SetPosition(_pos);
+}
+
+void CManager::LoadNewLevel(std::string _path)
+{
+	Level* level = new Level("Levels/" + _path + ".txt");
+	levelMaker->LoadLevel(level->GetPath());
+	delete level;
+	level = nullptr;
 }

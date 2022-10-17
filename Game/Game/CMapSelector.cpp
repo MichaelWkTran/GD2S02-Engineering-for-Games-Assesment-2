@@ -1,6 +1,7 @@
 #include "CMapSelector.h"
 #include "CMenu.h"
 #include "WinScene.h"
+#include "Level.h"
 #include <iostream>
 
 
@@ -135,8 +136,10 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
-                LoadLevel1();
+                GetManager().LoadNewLevel("1");
                 CMenu::mapSelectScreen = false;
+
+                
             }
         }
 
@@ -145,7 +148,7 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
-                LoadLevel2();
+                GetManager().LoadNewLevel("2");
                 CMenu::mapSelectScreen = false;
             }
         }
@@ -155,7 +158,7 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
-                LoadLevel3();
+                GetManager().LoadNewLevel("3");
                 CMenu::mapSelectScreen = false;
             }
         }
@@ -165,7 +168,7 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
-                LoadLevel4();
+                GetManager().LoadNewLevel("4");
                 CMenu::mapSelectScreen = false;
             }
         }
@@ -186,7 +189,6 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
-                LoadRandomLevel();
                 CMenu::mapSelectScreen = false; // hide map select screen
             }
         }
@@ -213,27 +215,8 @@ void CMapSelector::SetTransformValues(sf::Transformable _transform, sf::Drawable
     GetManager().GetWindow().draw(*_drawable);
 }
 
-
-void CMapSelector::LoadLevel1()
-{
-}
-
-
-void CMapSelector::LoadLevel2()
-{
-}
-
-
-void CMapSelector::LoadLevel3()
-{
-}
-
-
-void CMapSelector::LoadLevel4()
-{
-}
-
-
 void CMapSelector::LoadRandomLevel()
 {
+    int i = rand() % 5 + 1;
+    GetManager().LoadNewLevel(std::to_string(i));
 }
