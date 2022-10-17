@@ -28,7 +28,12 @@ public:
 	void Update();
 	void SetTransformValues(sf::Transformable _transform, sf::Drawable* _drawable);
 
-	
+	void LoadLevel1();
+	void LoadLevel2();
+	void LoadLevel3();
+	void LoadLevel4();
+
+	static void LoadRandomLevel();
 
 private:
 	int buttonHeight;
