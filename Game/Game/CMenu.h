@@ -17,6 +17,7 @@ class CMenu : public CGameObject
 public:
 	static bool playGame;
 	static bool controlsScreen;
+	static bool mapSelectScreen;
 
 	// transform variables
 	sf::Transformable bannerTransform; // menu banner
