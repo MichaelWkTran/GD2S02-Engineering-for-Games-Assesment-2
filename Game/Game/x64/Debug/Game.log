@@ -1,13 +1,108 @@
-﻿  WinScene.cpp
-C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\WinScene.cpp(155,15): warning C4101: 'event': unreferenced local variable
-C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\WinScene.cpp(236,28): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+﻿  CMapSelector.cpp
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(27,74): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\WinScene.cpp(236,25): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(27,61): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(29,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(29,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(33,74): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(33,61): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(35,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(35,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(39,74): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(39,61): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(41,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(41,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(45,74): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(45,61): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(47,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMapSelector.cpp(47,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  CMenu.cpp
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMenu.cpp(46,69): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMenu.cpp(46,56): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMenu.cpp(52,73): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMenu.cpp(52,60): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMenu.cpp(58,69): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMenu.cpp(58,56): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMenu.cpp(64,69): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CMenu.cpp(64,56): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  CPlayer.cpp
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CPlayer.cpp(124,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\CPlayer.cpp(123,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  WinScene.cpp
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\WinScene.cpp(156,15): warning C4101: 'event': unreferenced local variable
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\WinScene.cpp(238,28): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\WinScene.cpp(238,25): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  main.cpp
+  Generating Code...
   Game.vcxproj -> C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\x64\Debug\Game.exe

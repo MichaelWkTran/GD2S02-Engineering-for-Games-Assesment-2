@@ -11,6 +11,7 @@
 #include "WinScene.h"
 #include "CPlayer.h"
 #include "CMenu.h"
+#include "CMapSelector.h"
 #include <iostream>
 
 
@@ -190,7 +191,7 @@ void WinScene::Update()
                 std::cout << "home";
                 CMenu::playGame = false;
                 WinScene* winScene = new WinScene();
-                // clicks controls when home button is pressed as its in the same place
+                // BUG - clicks controls when home button is pressed as its in the same place
             }
         }
 

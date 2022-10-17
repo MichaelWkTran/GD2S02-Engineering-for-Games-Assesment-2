@@ -135,7 +135,7 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
-                // load level 1
+                LoadLevel1();
                 CMenu::mapSelectScreen = false;
             }
         }
@@ -145,7 +145,7 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
-                // load level 2
+                LoadLevel2();
                 CMenu::mapSelectScreen = false;
             }
         }
@@ -155,7 +155,7 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
-                // load level 3
+                LoadLevel3();
                 CMenu::mapSelectScreen = false;
             }
         }
@@ -165,7 +165,7 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
-                // load level 4
+                LoadLevel4();
                 CMenu::mapSelectScreen = false;
             }
         }
@@ -186,12 +186,10 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
-                // load random level
+                LoadRandomLevel();
                 CMenu::mapSelectScreen = false; // hide map select screen
             }
         }
-
-
     }
 }
 
@@ -213,4 +211,29 @@ void CMapSelector::SetTransformValues(sf::Transformable _transform, sf::Drawable
     drawableTransform->setOrigin(_transform.getOrigin());
 
     GetManager().GetWindow().draw(*_drawable);
+}
+
+
+void CMapSelector::LoadLevel1()
+{
+}
+
+
+void CMapSelector::LoadLevel2()
+{
+}
+
+
+void CMapSelector::LoadLevel3()
+{
+}
+
+
+void CMapSelector::LoadLevel4()
+{
+}
+
+
+void CMapSelector::LoadRandomLevel()
+{
 }
