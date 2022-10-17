@@ -1,14 +1,14 @@
 ﻿  CManager.cpp
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(89,70): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+D:\Projects\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(89,70): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(89,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+D:\Projects\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(89,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(132,48): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(132,48): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
-  Game.vcxproj -> C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\Game.exe
+D:\Projects\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(132,48): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Projects\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(132,48): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+  Game.vcxproj -> D:\Projects\GitHub\GD2S02-Assesment\Game\x64\Debug\Game.exe

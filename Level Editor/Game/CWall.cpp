@@ -21,14 +21,7 @@ CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
     // setup sf::Drawable
     drawable = new sf::RectangleShape(sf::Vector2f(32.0f, 32.0f));
     sf::RectangleShape* rectangleShape = (sf::RectangleShape*)drawable;
-    if (!isBreakable)
-    {
-        rectangleShape->setFillColor(sf::Color().Black);
-    }
-    else
-    {
-        rectangleShape->setFillColor(sf::Color().Magenta);
-    }
+    rectangleShape->setFillColor(sf::Color().Black);
 
     // set the origin of the SFML transform
     transform.setOrigin(rectangleShape->getSize() / 2.0f);

@@ -78,23 +78,23 @@ void CLevelMaker::CheckPlace(sf::Vector2f _mousePos)
 				switch (selectedPlacement)
 				{
 				case Ground:
-					//arena[i][j]->DeleteObject();
+					arena[i][j]->DeleteObject();
 					arena[i][j] = new CGround(sf::Vector2f(32 * i + 200, 32 * j + 100), rotationValue);
 					break;
 				case UnbreakableWall:
-					//arena[i][j]->DeleteObject();
+					arena[i][j]->DeleteObject();
 					arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j + 100), rotationValue, false);
 					break;
 				case BreakableWall:
-					//arena[i][j]->DeleteObject();
+					arena[i][j]->DeleteObject();
 					arena[i][j] = new CWall(sf::Vector2f(32 * i + 200, 32 * j + 100), rotationValue, true);
 					break;
 				case SpikeTrap:
-					//arena[i][j]->DeleteObject();
+					arena[i][j]->DeleteObject();
 					arena[i][j] = new CSpikeTrap(sf::Vector2f(32 * i + 200, 32 * j + 100));
 					break;
 				case Turret:
-					//arena[i][j]->DeleteObject();
+					arena[i][j]->DeleteObject();
 					arena[i][j] = new CTurret(sf::Vector2f(32 * i + 200, 32 * j + 100));
 					break;
 				}
@@ -359,8 +359,31 @@ void CLevelMaker::LoadLevel()
 							}
 						}
 						saveFile.close();
+
+						for (int i = 0; i < 2; i++)
+						{
+							for (int j = 0; j < arenaSizeX; j++)
+							{
+								for (int p = 0; p < arenaSizeY; p++)
+								{
+									if (i == 0)
+									{
+										if (dynamic_cast<CTurret*>(arena[j][p]))
+										{
+											GetManager().PlaceObjectAtFront(arena[j][p]);
+										}
+									}
+									else
+									{
+										if (!dynamic_cast<CTurret*>(arena[j][p]))
+										{
+											GetManager().PlaceObjectAtFront(arena[j][p]);
+										}
+									}
+								}
+							}
+						}
 					}
-						
 					CoTaskMemFree(pszFilePath);
 				}
 				item->Release();
