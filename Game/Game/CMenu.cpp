@@ -17,6 +17,7 @@ CMenu::CMenu()
 {
     playGame = false;
     controlsScreen = false;
+    mapSelectScreen = false;
 
     buttonWidth = 100;
     buttonHeight = 50;
@@ -139,7 +140,7 @@ void CMenu::Update()
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 playGame = true;
-                // load level
+                mapSelectScreen = true; // display map selector
             }
         }
 
