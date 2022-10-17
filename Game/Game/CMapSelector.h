@@ -30,7 +30,7 @@ public:
 
 	static void LoadRandomLevel();
 
-private:
+private:       
 	int buttonHeight;
 	int buttonWidth;
 

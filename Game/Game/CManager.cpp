@@ -15,6 +15,7 @@
 #include "box2d\box2D.h"
 #include "CPlayer.h"
 #include "Level.h"
+#include "WinScene.h"
 #include <iostream>
 
 CManager* CManager::singleton = nullptr;
@@ -227,6 +228,8 @@ void CManager::LoadNewLevel(std::string _path)
 	delete level;
 	level = nullptr;
 	ResetPlayers();
+	WinScene::playerOneScore = 0;
+	WinScene::playerTwoScore = 0;
 }
 
 void CManager::ResetPlayers()
