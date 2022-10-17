@@ -1,14 +1,13 @@
-﻿  CManager.cpp
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(89,70): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+﻿  WinScene.cpp
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\WinScene.cpp(155,15): warning C4101: 'event': unreferenced local variable
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\WinScene.cpp(236,28): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(89,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\Game\WinScene.cpp(236,25): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(132,48): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(132,48): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
-  Game.vcxproj -> C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\Game.exe
+  Game.vcxproj -> C:\Users\GGPC\OneDrive\Documents\MDS SCHOOLWORK\SoftwareEngineeringGitHUB\GD2S02-Assesment\GD2S02-Assesment\Game\x64\Debug\Game.exe

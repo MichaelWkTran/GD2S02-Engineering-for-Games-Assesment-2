@@ -78,6 +78,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -159,6 +160,7 @@
     <ClCompile Include="CManager.cpp" />
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CMapPlaceBase.cpp" />
+    <ClCompile Include="CMapSelector.cpp" />
     <ClCompile Include="CMenu.cpp" />
     <ClCompile Include="CPhysicsBody.cpp" />
     <ClCompile Include="CSound.cpp" />
@@ -184,6 +186,7 @@
     <ClInclude Include="CManager.h" />
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CMapPlaceBase.h" />
+    <ClInclude Include="CMapSelector.h" />
     <ClInclude Include="CMenu.h" />
     <ClInclude Include="CPhysicsBody.h" />
     <ClInclude Include="CSound.h" />

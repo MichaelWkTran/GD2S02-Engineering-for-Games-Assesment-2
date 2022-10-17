@@ -10,6 +10,7 @@
 
 #include "WinScene.h"
 #include "CPlayer.h"
+#include "CMenu.h"
 #include <iostream>
 
 
@@ -31,49 +32,82 @@ WinScene::WinScene()
 
     // setup sf::Drawable (WIN SCENE)
     drawable = new sf::RectangleShape(sf::Vector2f(radius, radius));
-    ((sf::RectangleShape*)drawable)->setFillColor(sf::Color().Blue);
+    ((sf::RectangleShape*)drawable)->setFillColor(sf::Color().Black);
     transform.setPosition(640, 360);
 
-    restart = new sf::RectangleShape(sf::Vector2f(100, 100)); // restart button
-    ((sf::RectangleShape*)restart)->setFillColor(sf::Color().Red);
-    restartTransform.setPosition(640, 450);
-    restartTransform.setOrigin(50, 50);
+    // restart button
+    restart = new sf::RectangleShape(sf::Vector2f(100, 60));
+    ((sf::RectangleShape*)restart)->setFillColor(sf::Color().White);
+    restartTransform.setPosition(640, 280);
+    restartTransform.setOrigin(50, 30);
+
+    // home button
+    home = new sf::RectangleShape(sf::Vector2f(100, 60));
+    ((sf::RectangleShape*)home)->setFillColor(sf::Color().White);
+    homeTransform.setPosition(640, 380);
+    homeTransform.setOrigin(50, 30);
+
+    // quit button
+    quit = new sf::RectangleShape(sf::Vector2f(100, 60));
+    ((sf::RectangleShape*)quit)->setFillColor(sf::Color().White);
+    quitTransform.setPosition(640, 480);
+    quitTransform.setOrigin(50, 30);
+
+
 
     winRoundString = "PLAYER WINS THE ROUND";
     winString = "PLAYER WINS";
 
-    nextRoundString = "NEXT ROUND";
+    nextRoundString = "CONTINUE";
 
     scoreString[0] = "Player One Score: " + std::to_string(playerOneScore);
     scoreString[1] = "Player Two Score: " + std::to_string(playerTwoScore);
 
+    homeString = "HOME";
+    quitString = "QUIT";
+
     winText.setString(winRoundString); // win round
 
-    winText.setFillColor(sf::Color::Black);
+    // player wins text
+    winText.setFillColor(sf::Color::Red);
     winText.setFont(GetManager().font);
     winText.setCharacterSize(20);
     winText.setPosition(transform.getPosition().x - 130, transform.getPosition().y - 220);
 
+    // next round text
     nextRoundText.setString(nextRoundString);
-    nextRoundText.setFillColor(sf::Color::Black);
+    nextRoundText.setFillColor(sf::Color::Red);
     nextRoundText.setFont(GetManager().font);
-    nextRoundText.setCharacterSize(12);
-    nextRoundText.setPosition(restartTransform.getPosition().x - 40, restartTransform.getPosition().y);
+    nextRoundText.setCharacterSize(18);
+    nextRoundText.setPosition(restartTransform.getPosition().x - 45, restartTransform.getPosition().y - 10);
 
     // player one score display
     scoreText[0].setString(scoreString[0]);
-    scoreText[0].setFillColor(sf::Color::Black);
+    scoreText[0].setFillColor(sf::Color::Red);
     scoreText[0].setFont(GetManager().font);
     scoreText[0].setCharacterSize(20);
     scoreText[0].setPosition(10, 10);
 
     // player two score display
     scoreText[1].setString(scoreString[1]);
-    scoreText[1].setFillColor(sf::Color::Black);
+    scoreText[1].setFillColor(sf::Color::Red);
     scoreText[1].setFont(GetManager().font);
     scoreText[1].setCharacterSize(20);
     scoreText[1].setPosition(1000, 10);
 
+    // home button
+    homeText.setString(homeString);
+    homeText.setFillColor(sf::Color::Red);
+    homeText.setFont(GetManager().font);
+    homeText.setCharacterSize(18);
+    homeText.setPosition(homeTransform.getPosition().x - 25, homeTransform.getPosition().y - 10);
+
+    // quit button
+    quitText.setString(quitString);
+    quitText.setFillColor(sf::Color::Red);
+    quitText.setFont(GetManager().font);
+    quitText.setCharacterSize(18);
+    quitText.setPosition(quitTransform.getPosition().x - 25, quitTransform.getPosition().y - 10);
 }
 
 
@@ -86,14 +120,19 @@ void WinScene::Draw()
     {
         SetTransformValues(transform, drawable);
         SetTransformValues(restartTransform, restart);
+        SetTransformValues(homeTransform, home);
+        SetTransformValues(quitTransform, quit);
 
         // draw drawable and text
         GetManager().GetWindow().draw(winText);
         GetManager().GetWindow().draw(nextRoundText);
+        GetManager().GetWindow().draw(homeText);
+        GetManager().GetWindow().draw(quitText);
     }
 
     GetManager().GetWindow().draw(scoreText[0]);
     GetManager().GetWindow().draw(scoreText[1]);
+    
 }
 
 
@@ -113,6 +152,8 @@ void WinScene::NextRound()
 
 void WinScene::Update()
 {
+    sf::Event event;
+
     mousePos = GetMousePos();
 
     scoreString[0] = "Player One Score: " + std::to_string(playerOneScore);
@@ -130,13 +171,39 @@ void WinScene::Update()
 
     if (playerOneRoundWin || playerTwoRoundWin)
     {
-        if (mousePos.x > 590 && mousePos.x < 690 && mousePos.y > 400 && mousePos.y < 500)
+        // next round/continue
+        if (mousePos.x > 590 && mousePos.x < 690 && mousePos.y > 250 && mousePos.y < 310)
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
+                std::cout << "NEXT ROUND";
                 NextRound();
+                // random level
             }
         }
+
+        // home
+        if (mousePos.x > 590 && mousePos.x < 690 && mousePos.y > 350 && mousePos.y < 410)
+        {
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                std::cout << "home";
+                CMenu::playGame = false;
+                WinScene* winScene = new WinScene();
+                // clicks controls when home button is pressed as its in the same place
+            }
+        }
+
+        // quit
+        if (mousePos.x > 590 && mousePos.x < 690 && mousePos.y > 450 && mousePos.y < 510)
+        {
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                exit(0);
+            }
+        }
+
+
     }
 
 }
