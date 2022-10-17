@@ -103,7 +103,7 @@ CManager::CManager()
 	font.loadFromFile("fonts/SansSerif.ttf");
 
 	levelMaker = new CLevelMaker();
-	Level* level = new Level("Levels/1.txt");
+	Level* level = new Level("Levels/2.txt");
 	levelMaker->LoadLevel(level->GetPath());
 	delete level;
 	level = nullptr;
@@ -192,7 +192,7 @@ void CManager::Update()
 	}
 
 	// clear screen
-	window->clear(sf::Color::White);
+	window->clear(sf::Color(255, 136, 77, 255));
 	levelMaker->Update();
 
 	// call updated object methods
@@ -217,4 +217,9 @@ void CManager::Update()
 		delete deletedObject;
 		i--;
 	}
+}
+
+void CManager::SetPlayerPos(int player, sf::Vector2f _pos)
+{
+	players[player]->SetPosition(_pos);
 }

@@ -15,6 +15,7 @@
 #include <deque>
 
 class CUpdatedObject;
+class CPlayer;
 
 class CManager : public b2ContactListener
 {
@@ -44,6 +45,10 @@ private:
 	CLevelMaker* levelMaker = nullptr;
 
 public:
+
+	// player referances
+	CPlayer* players[2];
+
 	bool isRunning;
 	float deltaTime;
 	float timeScale;
@@ -66,6 +71,8 @@ public:
 	void PlaceObjectAtFront(CUpdatedObject* _object);
 	void Clear();
 	void Update();
+
+	void SetPlayerPos(int player, sf::Vector2f _pos);
 
 	// get set methods
 	static CManager& GetSingleton() { return *singleton; };

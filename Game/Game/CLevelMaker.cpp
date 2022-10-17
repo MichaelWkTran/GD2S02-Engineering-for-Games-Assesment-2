@@ -78,6 +78,14 @@ void CLevelMaker::LoadLevel()
 
 void CLevelMaker::LoadLevel(std::string _path)
 {
+	for (int i = 0; i < arenaSizeX; i++)
+	{
+		for (int j = 0; j < arenaSizeY; j++)
+		{
+			arena[i][j]->DeleteObject();
+		}
+	}
+
 	// set up the variables and open the file
 	std::fstream saveFile;
 	std::string Path = _path;
@@ -122,6 +130,9 @@ void CLevelMaker::LoadLevel(std::string _path)
 	inFile >> playerSpawns[0].y;
 	inFile >> playerSpawns[1].x;
 	inFile >> playerSpawns[1].y;
+
+	GetManager().SetPlayerPos(0, playerSpawns[0]);
+	GetManager().SetPlayerPos(1, playerSpawns[1]);
 
 	while (inFile)
 	{
