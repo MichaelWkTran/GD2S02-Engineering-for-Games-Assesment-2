@@ -226,4 +226,17 @@ void CManager::LoadNewLevel(std::string _path)
 	levelMaker->LoadLevel(level->GetPath());
 	delete level;
 	level = nullptr;
+	ResetPlayers();
+}
+
+void CManager::ResetPlayers()
+{
+	players[0]->TakeDamage(100);
+	players[1]->TakeDamage(100);
+	// create new player 1 object
+	players[0] = new CPlayer(sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::A,
+		sf::Keyboard::D, sf::Keyboard::V, levelMaker->playerSpawns[0], true);
+	// create new player 2 object
+	players[1] = new CPlayer(sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Left,
+		sf::Keyboard::Right, sf::Keyboard::Slash, levelMaker->playerSpawns[1], false);
 }

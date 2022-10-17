@@ -9,10 +9,10 @@ private:
 	int arenaSizeX = 0;
 	int arenaSizeY = 0;
 	CMapPlaceBase*** arena = nullptr;
-	sf::Vector2f playerSpawns[2];
-
+	
 	void LoadLevel();
 public:
+	sf::Vector2f playerSpawns[2];
 	void Render();
 	CLevelMaker();
 

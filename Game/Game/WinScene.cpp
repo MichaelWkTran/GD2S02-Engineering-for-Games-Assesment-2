@@ -141,12 +141,7 @@ void WinScene::NextRound()
 {
     if (playerOneRoundWin || playerTwoRoundWin) // if player one won the game
     {
-        // create new player 1 object
-        CPlayer* player1 = new CPlayer(sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::A,
-            sf::Keyboard::D, sf::Keyboard::V, { 800, 200 }, true);
-        // create new player 2 object
-        CPlayer* player2 = new CPlayer(sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Left,
-            sf::Keyboard::Right, sf::Keyboard::Slash, { 800, 500 }, false);
+        GetManager().ResetPlayers();
     }
 }
 
