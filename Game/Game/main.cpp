@@ -26,14 +26,14 @@ int main()
 	//manager->players[0] = player1;
 	//manager->players[1] = player2;
 	WinScene* winScene = new WinScene();
-	CWeaponBox* weaponBox1 = new CWeaponBox(sf::Vector2f(900.f, 300.f));
+	/*CWeaponBox* weaponBox1 = new CWeaponBox(sf::Vector2f(900.f, 300.f));
 	CWeaponBox* weaponBox2 = new CWeaponBox(sf::Vector2f(1000.f, 300.f));
 	CWeaponBox* weaponBox3 = new CWeaponBox(sf::Vector2f(1100.f, 300.f));
 	CWeaponBox* weaponBox4 = new CWeaponBox(sf::Vector2f(1200.f, 300.f));
 	weaponBox1->SetWeapon(0);
 	weaponBox2->SetWeapon(1);
 	weaponBox3->SetWeapon(2);
-	weaponBox4->SetWeapon(3);
+	weaponBox4->SetWeapon(3);*/
 	
 	while (manager->isRunning)
 	{
