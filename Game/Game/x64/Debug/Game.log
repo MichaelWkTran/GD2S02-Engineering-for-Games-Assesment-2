@@ -1,3 +1,4 @@
-﻿  main.cpp
-box2d-d.lib(b2_contact_solver.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_contact_solver.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
-  Game.vcxproj -> C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\Game.exe
+﻿  CPlayer.cpp
+C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CPlayer.cpp(124,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GD2S02-Assesment\Game\Game\CPlayer.cpp(123,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Game.vcxproj -> C:\Users\Admin\Documents\GD2S02-Assesment\Game\x64\Debug\Game.exe

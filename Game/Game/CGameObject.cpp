@@ -29,6 +29,8 @@ void CGameObject::Draw()
 		std::cout << "ERROR: m_pDrawable in CGameObject must inherit from sf::Transformable\n";
 		return;
 	}
+	
+
 
 	drawableTransform->setPosition(transform.getPosition());
 	drawableTransform->setScale(transform.getScale());

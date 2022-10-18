@@ -52,35 +52,35 @@ CWeaponBox::CWeaponBox(sf::Vector2f _spawnPosition)
 	boxDesign.setSize(tempBoxSize);
 
 	// change color based on current weapon
-	if (weaponInt == 0)
-	{
-		// if pistol
-		boxDesign.setFillColor(sf::Color::Red);
-	}
-	if (weaponInt == 1)
-	{
-		// if rifle
-		boxDesign.setFillColor(sf::Color::Yellow);
-	}
-	if (weaponInt == 2)
-	{
-		// if sniper
-		boxDesign.setFillColor(sf::Color::Green);
-	}
-	if (weaponInt == 3)
-	{
-		// if shotgun
-		boxDesign.setFillColor(sf::Color::Magenta);
-	}
+	//if (weaponInt == 0)
+	//{
+	//	// if pistol
+	//	boxDesign.setFillColor(sf::Color::Red);
+	//}
+	//if (weaponInt == 1)
+	//{
+	//	// if rifle
+	//	boxDesign.setFillColor(sf::Color::Yellow);
+	//}
+	//if (weaponInt == 2)
+	//{
+	//	// if sniper
+	//	boxDesign.setFillColor(sf::Color::Green);
+	//}
+	//if (weaponInt == 3)
+	//{
+	//	// if shotgun
+	//	boxDesign.setFillColor(sf::Color::Magenta);
+	//}
+	boxDesign.setFillColor(sf::Color::White);
 
 	// load and set textures
-	//boxRectTexture.loadFromFile("");
-	//boxDesignTexture.loadFromFile("");
+	
+	boxDesignTexture.loadFromFile("Assets/Sprites/tileSprites/metalCrate1.png");
 
-	//boxRect.setTexture(&boxRectTexture);
-	//boxDesign.setTexture(&boxDesignTexture);
+	
+	boxDesign.setTexture(&boxDesignTexture);
 
-	//boxUsedTexture.loadFromFile("");
 	
 	// setup b2BodyDef
 	b2BodyDef bodyDef;
@@ -136,39 +136,39 @@ void CWeaponBox::Update()
 
 	boxRect.rotate(0.05f);
 	boxDesign.rotate(0.05f);
-	if (weaponBoxUsed == false)
-	{
-		if (weaponInt == 0)
-		{
-			// if pistol
-			boxDesign.setFillColor(sf::Color::Red);
-		}
-		if (weaponInt == 1)
-		{
-			// if rifle
-			boxDesign.setFillColor(sf::Color::Yellow);
-		}
-		if (weaponInt == 2)
-		{
-			// if sniper
-			boxDesign.setFillColor(sf::Color::Green);
-		}
-		if (weaponInt == 3)
-		{
-			// if shotgun
-			boxDesign.setFillColor(sf::Color::Magenta);
-		}
-	}
-	else
-	{
-		boxDesign.setFillColor(sf::Color(102, 106, 112));
-	}
+	//if (weaponBoxUsed == false)
+	//{
+	//	if (weaponInt == 0)
+	//	{
+	//		// if pistol
+	//		boxDesign.setFillColor(sf::Color::Red);
+	//	}
+	//	if (weaponInt == 1)
+	//	{
+	//		// if rifle
+	//		boxDesign.setFillColor(sf::Color::Yellow);
+	//	}
+	//	if (weaponInt == 2)
+	//	{
+	//		// if sniper
+	//		boxDesign.setFillColor(sf::Color::Green);
+	//	}
+	//	if (weaponInt == 3)
+	//	{
+	//		// if shotgun
+	//		boxDesign.setFillColor(sf::Color::Magenta);
+	//	}
+	//}
+	//else
+	//{
+	//	boxDesign.setFillColor(sf::Color(102, 106, 112));
+	//}
 
-	if (respawnTimerCounter >= respawnTimer)
+	/*if (respawnTimerCounter >= respawnTimer)
 	{
 		respawnTimerCounter = 0.0f;
 		SetUnused();
-	}
+	}*/
 }
 
 // display boxes to frame
@@ -202,7 +202,8 @@ void CWeaponBox::BeginContact(CPhysicsBody* _other)
 		{
 			tempPlayer->NewWeapon(weaponInt);
 		}
-		SetUsed();
+		//SetUsed();
+		this->DeleteObject();
 		
 	}
 	
