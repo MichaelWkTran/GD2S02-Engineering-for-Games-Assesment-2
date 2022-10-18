@@ -142,6 +142,8 @@ void WinScene::NextRound()
     if (playerOneRoundWin || playerTwoRoundWin) // if player one won the game
     {
         GetManager().ResetPlayers();
+        GetManager().ResetWeaponTimer();
+        GetManager().spawnWeapons = true;
     }
 }
 

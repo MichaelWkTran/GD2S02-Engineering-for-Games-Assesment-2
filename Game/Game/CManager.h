@@ -25,6 +25,9 @@ private:
 	static CManager* singleton;
 	std::deque<CUpdatedObject*> objectsInWorld;
 
+	float weaponSpawnTime = 10.0f;
+	float counterWeaponSpawnTime = 10.0f;
+
 	// window and view variables
 	sf::Vector2f screenSize;
 	sf::View view;
@@ -52,6 +55,7 @@ public:
 	bool isRunning;
 	float deltaTime;
 	float timeScale;
+	bool spawnWeapons = false;
 	sf::Font font;
 
 	// physics variables
@@ -72,6 +76,7 @@ public:
 	void PlaceObjectAtFront(CUpdatedObject* _object);
 	void Clear();
 	void Update();
+	void ResetWeaponTimer();
 
 	void SetPlayerPos(int player, sf::Vector2f _pos);
 	void LoadNewLevel(std::string _path);
