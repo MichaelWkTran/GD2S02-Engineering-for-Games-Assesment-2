@@ -80,6 +80,7 @@ CManager::CManager()
 	isRunning = true;
 	deltaTime = 0.0f;
 	timeScale = 1.0f;
+	soundVolume = 1.f;
 
 	// sets up the window
 	// sets up the view

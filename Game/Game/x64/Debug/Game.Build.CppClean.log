@@ -1,6 +1,5 @@
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\vc142.pdb
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\vc142.idb
-c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\main.obj
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\level.obj
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\cweaponui.obj
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\cweapons.obj
@@ -11,6 +10,8 @@ c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\cturret.obj
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\cspiketrap.obj
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\csound.obj
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\cphysicsbody.obj
+c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\cmenu.obj
+c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\cmapselector.obj
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\cmapplacebase.obj
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\cgameobject.obj
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\cmanager.obj
@@ -21,6 +22,7 @@ c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\cground.obj
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\cbullet.obj
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\winscene.obj
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\mathutils.obj
+c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\main.obj
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\cplayer.obj
 c:\users\admin\documents\gd2s02-assesment\game\x64\debug\game.exe
 c:\users\admin\documents\gd2s02-assesment\game\game\x64\debug\game.ilk

@@ -20,6 +20,11 @@ class CWeaponUI;
 
 class CPlayer : public CPhysicsBody, public CGameObject
 {
+private:
+	sf::Texture playerTex;
+	sf::IntRect texRect;
+	sf::Clock animClock;
+
 public:
 	static std::set<CPlayer*> playersInWorld;
 

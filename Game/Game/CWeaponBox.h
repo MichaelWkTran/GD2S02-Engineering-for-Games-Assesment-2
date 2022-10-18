@@ -17,10 +17,10 @@ private:
 
 	sf::RectangleShape boxRect;
 	sf::RectangleShape boxDesign;
-	sf::Texture boxRectTexture;
+	//sf::Texture boxRectTexture;
 	sf::Texture boxDesignTexture;
 
-	sf::Texture boxUsedTexture;
+	//sf::Texture boxUsedTexture;
 
 	sf::Vector2f boxSize;
 

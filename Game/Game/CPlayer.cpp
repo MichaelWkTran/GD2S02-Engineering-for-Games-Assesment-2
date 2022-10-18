@@ -52,6 +52,8 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
 
     tags.emplace("Player");
 
+    texRect = sf::IntRect(0, 0, 48, 48);
+
     // setup CGameObject
 	float radius = 14.0f;
 
@@ -60,7 +62,7 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
 
     // setup sf::Drawable
 	drawable = new sf::RectangleShape(sf::Vector2f(radius, radius) * 2.0f);
-	((sf::RectangleShape*)drawable)->setFillColor(sf::Color().Red);
+	((sf::RectangleShape*)drawable)->setFillColor(sf::Color().White);
 	transform.setPosition(_spawnPos);
 
     // setup b2BodyDef
@@ -89,12 +91,16 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
     {
         playerHealthBar = new CHealthBar(sf::Vector2f(5.f, 625.f), this);
         playerWeaponUI = new CWeaponUI(sf::Vector2f(0.f, 645.f), sf::Vector2f(5.f, 655.f), sf::Vector2f(10.f, 695.f), this);
+        playerTex.loadFromFile("Assets/Sprites/playerSprites/playerBlueSprite.png");
     }
     else
     {
         playerHealthBar = new CHealthBar(sf::Vector2f(1125.f, 625.f), this);
         playerWeaponUI = new CWeaponUI(sf::Vector2f(1125.f, 645.f), sf::Vector2f(1130.f, 655.f), sf::Vector2f(1135.f, 695.f), this);
+        playerTex.loadFromFile("Assets/Sprites/playerSprites/playerRedSprite.png");
     }
+    ((sf::RectangleShape*)drawable)->setTexture(&playerTex);
+    ((sf::RectangleShape*)drawable)->setTextureRect(texRect);
 }
 
 CPlayer::~CPlayer()
@@ -108,6 +114,9 @@ void CPlayer::SetPosition(sf::Vector2f _pos)
 
 void CPlayer::Update()
 {
+    
+    
+
     // player movement
     b2Vec2 movement = b2Vec2
     (
@@ -126,6 +135,85 @@ void CPlayer::Update()
     if (movement != b2Vec2(0, 0))
     {
         facingDirection = b2Vec2(movement.x, movement.y);
+    }
+
+    //animation
+    if (movement.x > 0)
+    {
+        if (animClock.getElapsedTime().asSeconds() > 0.3f)
+        {
+            texRect.left = 144;
+            if (texRect.top == 144)
+            {
+                texRect.top = 0;
+            }
+            else
+            {
+                texRect.top += 48;
+            }
+            ((sf::RectangleShape*)drawable)->setTextureRect(texRect);
+            animClock.restart();
+        }
+    }
+    else if (movement.x < 0)
+    {
+        if (animClock.getElapsedTime().asSeconds() > 0.3f)
+        {
+            texRect.left = 48;
+            if (texRect.top == 144)
+            {
+                texRect.top = 0;
+            }
+            else
+            {
+                texRect.top += 48;
+            }
+            ((sf::RectangleShape*)drawable)->setTextureRect(texRect);
+            animClock.restart();
+        }
+    }
+    else if (movement.x == 0)
+    {
+        if (movement.y > 0)
+        {
+            if (animClock.getElapsedTime().asSeconds() > 0.3f)
+            {
+                texRect.left = 0;
+                if (texRect.top == 144)
+                {
+                    texRect.top = 0;
+                }
+                else
+                {
+                    texRect.top += 48;
+                }
+                ((sf::RectangleShape*)drawable)->setTextureRect(texRect);
+                animClock.restart();
+            }
+        }
+        else if (movement.y < 0)
+        {
+            if (animClock.getElapsedTime().asSeconds() > 0.3f)
+            {
+                texRect.left = 96;
+                if (texRect.top == 144)
+                {
+                    texRect.top = 0;
+                }
+                else
+                {
+                    texRect.top += 48;
+                }
+                ((sf::RectangleShape*)drawable)->setTextureRect(texRect);
+                animClock.restart();
+            }
+        }
+    }
+    else
+    {
+        texRect.top = 0;
+        texRect.left = 0;
+        ((sf::RectangleShape*)drawable)->setTextureRect(texRect);
     }
 
     // cap player health
@@ -218,6 +306,8 @@ void CPlayer::ApplyRecoil(b2Vec2 _recoil)
 
 void CPlayer::Draw()
 {
+    
+
     if (!visible) return;
 
     // transform the drawable to m_Transfrom
