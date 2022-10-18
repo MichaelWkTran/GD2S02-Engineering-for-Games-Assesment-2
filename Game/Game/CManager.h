@@ -76,11 +76,12 @@ public:
 	void SetPlayerPos(int player, sf::Vector2f _pos);
 	void LoadNewLevel(std::string _path);
 	void ResetPlayers();
+	void SetPlayerReferanceNull(CPlayer* _player);
 
 	// get set methods
 	static CManager& GetSingleton() { return *singleton; };
-	b2World& GetPhysicsWorld() { return *physicsWorld; }
-	sf::RenderWindow& GetWindow() { return *window; }
+	b2World& GetPhysicsWorld() { return *physicsWorld; };
+	sf::RenderWindow& GetWindow() { return *window; };
 	void SetVolume(float _volume);
 	float GetVolume();
 };

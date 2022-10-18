@@ -18,7 +18,7 @@ class CGameObject : public CUpdatedObject
 {
 protected:
 	// drawing variables
-	sf::Drawable* drawable;
+	sf::Drawable* drawable = nullptr;
 
 public:
 	// refrencing variables
@@ -46,5 +46,5 @@ public:
 	virtual void Draw() override;
 
 	// get set methods
-	sf::Drawable* GetDrawable() { return drawable; }
+	sf::Drawable* GetDrawable() { return drawable; };
 };

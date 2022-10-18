@@ -56,6 +56,7 @@ public:
 	void AddGunToRender();
 
 	void TakeDamage(float _damage);
+	void Kill();
 	void NewWeapon(int _heldWeaponInt);
 	void ApplyRecoil(b2Vec2 _recoil);
 
