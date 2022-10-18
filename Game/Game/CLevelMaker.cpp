@@ -45,6 +45,18 @@ void CLevelMaker::SpawnWeaponBox()
 
 void CLevelMaker::CleanUp()
 {
+	for (int i = 0; i < arenaSizeX; i++)
+	{
+		for (int j = 0; j < arenaSizeY; j++)
+		{
+			if (arena[i][j] != nullptr)
+			{
+				arena[i][j]->DeleteObject();
+				arena[i][j] = nullptr;
+			}
+		}
+	}
+
 	for (int i = 0; i < GetManager().weaponBoxes.size(); i++)
 	{
 		GetManager().weaponBoxes[i]->DeleteObject();
@@ -113,14 +125,6 @@ void CLevelMaker::LoadLevel()
 
 void CLevelMaker::LoadLevel(std::string _path)
 {
-	for (int i = 0; i < arenaSizeX; i++)
-	{
-		for (int j = 0; j < arenaSizeY; j++)
-		{
-			arena[i][j]->DeleteObject();
-		}
-	}
-
 	CleanUp();
 
 	// set up the variables and open the file

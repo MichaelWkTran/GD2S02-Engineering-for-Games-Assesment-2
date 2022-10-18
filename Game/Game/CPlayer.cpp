@@ -271,8 +271,6 @@ void CPlayer::Kill()
 
     heldWeapon->DeleteObject();
     heldWeapon->playerObject = nullptr;
-
-    GetManager().levelMaker->CleanUp();
 }
 
 void CPlayer::NewWeapon(int _heldWeaponInt)
