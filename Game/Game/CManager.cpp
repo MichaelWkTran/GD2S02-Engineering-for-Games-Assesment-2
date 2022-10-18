@@ -243,3 +243,13 @@ void CManager::ResetPlayers()
 	players[1] = new CPlayer(sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Left,
 		sf::Keyboard::Right, sf::Keyboard::Slash, levelMaker->playerSpawns[1], false);
 }
+
+void CManager::SetVolume(float _volume)
+{
+	soundVolume = _volume;
+}
+
+float CManager::GetVolume()
+{
+	return soundVolume;
+}
