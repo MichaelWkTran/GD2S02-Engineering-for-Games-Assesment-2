@@ -153,7 +153,7 @@ void CManager::Update()
 			// resize the window
 			view.setSize((float)event.size.width, (float)event.size.height);
 			view.setCenter(0, 0);
-			Zoom(screenSize.y / event.size.height);
+			//Zoom(screenSize.y / event.size.height);
 			break;
 		}
 		}
@@ -239,4 +239,14 @@ void CManager::ResetPlayers()
 	// create new player 2 object
 	players[1] = new CPlayer(sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Left,
 		sf::Keyboard::Right, sf::Keyboard::Slash, levelMaker->playerSpawns[1], false);
+}
+
+void CManager::SetVolume(float _volume)
+{
+	soundVolume = _volume;
+}
+
+float CManager::GetVolume()
+{
+	return soundVolume;
 }

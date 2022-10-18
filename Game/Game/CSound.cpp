@@ -9,6 +9,7 @@
 // Authors: Michael Wai Kit Tran
 
 #include "CSound.h"
+#include "CManager.h"
 
 const char* const CSound::soundDirective = "Assets/Sounds/";
 std::map<std::string, sf::SoundBuffer*> CSound::soundBuffers;
@@ -35,6 +36,7 @@ CSound::CSound(const char* const _soundDirectory, bool _startOnConstructor, bool
 	sound.setBuffer(*soundBuffers.at(fullSoundDirectory));
 
 	// play the sound when it is created
+	if (_startOnConstructor) sound.setVolume(GetManager().GetVolume());
 	if (_startOnConstructor) sound.play();
 }
 
@@ -42,4 +44,9 @@ void CSound::Update()
 {
 	// delete the sound object when it has finihed playing and deleteWhenFinished is true
 	if (deleteWhenFinished && sound.getStatus() == sf::Sound::Stopped) DeleteObject();
+}
+
+void CSound::SetVolume(float _volume)
+{
+	soundVolume = _volume;
 }
