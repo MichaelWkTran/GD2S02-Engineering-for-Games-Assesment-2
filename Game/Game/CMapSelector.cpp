@@ -138,8 +138,7 @@ void CMapSelector::Update()
             {
                 GetManager().LoadNewLevel("1");
                 CMenu::mapSelectScreen = false;
-
-                
+                GetManager().spawnWeapons = true;
             }
         }
 
@@ -150,6 +149,7 @@ void CMapSelector::Update()
             {
                 GetManager().LoadNewLevel("2");
                 CMenu::mapSelectScreen = false;
+                GetManager().spawnWeapons = true;
             }
         }
 
@@ -160,6 +160,7 @@ void CMapSelector::Update()
             {
                 GetManager().LoadNewLevel("3");
                 CMenu::mapSelectScreen = false;
+                GetManager().spawnWeapons = true;
             }
         }
 
@@ -170,6 +171,7 @@ void CMapSelector::Update()
             {
                 GetManager().LoadNewLevel("4");
                 CMenu::mapSelectScreen = false;
+                GetManager().spawnWeapons = true;
             }
         }
 
@@ -219,4 +221,5 @@ void CMapSelector::LoadRandomLevel()
 {
     int i = rand() % 5 + 1;
     GetManager().LoadNewLevel(std::to_string(i));
+    GetManager().spawnWeapons = true;
 }

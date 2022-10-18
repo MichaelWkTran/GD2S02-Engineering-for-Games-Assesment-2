@@ -3,6 +3,7 @@
 #include "CManager.h"
 #include "CSpikeTrap.h"
 #include "CTurret.h"
+#include "CWeaponBox.h"
 #include <Shobjidl.h.>
 #include <Shlwapi.h>
 #include <atlbase.h>
@@ -21,17 +22,20 @@ void CLevelMaker::Render()
 	}
 }
 
-CLevelMaker::CLevelMaker()
+void CLevelMaker::SpawnWeaponBox()
 {
-	
-}
-
-void CLevelMaker::Update()
-{
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+	int x = rand() % arenaSizeX;
+	int y = rand() % arenaSizeY;
+	bool run = true;
+	while (!dynamic_cast<CGround*>(arena[x][y]))
 	{
-		LoadLevel();
+		x = rand() % arenaSizeX;
+		y = rand() % arenaSizeY;
 	}
+
+	sf::Vector2f spawnPos = arena[x][y]->transform.getPosition();
+
+	new CWeaponBox(spawnPos);
 }
 
 void CLevelMaker::LoadLevel()

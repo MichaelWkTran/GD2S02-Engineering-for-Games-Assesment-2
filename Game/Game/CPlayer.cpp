@@ -174,6 +174,7 @@ void CPlayer::TakeDamage(float _damage)
     if (health <= 0.0f)
     {
         GetManager().SetPlayerReferanceNull(this);
+        GetManager().spawnWeapons = false;
         DeleteObject();
         //heldGun->DeleteObject();
         //heldGun->ownerPlayer = nullptr;
@@ -196,6 +197,7 @@ void CPlayer::TakeDamage(float _damage)
 void CPlayer::Kill()
 {
     GetManager().SetPlayerReferanceNull(this);
+    GetManager().spawnWeapons = false;
     DeleteObject();
 
     heldWeapon = NULL;

@@ -14,9 +14,8 @@ private:
 public:
 	sf::Vector2f playerSpawns[2];
 	void Render();
-	CLevelMaker();
+	void SpawnWeaponBox();
 
-	void Update();
 	void LoadLevel(std::string _path);
 };
 

@@ -1,3 +1,76 @@
-﻿  main.cpp
-box2d-d.lib(b2_contact_solver.obj) : warning LNK4099: PDB 'box2d.pdb' was not found with 'box2d-d.lib(b2_contact_solver.obj)' or at 'C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\box2d.pdb'; linking object as if no debug info
+﻿  CManager.cpp
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(90,70): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(90,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(129,48): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CManager.cpp(129,48): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+  CMapSelector.cpp
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(28,74): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(28,61): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(30,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(30,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(34,74): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(34,61): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(36,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(36,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(40,74): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(40,61): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(42,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(42,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(46,74): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(46,61): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(48,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\CMapSelector.cpp(48,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  WinScene.cpp
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\WinScene.cpp(153,15): warning C4101: 'event': unreferenced local variable
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\WinScene.cpp(235,28): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\Game\WinScene.cpp(235,25): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
   Game.vcxproj -> C:\Users\GGPC\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\Game.exe

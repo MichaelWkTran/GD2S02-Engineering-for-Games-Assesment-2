@@ -190,7 +190,15 @@ void CManager::Update()
 
 	// clear screen
 	window->clear(sf::Color(255, 136, 77, 255));
-	levelMaker->Update();
+	if (spawnWeapons)
+	{
+		counterWeaponSpawnTime += deltaTime;
+		if (counterWeaponSpawnTime >= weaponSpawnTime)
+		{
+			levelMaker->SpawnWeaponBox();
+			counterWeaponSpawnTime = 0.0f;
+		}
+	}
 
 	// call updated object methods
 	for (auto& pUpdatedObject : objectsInWorld) pUpdatedObject->Start();
@@ -214,6 +222,11 @@ void CManager::Update()
 		delete deletedObject;
 		i--;
 	}
+}
+
+void CManager::ResetWeaponTimer()
+{
+	counterWeaponSpawnTime = weaponSpawnTime;
 }
 
 void CManager::SetPlayerPos(int player, sf::Vector2f _pos)
