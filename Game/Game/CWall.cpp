@@ -20,7 +20,7 @@ std::shared_ptr<sf::Texture> CWall::unbreakableWallTexture;
 CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
 {
     isBreakable = _isBreakable;
-    health = 10.0f;
+    health = 3.0f;
     if (!isBreakable)
     {
         objType = MapPlaceableObjects::UnbreakableWall;
@@ -89,5 +89,9 @@ void CWall::BeginContact(CPhysicsBody* _other)
     health -= bullet->damage;
 
     // delete the wall if it has no health
-    if (health <= 0) DeleteObject();
+    if (health <= 0)
+    {
+        GetManager().ReplaceWithGround(this);
+        DeleteObject();
+    }
 }

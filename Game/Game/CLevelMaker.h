@@ -1,6 +1,9 @@
 #pragma once
 #include "CWall.h"
 #include "GlobalEnumInclude.h"
+#include <vector>
+
+class CWeaponBox;
 
 class CLevelMaker
 {
@@ -15,6 +18,9 @@ public:
 	sf::Vector2f playerSpawns[2];
 	void Render();
 	void SpawnWeaponBox();
+
+	void CleanUp();
+	void ReplaceWithGround(CWall* _block);
 
 	void LoadLevel(std::string _path);
 };

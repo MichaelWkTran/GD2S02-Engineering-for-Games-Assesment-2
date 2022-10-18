@@ -18,6 +18,7 @@
 #include "CGameObject.h"
 #include "CUpdatedObject.h"
 #include "CWeaponUI.h"
+#include "CLevelMaker.h"
 #include <iostream>
 
 #include "WinScene.h"
@@ -108,15 +109,8 @@ CPlayer::~CPlayer()
     playersInWorld.erase(this);
 }
 
-void CPlayer::SetPosition(sf::Vector2f _pos)
-{
-}
-
 void CPlayer::Update()
 {
-    
-    
-
     // player movement
     b2Vec2 movement = b2Vec2
     (
@@ -264,6 +258,7 @@ void CPlayer::TakeDamage(float _damage)
         GetManager().SetPlayerReferanceNull(this);
         GetManager().spawnWeapons = false;
         DeleteObject();
+        GetManager().levelMaker->CleanUp();
         //heldGun->DeleteObject();
         //heldGun->ownerPlayer = nullptr;
         heldWeapon->DeleteObject();
@@ -287,8 +282,6 @@ void CPlayer::Kill()
     GetManager().SetPlayerReferanceNull(this);
     GetManager().spawnWeapons = false;
     DeleteObject();
-
-    heldWeapon = NULL;
 }
 
 void CPlayer::NewWeapon(int _heldWeaponInt)

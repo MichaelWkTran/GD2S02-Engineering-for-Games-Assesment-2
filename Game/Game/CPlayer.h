@@ -55,8 +55,6 @@ public:
 	CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::Key _left, sf::Keyboard::Key _right, sf::Keyboard::Key _shoot, sf::Vector2f _spawnPos, bool _isPlayerOne);
 	~CPlayer();
 
-	void SetPosition(sf::Vector2f _pos);
-
 	virtual void Update() override;
 	void AddGunToRender();
 

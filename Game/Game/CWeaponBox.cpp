@@ -203,7 +203,14 @@ void CWeaponBox::BeginContact(CPhysicsBody* _other)
 			tempPlayer->NewWeapon(weaponInt);
 		}
 		//SetUsed();
-		this->DeleteObject();
+		for (int i = 0; i < GetManager().weaponBoxes.size(); i++)
+		{
+			if (GetManager().weaponBoxes[i] == this)
+			{
+				GetManager().weaponBoxes[i]->DeleteObject();
+				GetManager().weaponBoxes.erase(GetManager().weaponBoxes.begin() + i);
+			}
+		}
 		
 	}
 	

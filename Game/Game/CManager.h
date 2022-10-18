@@ -16,6 +16,8 @@
 
 class CUpdatedObject;
 class CPlayer;
+class CWeaponBox;
+class CWall;
 
 class CManager : public b2ContactListener
 {
@@ -26,7 +28,7 @@ private:
 	std::deque<CUpdatedObject*> objectsInWorld;
 
 	float weaponSpawnTime = 10.0f;
-	float counterWeaponSpawnTime = 10.0f;
+	float counterWeaponSpawnTime = 0.0f;
 
 	// window and view variables
 	sf::Vector2f screenSize;
@@ -45,12 +47,15 @@ private:
 	virtual void PreSolve(b2Contact* _contact, const b2Manifold* _oldManifold) override;
 	virtual void PostSolve(b2Contact* _contact, const b2ContactImpulse* _impulse) override;
 
-	CLevelMaker* levelMaker = nullptr;
-
 public:
 
 	// player referances
 	CPlayer* players[2];
+
+	std::vector<CWeaponBox*> weaponBoxes;
+	int maxBoxes = 10;
+
+	CLevelMaker* levelMaker = nullptr;
 
 	bool isRunning;
 	float deltaTime;
@@ -77,11 +82,11 @@ public:
 	void Clear();
 	void Update();
 	void ResetWeaponTimer();
-
-	void SetPlayerPos(int player, sf::Vector2f _pos);
 	void LoadNewLevel(std::string _path);
 	void ResetPlayers();
 	void SetPlayerReferanceNull(CPlayer* _player);
+
+	void ReplaceWithGround(CWall* _block);
 
 	// get set methods
 	static CManager& GetSingleton() { return *singleton; };

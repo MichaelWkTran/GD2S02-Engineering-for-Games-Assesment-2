@@ -32,3 +32,13 @@
 # Folders
 /ipch/
 *.ipch
+Game/.vs/Game/v16/Browse.VC.opendb
+Game/.vs/Game/v16/Browse.VC.db
+Game/.vs/Game/v16/.suo
+*.recipe
+Game/Game/x64/Debug/Game.exe.recipe
+*.ilk
+*.log
+*.idb
+*.pdb
+Game/Game/x64/Debug/Game.tlog/Game.lastbuildstate

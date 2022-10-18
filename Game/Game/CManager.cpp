@@ -12,6 +12,7 @@
 #include "CUpdatedObject.h"
 #include "CGameObject.h"
 #include "CPhysicsBody.h"
+#include "CWall.h"
 #include "box2d\box2D.h"
 #include "CPlayer.h"
 #include "Level.h"
@@ -227,12 +228,7 @@ void CManager::Update()
 
 void CManager::ResetWeaponTimer()
 {
-	counterWeaponSpawnTime = weaponSpawnTime;
-}
-
-void CManager::SetPlayerPos(int player, sf::Vector2f _pos)
-{
-	players[player]->SetPosition(_pos);
+	counterWeaponSpawnTime = 0;
 }
 
 void CManager::LoadNewLevel(std::string _path)
@@ -272,6 +268,11 @@ void CManager::SetPlayerReferanceNull(CPlayer* _player)
 			players[i] = nullptr;
 		}
 	}
+}
+
+void CManager::ReplaceWithGround(CWall* _block)
+{
+	levelMaker->ReplaceWithGround(_block);
 }
 
 void CManager::SetVolume(float _volume)
