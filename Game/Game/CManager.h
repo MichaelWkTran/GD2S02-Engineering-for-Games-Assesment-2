@@ -61,6 +61,7 @@ public:
 	float accumulatedTime;
 	int velocityIterations;
 	int positionIterations;
+	float soundVolume = 1.f;
 
 	// methods
 	CManager();
@@ -80,6 +81,8 @@ public:
 	static CManager& GetSingleton() { return *singleton; };
 	b2World& GetPhysicsWorld() { return *physicsWorld; }
 	sf::RenderWindow& GetWindow() { return *window; }
+	void SetVolume(float _volume);
+	float GetVolume();
 };
 
 #define GetManager CManager::GetSingleton
