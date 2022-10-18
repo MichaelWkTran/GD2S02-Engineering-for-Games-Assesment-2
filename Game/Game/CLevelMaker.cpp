@@ -45,7 +45,6 @@ void CLevelMaker::SpawnWeaponBox()
 
 void CLevelMaker::CleanUp()
 {
-
 	for (int i = 0; i < GetManager().weaponBoxes.size(); i++)
 	{
 		GetManager().weaponBoxes[i]->DeleteObject();

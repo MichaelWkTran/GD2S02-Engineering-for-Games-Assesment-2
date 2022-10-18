@@ -222,23 +222,9 @@ void CPlayer::Update()
     }
 
 
-    if (WinScene::playerOneRoundWin)
+    if (WinScene::playerOneRoundWin || WinScene::playerTwoRoundWin)
     {
-        if (isPlayerOne)
-        {
-            DeleteObject();
-            heldWeapon->DeleteObject();
-            heldWeapon->playerObject = nullptr;
-        }
-    }
-    if (WinScene::playerTwoRoundWin)
-    {
-        if (!isPlayerOne)
-        {
-            DeleteObject();
-            heldWeapon->DeleteObject();
-            heldWeapon->playerObject = nullptr;
-        }
+        Kill();
     }
 
 }
@@ -282,6 +268,11 @@ void CPlayer::Kill()
     GetManager().SetPlayerReferanceNull(this);
     GetManager().spawnWeapons = false;
     DeleteObject();
+
+    heldWeapon->DeleteObject();
+    heldWeapon->playerObject = nullptr;
+
+    GetManager().levelMaker->CleanUp();
 }
 
 void CPlayer::NewWeapon(int _heldWeaponInt)

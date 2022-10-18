@@ -42,3 +42,12 @@ Game/Game/x64/Debug/Game.exe.recipe
 *.idb
 *.pdb
 Game/Game/x64/Debug/Game.tlog/Game.lastbuildstate
+Game/.vs/Game/v16/Browse.VC.db-shm
+*.idb
+*.tlog
+*.ilk
+*.recipe
+*.lastbuildstate
+*.idb
+*.pdb
+*.lastbuildstate
