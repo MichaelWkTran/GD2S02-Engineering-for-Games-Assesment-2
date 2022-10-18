@@ -208,6 +208,10 @@ void CWeapons::Update()
 		sf::Drawable* playerDrawable = playerObject->GetDrawable();
 		transform.setPosition(dynamic_cast<sf::Transformable*>(playerDrawable)->getPosition());
 	}
+	else
+	{
+		DeleteObject();
+	}
 }
 
 // repostition and draw weapon box to frame

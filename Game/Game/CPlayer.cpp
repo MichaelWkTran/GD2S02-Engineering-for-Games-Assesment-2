@@ -87,23 +87,14 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
 
     if (isPlayerOne)
     {
-        healthString = "Player One Health: " + std::to_string(health);
-        healthText.setPosition({ 10, 10 });
         playerHealthBar = new CHealthBar(sf::Vector2f(5.f, 625.f), this);
         playerWeaponUI = new CWeaponUI(sf::Vector2f(0.f, 645.f), sf::Vector2f(5.f, 655.f), sf::Vector2f(10.f, 695.f), this);
     }
     else
     {
-        healthString = "Player Two Health: " + std::to_string(health);
-        healthText.setPosition({ 1000, 10 });
         playerHealthBar = new CHealthBar(sf::Vector2f(1125.f, 625.f), this);
         playerWeaponUI = new CWeaponUI(sf::Vector2f(1125.f, 645.f), sf::Vector2f(1130.f, 655.f), sf::Vector2f(1135.f, 695.f), this);
     }
-    healthText.setString(healthString);
-    healthText.setFillColor(sf::Color::Black);
-    healthText.setFont(GetManager().font);
-    healthText.setCharacterSize(20);
-
 }
 
 CPlayer::~CPlayer()
@@ -178,19 +169,11 @@ void CPlayer::AddGunToRender()
 void CPlayer::TakeDamage(float _damage)
 {
     health -= _damage;
-    if (isPlayerOne)
-    {
-        healthString = "Player One Health: " + std::to_string(health);
-    }
-    else
-    {
-        healthString = "Player Two Health: " + std::to_string(health);
-    }
-    healthText.setString(healthString);
 
     // player death
     if (health <= 0.0f)
     {
+        GetManager().SetPlayerReferanceNull(this);
         DeleteObject();
         //heldGun->DeleteObject();
         //heldGun->ownerPlayer = nullptr;
@@ -208,6 +191,14 @@ void CPlayer::TakeDamage(float _damage)
             WinScene::playerOneRoundWin = true;
         }
     }
+}
+
+void CPlayer::Kill()
+{
+    GetManager().SetPlayerReferanceNull(this);
+    DeleteObject();
+
+    heldWeapon = NULL;
 }
 
 void CPlayer::NewWeapon(int _heldWeaponInt)
