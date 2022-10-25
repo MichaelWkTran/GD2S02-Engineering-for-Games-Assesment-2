@@ -114,8 +114,8 @@ void CPlayer::Update()
     // player movement
     b2Vec2 movement = b2Vec2
     (
-        sf::Keyboard::isKeyPressed(right) - sf::Keyboard::isKeyPressed(left), 
-        sf::Keyboard::isKeyPressed(down) - sf::Keyboard::isKeyPressed(up)
+        (float)(sf::Keyboard::isKeyPressed(right) - sf::Keyboard::isKeyPressed(left)), 
+        (float)(sf::Keyboard::isKeyPressed(down) - sf::Keyboard::isKeyPressed(up))
     );
     movement.Normalize();
     movement *= moveSpeed;

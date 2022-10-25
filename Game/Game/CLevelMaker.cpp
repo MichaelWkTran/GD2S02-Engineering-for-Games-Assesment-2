@@ -72,7 +72,7 @@ void CLevelMaker::ReplaceWithGround(CWall* _block)
 		{
 			if (arena[i][j] == _block)
 			{
-				arena[i][j] = new CGround(sf::Vector2f(32 * i + 200, 32 * j + 100), 0);
+				arena[i][j] = new CGround(sf::Vector2f((32.0f * i) + 200.0f, (32.0f * j) + 100.0f), 0.0f);
 				GetManager().PlaceObjectAtFront(arena[i][j]);
 				i = arenaSizeX;
 				j = arenaSizeY;
@@ -184,19 +184,19 @@ void CLevelMaker::LoadLevel(std::string _path)
 		switch (objType)
 		{
 		case Ground:
-			arena[k][l] = new CGround(sf::Vector2f(32 * k + 200, 32 * l + 100), rotation);
+			arena[k][l] = new CGround(sf::Vector2f((32.0f * k) + 200.0f, (32.0f * l) + 100.0f), rotation);
 			break;
 		case UnbreakableWall:
-			arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l + 100), rotation);
+			arena[k][l] = new CWall(sf::Vector2f((32.0f * k) + 200.0f, (32.0f * l) + 100.0f), rotation);
 			break;
 		case BreakableWall:
-			arena[k][l] = new CWall(sf::Vector2f(32 * k + 200, 32 * l + 100), rotation, true);
+			arena[k][l] = new CWall(sf::Vector2f((32.0f * k) + 200.0f, (32.0f * l) + 100.0f), rotation, true);
 			break;
 		case SpikeTrap:
-			arena[k][l] = new CSpikeTrap(sf::Vector2f(32 * k + 200, 32 * l + 100));
+			arena[k][l] = new CSpikeTrap(sf::Vector2f((32.0f * k) + 200.0f, (32.0f * l) + 100.0f));
 			break;
 		case Turret:
-			arena[k][l] = new CTurret(sf::Vector2f(32 * k + 200, 32 * l + 100));
+			arena[k][l] = new CTurret(sf::Vector2f((32.0f * k) + 200.0f, (32.0f * l) + 100.0f));
 			break;
 		}
 	}

@@ -89,7 +89,7 @@ CManager::CManager()
 	view.setCenter(0, 0);
 	
 	// sets up the renderwindow
-	window = new sf::RenderWindow(sf::VideoMode(screenSize.x, screenSize.y), "Game");
+	window = new sf::RenderWindow(sf::VideoMode((unsigned int)screenSize.x, (unsigned int)screenSize.y), "Game");
 	event = sf::Event();
 	
 	// set up physics
@@ -128,7 +128,7 @@ void CManager::PlaceObjectAtFront(CUpdatedObject* _object)
 
 void CManager::Clear()
 {
-	const int objectsCount = objectsInWorld.size();
+	const int objectsCount = (int)objectsInWorld.size();
 	for (int i = 0; i < objectsCount; i++)
 	{
 		delete objectsInWorld.front();

@@ -243,15 +243,15 @@ void CWeapons::Shoot()
 		if (numberOfProjectiles == 1)
 		{
 			// spawn bullet
-			new CBullet(damage, projectileSpeed, projectileMomentum, projectileRange, projectileSpawnPos, *playerFacingVector);
+			new CBullet((float)damage, projectileSpeed, projectileMomentum, projectileRange, projectileSpawnPos, *playerFacingVector);
 			new CSound("gun7.wav");
 		}
 		else if (numberOfProjectiles == 3)
 		{
 			// spawn bullet
-			new CBullet(damage, projectileSpeed, projectileMomentum, projectileRange, projectileSpawnPos, *playerFacingVector);
-			new CBullet(damage, projectileSpeed, projectileMomentum, projectileRange, projectileSpawnPos, b2Vec2(playerFacingVector->x - 1, playerFacingVector->y + 0.5));
-			new CBullet(damage, projectileSpeed, projectileMomentum, projectileRange, projectileSpawnPos, b2Vec2(playerFacingVector->x - 0.5, playerFacingVector->y + 1));
+			new CBullet((float)damage, projectileSpeed, projectileMomentum, projectileRange, projectileSpawnPos, *playerFacingVector);
+			new CBullet((float)damage, projectileSpeed, projectileMomentum, projectileRange, projectileSpawnPos, b2Vec2(playerFacingVector->x - 1.0f, playerFacingVector->y + 0.5f));
+			new CBullet((float)damage, projectileSpeed, projectileMomentum, projectileRange, projectileSpawnPos, b2Vec2(playerFacingVector->x - 0.5f, playerFacingVector->y + 1.0f));
 			new CSound("gun1.wav");
 		}
 		fireRateCounter = 0;

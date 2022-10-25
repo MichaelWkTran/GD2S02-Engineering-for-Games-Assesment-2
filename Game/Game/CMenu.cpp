@@ -44,31 +44,31 @@ CMenu::CMenu()
     bannerTransform.setPosition(640, 180);
 
     // (PLAY BUTTON)
-    playDrawable = new sf::RectangleShape(sf::Vector2f(buttonWidth, buttonHeight));
+    playDrawable = new sf::RectangleShape(sf::Vector2f((float)buttonWidth, (float)buttonHeight));
     ((sf::RectangleShape*)playDrawable)->setFillColor(sf::Color().White);
     playTransform.setOrigin(50, 25);
     playTransform.setPosition(640, 275);
 
     // (CONTROLS BUTTON)
-    controlsDrawable = new sf::RectangleShape(sf::Vector2f(buttonWidth, buttonHeight));
+    controlsDrawable = new sf::RectangleShape(sf::Vector2f((float)buttonWidth, (float)buttonHeight));
     ((sf::RectangleShape*)controlsDrawable)->setFillColor(sf::Color().White);
     controlsTransform.setOrigin(50, 25);
     controlsTransform.setPosition(640, 350);
 
     // (SETTINGS BUTTON)
-    settingsDrawable = new sf::RectangleShape(sf::Vector2f(buttonWidth, buttonHeight));
+    settingsDrawable = new sf::RectangleShape(sf::Vector2f((float)buttonWidth, (float)buttonHeight));
     ((sf::RectangleShape*)settingsDrawable)->setFillColor(sf::Color().White);
     settingsTransform.setOrigin(50, 25);
     settingsTransform.setPosition(640, 425);
 
     // (QUIT BUTTON)
-    quitDrawable = new sf::RectangleShape(sf::Vector2f(buttonWidth, buttonHeight));
+    quitDrawable = new sf::RectangleShape(sf::Vector2f((float)buttonWidth, (float)buttonHeight));
     ((sf::RectangleShape*)quitDrawable)->setFillColor(sf::Color().White);
     quitTransform.setOrigin(50, 25);
     quitTransform.setPosition(640, 500);
 
     // (BACK BUTTON)
-    backDrawable = new sf::RectangleShape(sf::Vector2f(buttonWidth, buttonHeight));
+    backDrawable = new sf::RectangleShape(sf::Vector2f((float)buttonWidth, (float)buttonHeight));
     ((sf::RectangleShape*)backDrawable)->setFillColor(sf::Color().White);
     backTransform.setOrigin(50, 25);
     backTransform.setPosition(480, 560);

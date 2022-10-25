@@ -25,27 +25,27 @@ CMapSelector::CMapSelector()
     transform.setPosition(640, 360);
 
     // (MAP 1 BUTTON)
-    buttonDrawable[0] = new sf::RectangleShape(sf::Vector2f(buttonWidth, buttonHeight));
+    buttonDrawable[0] = new sf::RectangleShape(sf::Vector2f((float)buttonWidth, (float)buttonHeight));
     ((sf::RectangleShape*)buttonDrawable[0])->setFillColor(sf::Color().White);
-    buttonTransform[0].setOrigin(buttonWidth/2, buttonHeight/2);
+    buttonTransform[0].setOrigin(buttonWidth/2.0f, buttonHeight/2.0f);
     buttonTransform[0].setPosition(540, 280);
 
     // (MAP 2 BUTTON)
-    buttonDrawable[1] = new sf::RectangleShape(sf::Vector2f(buttonWidth, buttonHeight));
+    buttonDrawable[1] = new sf::RectangleShape(sf::Vector2f((float)buttonWidth, (float)buttonHeight));
     ((sf::RectangleShape*)buttonDrawable[1])->setFillColor(sf::Color().White);
-    buttonTransform[1].setOrigin(buttonWidth/2, buttonHeight/2);
+    buttonTransform[1].setOrigin(buttonWidth/2.0f, buttonHeight/2.0f);
     buttonTransform[1].setPosition(740, 280);
 
     // (MAP 3 BUTTON)
-    buttonDrawable[2] = new sf::RectangleShape(sf::Vector2f(buttonWidth, buttonHeight));
+    buttonDrawable[2] = new sf::RectangleShape(sf::Vector2f((float)buttonWidth, (float)buttonHeight));
     ((sf::RectangleShape*)buttonDrawable[2])->setFillColor(sf::Color().White);
-    buttonTransform[2].setOrigin(buttonWidth/2, buttonHeight/2);
+    buttonTransform[2].setOrigin(buttonWidth/2.0f, buttonHeight/2.0f);
     buttonTransform[2].setPosition(540, 430);
 
     //// (MAP 4 BUTTON)
-    buttonDrawable[3] = new sf::RectangleShape(sf::Vector2f(buttonWidth, buttonHeight));
+    buttonDrawable[3] = new sf::RectangleShape(sf::Vector2f((float)buttonWidth, (float)buttonHeight));
     ((sf::RectangleShape*)buttonDrawable[3])->setFillColor(sf::Color().White);
-    buttonTransform[3].setOrigin(buttonWidth/2, buttonHeight/2);
+    buttonTransform[3].setOrigin(buttonWidth/2.0f, buttonHeight/2.0f);
     buttonTransform[3].setPosition(740, 430);
 
     //// (BACK BUTTON)

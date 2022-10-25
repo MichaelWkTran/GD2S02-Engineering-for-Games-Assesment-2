@@ -50,7 +50,7 @@ private:
 public:
 
 	// player referances
-	CPlayer* players[2];
+	CPlayer* players[2]{};
 
 	std::vector<CWeaponBox*> weaponBoxes;
 	int maxBoxes = 10;

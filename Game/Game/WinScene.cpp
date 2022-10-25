@@ -150,8 +150,6 @@ void WinScene::NextRound()
 
 void WinScene::Update()
 {
-    sf::Event event;
-
     mousePos = GetMousePos();
 
     scoreString[0] = "Player One Score: " + std::to_string(playerOneScore);
@@ -234,7 +232,7 @@ sf::Vector2f WinScene::GetMousePos()
     int x = sf::Mouse::getPosition(GetManager().GetWindow()).x;
     int y = sf::Mouse::getPosition(GetManager().GetWindow()).y;
 
-    return sf::Vector2f(x, y);
+    return sf::Vector2f((float)x, (float)y);
 }
 
 
