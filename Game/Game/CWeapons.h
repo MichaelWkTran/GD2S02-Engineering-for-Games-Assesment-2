@@ -31,7 +31,7 @@ private:
 	float projectileMomentum = 0;
 	float projectileRange = 0;
 	int damage = 0;
-	float weaponLength = 5; // will need to eventually add unique weapon lengths based on sprite
+	float weaponLength = 20; // will need to eventually add unique weapon lengths based on sprite
 	int currentWeapon = -1;
 	// eventually need to add rectangle shape and texture for each weapon
 

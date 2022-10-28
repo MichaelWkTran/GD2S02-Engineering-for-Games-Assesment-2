@@ -117,6 +117,9 @@ void CPlayer::Update()
         (float)(sf::Keyboard::isKeyPressed(right) - sf::Keyboard::isKeyPressed(left)), 
         (float)(sf::Keyboard::isKeyPressed(down) - sf::Keyboard::isKeyPressed(up))
     );
+
+    if (movement != b2Vec2(0, 0)) { facingDirection = b2Vec2(movement.x, movement.y); }
+
     movement.Normalize();
     movement *= moveSpeed;
     if (movement.x > moveSpeed) { movement.x = moveSpeed; }
@@ -126,11 +129,7 @@ void CPlayer::Update()
     //body->SetLinearVelocity(movement);
     body->ApplyForceToCenter(movement, true);
     body->SetLinearDamping(8.f);
-    if (movement != b2Vec2(0, 0))
-    {
-        facingDirection = b2Vec2(movement.x, movement.y);
-    }
-
+    
     //animation
     if (movement.x > 0)
     {

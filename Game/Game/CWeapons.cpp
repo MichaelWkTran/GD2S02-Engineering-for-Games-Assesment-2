@@ -28,7 +28,7 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 	if (_weaponInt == 0)
 	{
 		fireRate = 2;
-		projectileSpeed = 2;
+		projectileSpeed = 8;
 		recoilForce = 0;
 		numberOfProjectiles = 1;
 		projectileMomentum = 1;
@@ -42,7 +42,7 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 	if (_weaponInt == 1)
 	{
 		fireRate = 1;
-		projectileSpeed = 3;
+		projectileSpeed = 12;
 		recoilForce = 1;
 		numberOfProjectiles = 1;
 		projectileMomentum = 2;
@@ -56,7 +56,7 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 	if (_weaponInt == 2)
 	{
 		fireRate = 5;
-		projectileSpeed = 6;
+		projectileSpeed = 24;
 		recoilForce = 4;
 		numberOfProjectiles = 1;
 		projectileMomentum = 6;
@@ -70,7 +70,7 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 	if (_weaponInt == 3)
 	{
 		fireRate = 4;
-		projectileSpeed = 2;
+		projectileSpeed = 8;
 		recoilForce = 3;
 		numberOfProjectiles = 3;
 		projectileMomentum = 6;
@@ -238,7 +238,7 @@ void CWeapons::Shoot()
 	if (fireRateCounter >= fireRate)
 	{
 		// spawn bullet at end of weapon
-		sf::Vector2f projectileSpawnPos = sf::Vector2f(dynamic_cast<sf::Transformable*>(gunBox)->getPosition().x + playerFacingVector->x * weaponLength, dynamic_cast<sf::Transformable*>(gunBox)->getPosition().y + playerFacingVector->y * weaponLength);
+		sf::Vector2f projectileSpawnPos = gunBox->getPosition() + (sf::Vector2f(playerFacingVector->x, playerFacingVector->y) * weaponLength);
 		//spawn bullets with for loop
 		if (numberOfProjectiles == 1)
 		{
