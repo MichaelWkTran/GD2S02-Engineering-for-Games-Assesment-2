@@ -26,6 +26,7 @@ public:
 	
 	//CSound methods
 	CSound(const char* const _soundDirectory, bool _startOnConstructor = true, bool _deleteWhenFinished = true);
+	void SetVolume(float _volume);
 	virtual void Update() override;
 };
 

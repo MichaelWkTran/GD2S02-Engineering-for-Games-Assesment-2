@@ -36,8 +36,16 @@ CSound::CSound(const char* const _soundDirectory, bool _startOnConstructor, bool
 	sound.setBuffer(*soundBuffers.at(fullSoundDirectory));
 
 	// play the sound when it is created
-	if (_startOnConstructor) sound.setVolume(GetManager().GetVolume());
-	if (_startOnConstructor) sound.play();
+	if (_startOnConstructor)
+	{
+		sound.setVolume(GetManager().GetVolume());
+		sound.play();
+	}
+}
+
+void CSound::SetVolume(float _volume)
+{
+	sound.setVolume((GetManager().GetVolume()/100.0f) * _volume);
 }
 
 void CSound::Update()
