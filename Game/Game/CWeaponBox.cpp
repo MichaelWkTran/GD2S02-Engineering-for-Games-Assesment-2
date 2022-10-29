@@ -134,8 +134,8 @@ void CWeaponBox::Update()
 {
 	respawnTimerCounter += GetManager().deltaTime;
 
-	boxRect.rotate(0.05f);
-	boxDesign.rotate(0.05f);
+	boxRect.rotate(30.0f * GetManager().deltaTime);
+	boxDesign.rotate(30.0f * GetManager().deltaTime);
 	//if (weaponBoxUsed == false)
 	//{
 	//	if (weaponInt == 0)

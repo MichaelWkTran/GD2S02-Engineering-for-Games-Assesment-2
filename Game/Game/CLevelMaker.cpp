@@ -57,11 +57,8 @@ void CLevelMaker::CleanUp()
 		}
 	}
 
-	for (int i = 0; i < GetManager().weaponBoxes.size(); i++)
-	{
-		GetManager().weaponBoxes[i]->DeleteObject();
-		GetManager().weaponBoxes.erase(GetManager().weaponBoxes.begin() + i);
-	}
+	for (CWeaponBox* weaponBox : GetManager().weaponBoxes) weaponBox->DeleteObject();
+	GetManager().weaponBoxes.clear();
 }
 
 void CLevelMaker::ReplaceWithGround(CWall* _block)

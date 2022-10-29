@@ -89,7 +89,7 @@ CManager::CManager()
 	view.setCenter(0, 0);
 	
 	// sets up the renderwindow
-	window = new sf::RenderWindow(sf::VideoMode((unsigned int)screenSize.x, (unsigned int)screenSize.y), "Game");
+	window = new sf::RenderWindow(sf::VideoMode((unsigned int)screenSize.x, (unsigned int)screenSize.y), "King of the Arena");
 	event = sf::Event();
 	
 	// set up physics
