@@ -304,7 +304,7 @@ void CMenu::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
-                GetManager().SetVolume(0.25f);
+                GetManager().SetVolume(25.0f);
                 std::cout << "Vol Changed to 25\n";
                 new CSound("gun7.wav");
             }
@@ -313,7 +313,7 @@ void CMenu::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
-                GetManager().SetVolume(0.5f);
+                GetManager().SetVolume(50.0f);
                 std::cout << "Vol Changed to 50\n";
                 new CSound("gun7.wav");
             }
@@ -322,7 +322,7 @@ void CMenu::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
-                GetManager().SetVolume(0.75f);
+                GetManager().SetVolume(75.0f);
                 std::cout << "Vol Changed to 75\n";
                 new CSound("gun7.wav");
             }
@@ -331,7 +331,7 @@ void CMenu::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
-                GetManager().SetVolume(1.f);
+                GetManager().SetVolume(100.0f);
                 std::cout << "Vol Changed to 100\n";
                 new CSound("gun7.wav");
             }
