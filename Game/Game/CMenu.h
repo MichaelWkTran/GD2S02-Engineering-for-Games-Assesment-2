@@ -19,6 +19,7 @@ public:
 	static bool playGame;
 	static bool controlsScreen;
 	static bool mapSelectScreen;
+	bool mouseHeld;
 	bool settingsScreen;
 
 	// transform variables

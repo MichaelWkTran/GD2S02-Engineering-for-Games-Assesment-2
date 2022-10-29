@@ -19,6 +19,7 @@ CMenu::CMenu()
     controlsScreen = false;
     mapSelectScreen = false;
     settingsScreen = false;
+    mouseHeld = false;
 
     buttonWidth = 100;
     buttonHeight = 50;
@@ -198,12 +199,16 @@ void CMenu::Update()
 {
     mousePos = CWinScene::GetMousePos();
 
+    bool mouseReleased = false;
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) mouseHeld = true;
+    else if (mouseHeld == true) { mouseHeld = false; mouseReleased = true; }
+
     if (!playGame && !controlsScreen && !settingsScreen) // at the main menu
     {
         // click play 
         if (mousePos.x > 590 && mousePos.x < 690 && mousePos.y > 250 && mousePos.y < 300)
         {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (mouseReleased)
             {
                 playGame = true;
                 mapSelectScreen = true; // display map selector
@@ -213,7 +218,7 @@ void CMenu::Update()
         // click controls 
         if (mousePos.x > 590 && mousePos.x < 690 && mousePos.y > 325 && mousePos.y < 375)
         {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (mouseReleased)
             {
                 controlsScreen = true;
             }
@@ -222,7 +227,7 @@ void CMenu::Update()
         // click settings 
         if (mousePos.x > 590 && mousePos.x < 690 && mousePos.y > 400 && mousePos.y < 450)
         {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (mouseReleased)
             {
                 settingsScreen = true;
             }
@@ -231,7 +236,7 @@ void CMenu::Update()
         // click quit
         if (mousePos.x > 590 && mousePos.x < 690 && mousePos.y > 475 && mousePos.y < 525)
         {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (mouseReleased)
             {
                 exit(0);
             }
@@ -250,7 +255,7 @@ void CMenu::Update()
 
         if (mousePos.x > 430 && mousePos.x < 530 && mousePos.y > 535 && mousePos.y < 685)
         {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (mouseReleased)
             {
                 controlsScreen = false;
             }
@@ -268,14 +273,14 @@ void CMenu::Update()
         //if (mousePos.x > 430 && mousePos.x < 530 && mousePos.y > 535 && mousePos.y < 685)//back button
         if (mousePos.x > backTransform.getPosition().x - 50 && mousePos.x < backTransform.getPosition().x + 50 && mousePos.y > backTransform.getPosition().y - 25 && mousePos.y < backTransform.getPosition().y + 25)// back button
         {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (mouseReleased)
             {
                 settingsScreen = false;
             }
         }
         //if (mousePos.x > 515 && mousePos.x < 615 && mousePos.y > 435 && mousePos.y < 465)//window1
         //{
-        //    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        //    if (mouseReleased)
         //    {
         //        GetManager().GetWindow().setSize(sf::Vector2u(1280, 720));
         //        
@@ -284,7 +289,7 @@ void CMenu::Update()
         //}
         //if (mousePos.x > 675 && mousePos.x < 775 && mousePos.y > 435 && mousePos.y < 465)//window 2
         //{
-        //    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        //    if (mouseReleased)
         //    {
         //        GetManager().GetWindow().setSize(sf::Vector2u(1920, 1080));
 
@@ -293,7 +298,7 @@ void CMenu::Update()
         //}
         if (mousePos.x > 457.5f && mousePos.x < 532.5f && mousePos.y > 335.f && mousePos.y < 365.f)//vol 0
         {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (mouseReleased)
             {
                 GetManager().SetVolume(0.f);
                 std::cout << "Vol Changed to 0\n";
@@ -302,7 +307,7 @@ void CMenu::Update()
         }
         if (mousePos.x > 537.5f && mousePos.x < 612.5f && mousePos.y > 335.f && mousePos.y < 365.f)//vol 25
         {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (mouseReleased)
             {
                 GetManager().SetVolume(25.0f);
                 std::cout << "Vol Changed to 25\n";
@@ -311,7 +316,7 @@ void CMenu::Update()
         }
         if (mousePos.x > 617.5f && mousePos.x < 692.5f && mousePos.y > 335.f && mousePos.y < 365.f)//vol50
         {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (mouseReleased)
             {
                 GetManager().SetVolume(50.0f);
                 std::cout << "Vol Changed to 50\n";
@@ -320,7 +325,7 @@ void CMenu::Update()
         }
         if (mousePos.x > 697.5f && mousePos.x < 772.5f && mousePos.y > 335.f && mousePos.y < 365.f)//vol75
         {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (mouseReleased)
             {
                 GetManager().SetVolume(75.0f);
                 std::cout << "Vol Changed to 75\n";
@@ -329,7 +334,7 @@ void CMenu::Update()
         }
         if (mousePos.x > 777.5f && mousePos.x < 852.5 && mousePos.y > 335.f && mousePos.y < 365.f)//vol100
         {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (mouseReleased)
             {
                 GetManager().SetVolume(100.0f);
                 std::cout << "Vol Changed to 100\n";
