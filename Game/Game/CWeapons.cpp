@@ -14,6 +14,7 @@
 #include "CPlayer.h"
 #include "CSound.h"
 #include "SFML/Graphics.hpp"
+#include "MathUtils.h"
 #include <iostream>
 
 // contstructor
@@ -27,8 +28,8 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 	// If weapon is Pistol
 	if (_weaponInt == 0)
 	{
-		fireRate = 2;
-		projectileSpeed = 8;
+		fireRate = 2/2;
+		projectileSpeed = 8*2;
 		recoilForce = 0;
 		numberOfProjectiles = 1;
 		projectileMomentum = 1;
@@ -42,7 +43,7 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 	if (_weaponInt == 1)
 	{
 		fireRate = 1;
-		projectileSpeed = 12;
+		projectileSpeed = 12*2;
 		recoilForce = 1;
 		numberOfProjectiles = 1;
 		projectileMomentum = 2;
@@ -55,7 +56,7 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 	// If weapon is Sniper
 	if (_weaponInt == 2)
 	{
-		fireRate = 5;
+		fireRate = 5/2;
 		projectileSpeed = 24;
 		recoilForce = 4;
 		numberOfProjectiles = 1;
@@ -69,8 +70,8 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 	// If weapon is Shotgun
 	if (_weaponInt == 3)
 	{
-		fireRate = 4;
-		projectileSpeed = 8;
+		fireRate = 4/2;
+		projectileSpeed = 8*2;
 		recoilForce = 3;
 		numberOfProjectiles = 3;
 		projectileMomentum = 6;
@@ -243,15 +244,45 @@ void CWeapons::Shoot()
 		if (numberOfProjectiles == 1)
 		{
 			// spawn bullet
-			new CBullet((float)damage, projectileSpeed, projectileMomentum, projectileRange, projectileSpawnPos, *playerFacingVector);
+			CBullet* bullet = new CBullet(
+				(float)damage,
+				projectileSpeed,
+				projectileMomentum,
+				projectileRange,
+				projectileSpawnPos,
+				*playerFacingVector);
+			bullet->tags.emplace(playerObject->isPlayerOne ? "Player1" : "Player2");
+
 			new CSound("gun7.wav");
 		}
 		else if (numberOfProjectiles == 3)
 		{
-			// spawn bullet
-			new CBullet((float)damage, projectileSpeed, projectileMomentum, projectileRange, projectileSpawnPos, *playerFacingVector);
-			new CBullet((float)damage, projectileSpeed, projectileMomentum, projectileRange, projectileSpawnPos, b2Vec2(playerFacingVector->x - 1.0f, playerFacingVector->y + 0.5f));
-			new CBullet((float)damage, projectileSpeed, projectileMomentum, projectileRange, projectileSpawnPos, b2Vec2(playerFacingVector->x - 0.5f, playerFacingVector->y + 1.0f));
+			// spawn bullets
+			CBullet* bullets[3];
+			for (int i = 0; i < 3; i++)
+			{
+				bullets[i] = new CBullet(
+					(float)damage,
+					projectileSpeed,
+					projectileMomentum,
+					projectileRange,
+					projectileSpawnPos,
+					*playerFacingVector);
+				bullets[i]->tags.emplace(playerObject->isPlayerOne ? "Player1" : "Player2");
+			}
+			
+			// rotate the velocity direction of the bullets
+			auto rotateRoundOrigin = [](b2Vec2 _vector, float _radians) -> b2Vec2
+			{
+				return b2Vec2
+				(
+					(_vector.x * cosf(_radians)) - (_vector.y * sinf(_radians)),
+					(_vector.x * sinf(_radians)) + (_vector.y * cosf(_radians))
+				);
+			};
+			bullets[1]->velocity = rotateRoundOrigin(bullets[1]->velocity, PI/5.0f);
+			bullets[2]->velocity = rotateRoundOrigin(bullets[2]->velocity,-PI/5.0f);
+
 			new CSound("gun1.wav");
 		}
 		fireRateCounter = 0;

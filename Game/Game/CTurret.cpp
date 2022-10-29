@@ -17,8 +17,8 @@
 
 float CTurret::bulletDamage = 1.0f;
 float CTurret::bulletSpeed = 4.0f;
-float CTurret::coolDown = 1.0f;
-float CTurret::sightDistance = 400.0f;
+float CTurret::coolDown = 1.5f;
+float CTurret::sightDistance = 300.0f;
 
 CTurret::CTurret(sf::Vector2f _pos)
 {

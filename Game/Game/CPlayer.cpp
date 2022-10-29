@@ -48,7 +48,7 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
     heldWeaponInt = 0;
 
     maxHealth = health = 10.0f;
-	moveSpeed = 4.0f;
+	moveSpeed = 10.0f;
 	coolDown = 0.0f;
 
     tags.emplace("Player");

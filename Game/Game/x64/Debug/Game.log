@@ -1,6 +1,2 @@
-﻿  CMapSelector.cpp
-  CMenu.cpp
-  CWinScene.cpp
-  main.cpp
-  Generating Code...
-  Game.vcxproj -> D:\Projects\GitHub\GD2S02-Assesment\Game\x64\Debug\Game.exe
+﻿  CWeapons.cpp
+  Game.vcxproj -> D:\Projects\GD2S02-Assesment\Game\x64\Debug\Game.exe

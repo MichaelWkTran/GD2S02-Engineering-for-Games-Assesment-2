@@ -15,7 +15,7 @@
 #include "CPlayer.h"
 
 std::shared_ptr<sf::Texture> CSpikeTrap::spikeTexture;
-float CSpikeTrap::damage = 0.5f;
+float CSpikeTrap::damage = 1.0f;
 
 CSpikeTrap::CSpikeTrap(sf::Vector2f _pos)
 {

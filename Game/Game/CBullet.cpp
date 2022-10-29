@@ -61,7 +61,25 @@ void CBullet::BeginContact(CPhysicsBody* _other)
 	// collision with player
 	{
 		CPlayer* player = dynamic_cast<CPlayer*>(_other);
-		if (player) { player->TakeDamage(damage); DeleteObject(); }
+		if (player)
+		{
+			// damage player 1 if shot by a bullet from player 2
+			if (TagExists("Player2"))
+			{
+				if (player->isPlayerOne) { player->TakeDamage(damage); DeleteObject(); }	
+			}
+			// damage player 2 if shot by a bullet from player 1
+			else if (TagExists("Player1"))
+			{
+				if (!player->isPlayerOne) { player->TakeDamage(damage); DeleteObject(); }
+			}
+			// damage both player 1 and 2 if it is from neither player 1 or 2
+			else
+			{
+				player->TakeDamage(damage);
+				DeleteObject();
+			}
+		}
 	}
 	
 	// collision with wall
