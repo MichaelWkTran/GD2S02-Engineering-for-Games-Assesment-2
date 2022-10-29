@@ -9,7 +9,7 @@
 // Authors: Sean David Palmer
 
 #include "CMenu.h"
-#include "WinScene.h"
+#include "CWinScene.h"
 #include <iostream>
 
 
@@ -196,7 +196,7 @@ void CMenu::Draw()
 
 void CMenu::Update()
 {
-    mousePos = WinScene::GetMousePos();
+    mousePos = CWinScene::GetMousePos();
 
     if (!playGame && !controlsScreen && !settingsScreen) // at the main menu
     {

@@ -1,7 +1,7 @@
 #include "CMapSelector.h"
 #include "CMenu.h"
-#include "WinScene.h"
-#include "Level.h"
+#include "CWinScene.h"
+#include "CLevel.h"
 #include <iostream>
 
 
@@ -127,7 +127,7 @@ void CMapSelector::Draw()
 
 void CMapSelector::Update()
 {
-    mousePos = WinScene::GetMousePos();
+    mousePos = CWinScene::GetMousePos();
     
     if (CMenu::mapSelectScreen)
     {

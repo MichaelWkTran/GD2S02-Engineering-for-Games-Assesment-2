@@ -15,8 +15,8 @@
 #include "CWall.h"
 #include "box2d\box2D.h"
 #include "CPlayer.h"
-#include "Level.h"
-#include "WinScene.h"
+#include "CLevel.h"
+#include "CWinScene.h"
 #include <iostream>
 
 CManager* CManager::singleton = nullptr;
@@ -155,7 +155,7 @@ void CManager::Update()
 		{
 			// resize the window
 			view.setSize((float)event.size.width, (float)event.size.height);
-			view.setCenter(0, 0);
+			view.setCenter(screenSize/2.0f);
 			Zoom(screenSize.y / event.size.height);
 			break;
 		}
@@ -164,6 +164,9 @@ void CManager::Update()
 
 	// update deltaTime
 	deltaTime = deltaTimeClock.restart().asSeconds() * timeScale;
+
+	//Freeze game if the window is not focused
+	if (!window->hasFocus()) return;
 
 	// update physics
 	float frameTime = GetManager().deltaTime;
@@ -233,13 +236,13 @@ void CManager::ResetWeaponTimer()
 
 void CManager::LoadNewLevel(std::string _path)
 {
-	Level* level = new Level("Levels/" + _path + ".txt");
+	CLevel* level = new CLevel("Levels/" + _path + ".txt");
 	levelMaker->LoadLevel(level->GetPath());
 	delete level;
 	level = nullptr;
 	ResetPlayers();
-	WinScene::playerOneScore = 0;
-	WinScene::playerTwoScore = 0;
+	CWinScene::playerOneScore = 0;
+	CWinScene::playerTwoScore = 0;
 }
 
 void CManager::ResetPlayers()

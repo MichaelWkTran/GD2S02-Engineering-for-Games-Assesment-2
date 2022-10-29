@@ -54,10 +54,10 @@
     <ClCompile Include="CSpikeTrap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Level.cpp">
+    <ClCompile Include="CLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WinScene.cpp">
+    <ClCompile Include="CWinScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CTurret.cpp">
@@ -128,10 +128,10 @@
     <ClInclude Include="CSpikeTrap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Level.h">
+    <ClInclude Include="CLevel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WinScene.h">
+    <ClInclude Include="CWinScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CTurret.h">

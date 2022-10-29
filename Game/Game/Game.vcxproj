@@ -171,11 +171,11 @@
     <ClCompile Include="CWeaponBox.cpp" />
     <ClCompile Include="CWeapons.cpp" />
     <ClCompile Include="CWeaponUI.cpp" />
-    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="CLevel.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CPlayer.cpp" />
     <ClCompile Include="MathUtils.cpp" />
-    <ClCompile Include="WinScene.cpp" />
+    <ClCompile Include="CWinScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CBullet.h" />
@@ -199,9 +199,9 @@
     <ClInclude Include="CWeapons.h" />
     <ClInclude Include="CWeaponUI.h" />
     <ClInclude Include="GlobalEnumInclude.h" />
-    <ClInclude Include="Level.h" />
+    <ClInclude Include="CLevel.h" />
     <ClInclude Include="MathUtils.h" />
-    <ClInclude Include="WinScene.h" />
+    <ClInclude Include="CWinScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
