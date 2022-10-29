@@ -201,7 +201,11 @@ void CMenu::Update()
 
     bool mouseReleased = false;
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) mouseHeld = true;
-    else if (mouseHeld == true) { mouseHeld = false; mouseReleased = true; }
+    else
+    {
+        if (mouseHeld == true) mouseReleased = true;
+        mouseHeld = false;
+    }
 
     if (!playGame && !controlsScreen && !settingsScreen) // at the main menu
     {
