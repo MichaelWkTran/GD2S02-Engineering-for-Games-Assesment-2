@@ -86,7 +86,7 @@ void CTurret::Update()
 		);
 	
 		// create sound effect
-		(new CSound("gun1.wav"))->SetVolume(10.0f);
+		(new CSound("gun2.wav"))->SetVolume(10.0f);
 
 		// reset timer
 		coolDownTimer = coolDown;

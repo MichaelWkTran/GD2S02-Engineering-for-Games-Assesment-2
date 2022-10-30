@@ -9,6 +9,7 @@
 // Authors: Lucas Manssen
 
 #include "CWeaponBox.h"
+#include "CSound.h"
 #include "CManager.h"
 #include "CPlayer.h"
 #include <iostream>
@@ -212,6 +213,7 @@ void CWeaponBox::BeginContact(CPhysicsBody* _other)
 			}
 		}
 		
+		new CSound("weaponBox.wav");
 	}
 	
 }

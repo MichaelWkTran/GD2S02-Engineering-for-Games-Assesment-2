@@ -2,6 +2,7 @@
 #include "CPhysicsBody.h"
 #include "CManager.h"
 #include "CPlayer.h"
+#include "CSound.h"
 #include <iostream>
 
 CBullet::CBullet(float _damage, float _moveSpeed, float _momentum, float _projectileRange, sf::Vector2f _spawnPosition, b2Vec2 _velocity)
@@ -66,18 +67,19 @@ void CBullet::BeginContact(CPhysicsBody* _other)
 			// damage player 1 if shot by a bullet from player 2
 			if (TagExists("Player2"))
 			{
-				if (player->isPlayerOne) { player->TakeDamage(damage); DeleteObject(); }	
+				if (player->isPlayerOne) { player->TakeDamage(damage); DeleteObject(); new CSound("playerHit.wav"); }	
 			}
 			// damage player 2 if shot by a bullet from player 1
 			else if (TagExists("Player1"))
 			{
-				if (!player->isPlayerOne) { player->TakeDamage(damage); DeleteObject(); }
+				if (!player->isPlayerOne) { player->TakeDamage(damage); DeleteObject(); new CSound("playerHit.wav"); }
 			}
 			// damage both player 1 and 2 if it is from neither player 1 or 2
 			else
 			{
 				player->TakeDamage(damage);
 				DeleteObject();
+				new CSound("playerHit.wav");
 			}
 		}
 	}
@@ -85,6 +87,9 @@ void CBullet::BeginContact(CPhysicsBody* _other)
 	// collision with wall
 	{
 		CWall* wall = dynamic_cast<CWall*>(_other);
-		if (wall) { DeleteObject(); }
+		if (wall) DeleteObject();
+
+		// play hit sound
+		(new CSound("bulletHit.wav"))->SetVolume(20.0f);
 	}
 }

@@ -13,6 +13,7 @@
 #include "CPhysicsBody.h"
 #include "CManager.h"
 #include "CBullet.h"
+#include "CSound.h"
 
 std::shared_ptr<sf::Texture> CWall::breakableWallTexture;
 std::shared_ptr<sf::Texture> CWall::unbreakableWallTexture;
@@ -92,6 +93,7 @@ void CWall::BeginContact(CPhysicsBody* _other)
     if (health <= 0)
     {
         GetManager().ReplaceWithGround(this);
+        new CSound("wallBreak.wav");
         DeleteObject();
     }
 }

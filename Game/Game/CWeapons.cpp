@@ -28,8 +28,8 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 	// If weapon is Pistol
 	if (_weaponInt == 0)
 	{
-		fireRate = 2/2;
-		projectileSpeed = 8*2;
+		fireRate = 1;
+		projectileSpeed = 16;
 		recoilForce = 0;
 		numberOfProjectiles = 1;
 		projectileMomentum = 1;
@@ -42,8 +42,8 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 	// If weapon is Rifle
 	if (_weaponInt == 1)
 	{
-		fireRate = 1;
-		projectileSpeed = 12*2;
+		fireRate = 0.5f;
+		projectileSpeed = 24;
 		recoilForce = 1;
 		numberOfProjectiles = 1;
 		projectileMomentum = 2;
@@ -56,8 +56,8 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 	// If weapon is Sniper
 	if (_weaponInt == 2)
 	{
-		fireRate = 5/2;
-		projectileSpeed = 24;
+		fireRate = 2;
+		projectileSpeed = 48;
 		recoilForce = 4;
 		numberOfProjectiles = 1;
 		projectileMomentum = 6;
@@ -70,8 +70,8 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 	// If weapon is Shotgun
 	if (_weaponInt == 3)
 	{
-		fireRate = 4/2;
-		projectileSpeed = 8*2;
+		fireRate = 2;
+		projectileSpeed = 16;
 		recoilForce = 3;
 		numberOfProjectiles = 3;
 		projectileMomentum = 6;
@@ -253,7 +253,7 @@ void CWeapons::Shoot()
 				*playerFacingVector);
 			bullet->tags.emplace(playerObject->isPlayerOne ? "Player1" : "Player2");
 
-			new CSound("gun7.wav");
+			new CSound("gun1.wav");
 		}
 		else if (numberOfProjectiles == 3)
 		{
@@ -283,7 +283,7 @@ void CWeapons::Shoot()
 			bullets[1]->velocity = rotateRoundOrigin(bullets[1]->velocity, PI/5.0f);
 			bullets[2]->velocity = rotateRoundOrigin(bullets[2]->velocity,-PI/5.0f);
 
-			new CSound("gun1.wav");
+			new CSound("gun2.wav");
 		}
 		fireRateCounter = 0;
 		

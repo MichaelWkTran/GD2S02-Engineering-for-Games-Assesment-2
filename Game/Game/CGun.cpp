@@ -138,7 +138,7 @@ void CGun::Shoot()
 			float projectileMomentum = 1.f;
 			float projectileRange = 5.f;
 
-			new CSound("gun1.wav");
+			new CSound("gun2.wav");
 			new CBullet(damage, bulletSpeed, projectileMomentum, projectileRange, bulletSpawnPos, *playerFacingDirection);
 		}
 		counterFireRate = 0;

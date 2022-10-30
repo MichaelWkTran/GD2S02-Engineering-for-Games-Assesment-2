@@ -4,21 +4,30 @@
     <Position X="30.75" Y="1" Width="3" />
     <Members>
       <Field Name="accumulatedTime" Hidden="true" />
+      <Field Name="counterWeaponSpawnTime" Hidden="true" />
       <Field Name="deltaTimeClock" Hidden="true" />
       <Field Name="event" Hidden="true" />
       <Field Name="font" Hidden="true" />
+      <Method Name="GetPhysicsWorld" Hidden="true" />
+      <Method Name="GetVolume" Hidden="true" />
       <Field Name="isRunning" Hidden="true" />
+      <Field Name="maxBoxes" Hidden="true" />
       <Field Name="maxFrameTime" Hidden="true" />
       <Method Name="operator=" Hidden="true" />
+      <Method Name="PlaceObjectAtFront" Hidden="true" />
       <Field Name="positionIterations" Hidden="true" />
       <Method Name="ResetPlayers" Hidden="true" />
-      <Method Name="SetPlayerPos" Hidden="true" />
+      <Method Name="ResetWeaponTimer" Hidden="true" />
+      <Method Name="SetPlayerReferanceNull" Hidden="true" />
+      <Method Name="SetVolume" Hidden="true" />
+      <Field Name="soundVolume" Hidden="true" />
+      <Field Name="spawnWeapons" Hidden="true" />
       <Field Name="timeStep" Hidden="true" />
       <Field Name="velocityIterations" Hidden="true" />
       <Method Name="Zoom" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAYwAAkAAEEAoBBBMAAEwAQQAQAEAAoIMQAgEATgAAA=</HashCode>
+      <HashCode>AIYyAAkAAEEAgBBBMgAEwjQQAQAECAqIGQAgEATgAAA=</HashCode>
       <FileName>CManager.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -42,13 +51,11 @@
   <Class Name="CLevelMaker">
     <Position X="26" Y="1" Width="2.75" />
     <Members>
-      <Method Name="CLevelMaker" Hidden="true" />
       <Method Name="Render" Hidden="true" />
       <Field Name="selectedPlacement" Hidden="true" />
-      <Method Name="Update" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAMAABAAAAAAEAAEAEAAAABAIAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAMAABgAAAAAEAAEAEAAAABAAAEEAAAA=</HashCode>
       <FileName>CLevelMaker.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -80,12 +87,11 @@
       <Field Name="healthText" Hidden="true" />
       <Field Name="left" Hidden="true" />
       <Field Name="right" Hidden="true" />
-      <Method Name="SetPosition" Hidden="true" />
       <Field Name="shoot" Hidden="true" />
       <Field Name="up" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AISAAEAMEAACAkAAAAAAAAQEAAAoAggACAEgggAggIg=</HashCode>
+      <HashCode>AISAAEAMEEAiAkAAAAAAAAwEAQAoAAgACAEgggAggIg=</HashCode>
       <FileName>CPlayer.h</FileName>
     </TypeIdentifier>
   </Class>

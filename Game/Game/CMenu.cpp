@@ -214,6 +214,7 @@ void CMenu::Update()
         {
             if (mouseReleased)
             {
+                new CSound("button.wav");
                 playGame = true;
                 mapSelectScreen = true; // display map selector
             }
@@ -224,6 +225,7 @@ void CMenu::Update()
         {
             if (mouseReleased)
             {
+                new CSound("button.wav");
                 controlsScreen = true;
             }
         }
@@ -233,6 +235,7 @@ void CMenu::Update()
         {
             if (mouseReleased)
             {
+                new CSound("button.wav");
                 settingsScreen = true;
             }
         }
@@ -242,6 +245,7 @@ void CMenu::Update()
         {
             if (mouseReleased)
             {
+                new CSound("button.wav");
                 exit(0);
             }
         }
@@ -262,6 +266,7 @@ void CMenu::Update()
             if (mouseReleased)
             {
                 controlsScreen = false;
+                new CSound("button.wav");
             }
         }
 
@@ -280,6 +285,7 @@ void CMenu::Update()
             if (mouseReleased)
             {
                 settingsScreen = false;
+                new CSound("button.wav");
             }
         }
         //if (mousePos.x > 515 && mousePos.x < 615 && mousePos.y > 435 && mousePos.y < 465)//window1
@@ -306,7 +312,7 @@ void CMenu::Update()
             {
                 GetManager().SetVolume(0.f);
                 std::cout << "Vol Changed to 0\n";
-                new CSound("gun7.wav");
+                new CSound("gun1.wav");
             }
         }
         if (mousePos.x > 537.5f && mousePos.x < 612.5f && mousePos.y > 335.f && mousePos.y < 365.f)//vol 25
@@ -315,7 +321,7 @@ void CMenu::Update()
             {
                 GetManager().SetVolume(25.0f);
                 std::cout << "Vol Changed to 25\n";
-                new CSound("gun7.wav");
+                new CSound("gun1.wav");
             }
         }
         if (mousePos.x > 617.5f && mousePos.x < 692.5f && mousePos.y > 335.f && mousePos.y < 365.f)//vol50
@@ -324,7 +330,7 @@ void CMenu::Update()
             {
                 GetManager().SetVolume(50.0f);
                 std::cout << "Vol Changed to 50\n";
-                new CSound("gun7.wav");
+                new CSound("gun1.wav");
             }
         }
         if (mousePos.x > 697.5f && mousePos.x < 772.5f && mousePos.y > 335.f && mousePos.y < 365.f)//vol75
@@ -333,7 +339,7 @@ void CMenu::Update()
             {
                 GetManager().SetVolume(75.0f);
                 std::cout << "Vol Changed to 75\n";
-                new CSound("gun7.wav");
+                new CSound("gun1.wav");
             }
         }
         if (mousePos.x > 777.5f && mousePos.x < 852.5 && mousePos.y > 335.f && mousePos.y < 365.f)//vol100
@@ -342,7 +348,7 @@ void CMenu::Update()
             {
                 GetManager().SetVolume(100.0f);
                 std::cout << "Vol Changed to 100\n";
-                new CSound("gun7.wav");
+                new CSound("gun1.wav");
             }
         }
 
