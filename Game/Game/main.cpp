@@ -17,6 +17,9 @@ bool CMenu::mapSelectScreen = false;
 
 int main()
 {
+	// seed the time
+	srand((unsigned int)time(NULL));
+
 	CManager* manager = new CManager();
 
 	CMenu* menu = new CMenu();

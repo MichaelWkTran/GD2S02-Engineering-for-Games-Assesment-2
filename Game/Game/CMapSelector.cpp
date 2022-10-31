@@ -191,6 +191,9 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
+                int i = rand() % 5 + 1;
+                GetManager().LoadNewLevel(std::to_string(i));
+                GetManager().spawnWeapons = true;
                 CMenu::mapSelectScreen = false; // hide map select screen
             }
         }

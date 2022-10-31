@@ -18,8 +18,6 @@
 CWeaponBox::CWeaponBox(sf::Vector2f _spawnPosition)
 {
 	// randomize weapon contained (reminder: 0 = pistol, 1 = rifle, 2 = sniper, 3 = shotgun)
-	time_t t;
-	srand((unsigned) time(&t));
 	weaponInt = rand() % 4;
 
 	// set up misc attributes
