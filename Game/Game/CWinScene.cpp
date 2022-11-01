@@ -192,7 +192,6 @@ void CWinScene::Update()
                 std::cout << "home";
                 CMenu::playGame = false;
                 CWinScene* winScene = new CWinScene();
-                // BUG - clicks controls when home button is pressed as its in the same place
             }
         }
 
