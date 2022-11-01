@@ -73,7 +73,7 @@ CWinScene::CWinScene()
     winText.setFillColor(sf::Color::Red);
     winText.setFont(GetManager().font);
     winText.setCharacterSize(20);
-    winText.setPosition(transform.getPosition().x - 130, transform.getPosition().y - 220);
+    winText.setPosition(transform.getPosition().x - 155, transform.getPosition().y - 220);
 
     // next round text
     nextRoundText.setString(nextRoundString);
@@ -158,12 +158,16 @@ void CWinScene::Update()
     scoreString[1] = "Player Two Score: " + std::to_string(playerTwoScore);
     scoreText[1].setString(scoreString[1]);
 
-    // round/overall win text setup
-    if (playerOneScore == 3 || playerTwoScore == 3)
+    if (playerOneRoundWin)
     {
-        winText.setString(winString); // win overall game
+        winRoundString = "PLAYER ONE WINS THE ROUND";
     }
-    else { winText.setString(winRoundString); } // win round
+    if (playerTwoRoundWin)
+    {
+        winRoundString = "PLAYER TWO WINS THE ROUND";
+    }
+
+    winText.setString(winRoundString);// win round
 
     if (playerOneRoundWin || playerTwoRoundWin)
     {
