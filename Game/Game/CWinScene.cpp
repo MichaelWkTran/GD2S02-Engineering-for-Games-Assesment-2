@@ -84,17 +84,17 @@ CWinScene::CWinScene()
 
     // player one score display
     scoreText[0].setString(scoreString[0]);
-    scoreText[0].setFillColor(sf::Color::Red);
+    scoreText[0].setFillColor(sf::Color::Blue);
     scoreText[0].setFont(GetManager().font);
-    scoreText[0].setCharacterSize(20);
-    scoreText[0].setPosition(10, 10);
+    scoreText[0].setCharacterSize(18);
+    scoreText[0].setPosition(5, 590);
 
     // player two score display
     scoreText[1].setString(scoreString[1]);
     scoreText[1].setFillColor(sf::Color::Red);
     scoreText[1].setFont(GetManager().font);
-    scoreText[1].setCharacterSize(20);
-    scoreText[1].setPosition(1000, 10);
+    scoreText[1].setCharacterSize(18);
+    scoreText[1].setPosition(1110, 590);
 
     // home button
     homeText.setString(homeString);
