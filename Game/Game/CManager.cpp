@@ -218,6 +218,10 @@ void CManager::Update()
 	// delete updated objects
 	for (int i = 0; i < (int)objectsInWorld.size(); i++)
 	{
+		if (dynamic_cast<CMapPlaceBase*>(objectsInWorld[i]) && levelMaker->shouldDelete)
+		{
+			objectsInWorld[i]->DeleteObject();
+		}
 		// ignore objects that have not been tagged for deletion
 		if (!objectsInWorld[i]->GetDeleteObject()) continue;
 

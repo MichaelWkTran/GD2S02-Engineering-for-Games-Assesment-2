@@ -15,6 +15,7 @@ private:
 	
 	void LoadLevel();
 public:
+	bool shouldDelete = false;
 	sf::Vector2f playerSpawns[2];
 	void Render();
 	void SpawnWeaponBox();

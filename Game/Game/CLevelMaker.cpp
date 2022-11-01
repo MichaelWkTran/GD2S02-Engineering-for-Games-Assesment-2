@@ -45,6 +45,7 @@ void CLevelMaker::SpawnWeaponBox()
 
 void CLevelMaker::CleanUp()
 {
+	shouldDelete = true;
 	for (int i = 0; i < arenaSizeX; i++)
 	{
 		for (int j = 0; j < arenaSizeY; j++)
@@ -123,6 +124,7 @@ void CLevelMaker::LoadLevel()
 void CLevelMaker::LoadLevel(std::string _path)
 {
 	CleanUp();
+	shouldDelete = false;
 
 	// set up the variables and open the file
 	std::fstream saveFile;
