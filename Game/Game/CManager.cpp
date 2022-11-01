@@ -241,8 +241,6 @@ void CManager::LoadNewLevel(std::string _path)
 	delete level;
 	level = nullptr;
 	ResetPlayers();
-	CWinScene::playerOneScore = 0;
-	CWinScene::playerTwoScore = 0;
 }
 
 void CManager::ResetPlayers()

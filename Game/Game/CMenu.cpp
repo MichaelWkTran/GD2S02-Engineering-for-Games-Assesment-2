@@ -15,6 +15,9 @@
 
 CMenu::CMenu()
 {
+    CWinScene::playerOneScore = 0;
+    CWinScene::playerTwoScore = 0;
+
     playGame = false;
     controlsScreen = false;
     mapSelectScreen = false;
