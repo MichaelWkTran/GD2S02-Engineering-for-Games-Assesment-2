@@ -222,7 +222,7 @@ void CMapSelector::SetTransformValues(sf::Transformable _transform, sf::Drawable
 
 void CMapSelector::LoadRandomLevel()
 {
-    int i = rand() % 5 + 1;
+    int i = rand() % 4 + 1;
     GetManager().LoadNewLevel(std::to_string(i));
     GetManager().spawnWeapons = true;
 }
