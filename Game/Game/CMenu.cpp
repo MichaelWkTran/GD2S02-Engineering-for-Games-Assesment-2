@@ -121,31 +121,31 @@ CMenu::CMenu()
     playText.setString(playString);
     playText.setFillColor(sf::Color::Red);
     playText.setFont(GetManager().font);
-    playText.setCharacterSize(18);
+    playText.setCharacterSize(25);
     playText.setPosition(615, 265);
 
     controlsText.setString(controlsString);
     controlsText.setFillColor(sf::Color::Red);
     controlsText.setFont(GetManager().font);
-    controlsText.setCharacterSize(18);
+    controlsText.setCharacterSize(25);
     controlsText.setPosition(590, 340);
 
     settingsText.setString(settingsString);
     settingsText.setFillColor(sf::Color::Red);
     settingsText.setFont(GetManager().font);
-    settingsText.setCharacterSize(18);
+    settingsText.setCharacterSize(25);
     settingsText.setPosition(595, 415);
 
     quitText.setString(quitString);
     quitText.setFillColor(sf::Color::Red);
     quitText.setFont(GetManager().font);
-    quitText.setCharacterSize(18);
+    quitText.setCharacterSize(25);
     quitText.setPosition(615, 490);
 
     backText.setString(backString);
     backText.setFillColor(sf::Color::Red);
     backText.setFont(GetManager().font);
-    backText.setCharacterSize(18);
+    backText.setCharacterSize(25);
     backText.setPosition(455, 550);
 
 
@@ -181,8 +181,8 @@ void CMenu::Draw()
     if (settingsScreen)
     {
         SetTransformValues(transform, drawable);
-        //SetTransformValues(windowSize1Transform, windowSize1Drawable);
-        //SetTransformValues(windowSize2Transform, windowSize2Drawable);
+        SetTransformValues(windowSize1Transform, windowSize1Drawable);
+        SetTransformValues(windowSize2Transform, windowSize2Drawable);
         SetTransformValues(volume0Transform, volume0Drawable);
         SetTransformValues(volume25Transform, volume25Drawable);
         SetTransformValues(volume50Transform, volume50Drawable);
@@ -254,10 +254,10 @@ void CMenu::Update()
 
     if (controlsScreen) // at the controls screen
     {
-        controlsString = "                      LIST OF CONTROLS\n\n\nPlayer One:\n      WASD to Move\n"
+        controlsString = "       LIST OF CONTROLS\n\nPlayer One:\n      WASD to Move\n"
             "      V to shoot"
             "\n\n\nPlayer Two:\n      Arrow Keys to Move\n"
-            "      Forward Slash to shoot";
+            "      Forward Slash to shoot\n\nPick up new weapons by running \ninto weapon boxes";
         controlsText.setString(controlsString);
         controlsText.setPosition(450, 190);
 
@@ -273,9 +273,10 @@ void CMenu::Update()
     }
     else if (settingsScreen) // at the settings screen
     {
-        settingsString = "                             SETTINGS:\n\n\n\n\n                                Volume:"
-            "\n\n    0%          25%         50%         75%        100%"
-            "\n\n\n                            ";//Window Size : \n\n               1280x720               1920x1080";
+        settingsText.setCharacterSize(23);
+        settingsString = "            SETTINGS:\n\n\n\n             Volume:"
+            "\n\n  0%    25%    50%   75%    100%"
+            "\n\n\n           Window Size : \n      1280x720     1920x1080";
         settingsText.setString(settingsString);
         settingsText.setPosition(450, 190);
 
@@ -288,24 +289,24 @@ void CMenu::Update()
                 new CSound("button.wav");
             }
         }
-        //if (mousePos.x > 515 && mousePos.x < 615 && mousePos.y > 435 && mousePos.y < 465)//window1
-        //{
-        //    if (mouseReleased)
-        //    {
-        //        GetManager().GetWindow().setSize(sf::Vector2u(1280, 720));
-        //        
-        //        
-        //    }
-        //}
-        //if (mousePos.x > 675 && mousePos.x < 775 && mousePos.y > 435 && mousePos.y < 465)//window 2
-        //{
-        //    if (mouseReleased)
-        //    {
-        //        GetManager().GetWindow().setSize(sf::Vector2u(1920, 1080));
+        if (mousePos.x > 515 && mousePos.x < 615 && mousePos.y > 435 && mousePos.y < 465)//window1
+        {
+            if (mouseReleased)
+            {
+                GetManager().GetWindow().setSize(sf::Vector2u(1280, 720));
+                new CSound("button.wav");
+                
+            }
+        }
+        if (mousePos.x > 675 && mousePos.x < 775 && mousePos.y > 435 && mousePos.y < 465)//window 2
+        {
+            if (mouseReleased)
+            {
+                GetManager().GetWindow().setSize(sf::Vector2u(1920, 1080));
+                new CSound("button.wav");
 
-
-        //    }
-        //}
+            }
+        }
         if (mousePos.x > 457.5f && mousePos.x < 532.5f && mousePos.y > 335.f && mousePos.y < 365.f)//vol 0
         {
             if (mouseReleased)

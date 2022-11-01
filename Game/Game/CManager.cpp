@@ -103,7 +103,7 @@ CManager::CManager()
 
 	physicsWorld->SetContactListener(this);
 
-	font.loadFromFile("fonts/SansSerif.ttf");
+	font.loadFromFile("fonts/ARCADE.TTF");
 
 	levelMaker = new CLevelMaker();
 }

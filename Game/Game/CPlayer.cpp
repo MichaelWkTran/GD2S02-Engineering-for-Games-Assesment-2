@@ -201,6 +201,22 @@ void CPlayer::Update()
                 animClock.restart();
             }
         }
+        
+    }
+    else if (movement.y == 0 &&  movement.x == 0)
+    {
+        if (animClock.getElapsedTime().asSeconds() > 0.3f)
+        {
+            texRect.left = 192;
+            if (texRect.top == 48)
+            {
+                texRect.top = 0;
+            }
+            else
+            {
+                texRect.top += 48;
+            }
+        }
     }
     else
     {
