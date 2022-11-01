@@ -61,9 +61,13 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
     // set the origin of the SFML transform
 	transform.setOrigin(radius, radius);
 
+    //player sprite scale
+    int temp = 50;
+
     // setup sf::Drawable
-	drawable = new sf::RectangleShape(sf::Vector2f(radius, radius) * 2.0f);
+	drawable = new sf::RectangleShape(sf::Vector2f(temp, temp));
 	((sf::RectangleShape*)drawable)->setFillColor(sf::Color().White);
+    //((sf::RectangleShape*)drawable)->setPosition(sf::Vector2f(((sf::RectangleShape*)drawable)->getPosition().x - 30, ((sf::RectangleShape*)drawable)->getPosition().y - 30));
 	transform.setPosition(_spawnPos);
 
     // setup b2BodyDef
@@ -315,7 +319,7 @@ void CPlayer::Draw()
         return;
     }
 
-    drawableTransform->setPosition(transform.getPosition());
+    drawableTransform->setPosition(transform.getPosition().x - 12, transform.getPosition().y - 17);
     drawableTransform->setScale(transform.getScale());
     drawableTransform->setRotation(transform.getRotation());
     drawableTransform->setOrigin(transform.getOrigin());

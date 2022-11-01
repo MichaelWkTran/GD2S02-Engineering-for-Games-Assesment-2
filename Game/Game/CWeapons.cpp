@@ -225,7 +225,7 @@ void CWeapons::Draw()
 		return;
 	}
 
-	drawableTransform->setPosition(transform.getPosition());
+	drawableTransform->setPosition(transform.getPosition().x + 10, transform.getPosition().y + 10);
 	drawableTransform->setScale(transform.getScale());
 	drawableTransform->setRotation(transform.getRotation());
 	drawableTransform->setOrigin(transform.getOrigin());
