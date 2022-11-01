@@ -20,7 +20,7 @@ public:
 	static bool controlsScreen;
 	static bool mapSelectScreen;
 	bool mouseHeld;
-	bool settingsScreen;
+	static bool settingsScreen;
 
 	// transform variables
 	sf::Transformable bannerTransform; // menu banner
@@ -75,12 +75,14 @@ private:
 	sf::Text settingsText;
 	sf::Text quitText;
 	sf::Text backText;
+	sf::Text titleText;
 
 	sf::String playString;
 	sf::String controlsString;
 	sf::String settingsString;
 	sf::String quitString;
 	sf::String backString;
+	sf::String titleString;
 
 
 };

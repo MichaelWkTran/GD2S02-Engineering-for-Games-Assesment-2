@@ -120,6 +120,7 @@ CMenu::CMenu()
     settingsString = "SETTINGS";
     quitString = "QUIT";
     backString = "BACK";
+    titleString = "  K I N G \n   of the\n A R E N A";
 
     playText.setString(playString);
     playText.setFillColor(sf::Color::Red);
@@ -151,6 +152,12 @@ CMenu::CMenu()
     backText.setCharacterSize(25);
     backText.setPosition(455, 550);
 
+    titleText.setString(titleString);
+    titleText.setFillColor(sf::Color::Red);
+    titleText.setFont(GetManager().font);
+    titleText.setCharacterSize(35);
+    titleText.setPosition(540, 125);
+
 
 }
 
@@ -172,6 +179,7 @@ void CMenu::Draw()
         GetManager().GetWindow().draw(controlsText);
         GetManager().GetWindow().draw(settingsText);
         GetManager().GetWindow().draw(quitText);
+        GetManager().GetWindow().draw(titleText);
     }
 
     if (controlsScreen)

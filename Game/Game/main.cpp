@@ -14,6 +14,7 @@
 bool CMenu::playGame = false;
 bool CMenu::controlsScreen = false;
 bool CMenu::mapSelectScreen = false;
+bool CMenu::settingsScreen = false;
 
 int main()
 {
