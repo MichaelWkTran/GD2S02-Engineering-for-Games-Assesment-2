@@ -21,6 +21,7 @@ protected:
 public:
 	CPhysicsBody();
 	virtual ~CPhysicsBody();
+	virtual void FixedUpdate() {};
 
 	// setup methods
 	void SetupBody(const b2BodyDef& _BodyDef, const b2FixtureDef* _pFixtureDef, unsigned int _size);

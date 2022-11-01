@@ -175,15 +175,24 @@ void CManager::Update()
 
 	while (accumulatedTime > timeStep)
 	{
-		physicsWorld->Step(timeStep, velocityIterations, positionIterations);
 		accumulatedTime -= timeStep;
+		
+		// update physics world
+		physicsWorld->Step(timeStep, velocityIterations, positionIterations);
+		
+		// call physics object methods
+		for (auto& updatedObject : objectsInWorld)
+		{
+			CPhysicsBody* physicsBody = dynamic_cast<CPhysicsBody*>(updatedObject);
+			if (physicsBody != nullptr) physicsBody->FixedUpdate();
+		}
 	}
 
 	// update the transforms of physics objects
-	for (auto& pUpdatedObject : objectsInWorld)
+	for (auto& updatedObject : objectsInWorld)
 	{
-		CGameObject* gameObject = dynamic_cast<CGameObject*>(pUpdatedObject);
-		CPhysicsBody* physicsBody = dynamic_cast<CPhysicsBody*>(pUpdatedObject);
+		CGameObject* gameObject = dynamic_cast<CGameObject*>(updatedObject);
+		CPhysicsBody* physicsBody = dynamic_cast<CPhysicsBody*>(updatedObject);
 
 		if (gameObject == nullptr) continue;
 		if (physicsBody == nullptr) continue;
@@ -206,11 +215,11 @@ void CManager::Update()
 	}
 
 	// call updated object methods
-	for (auto& pUpdatedObject : objectsInWorld) pUpdatedObject->Start();
-	for (auto& pUpdatedObject : objectsInWorld) pUpdatedObject->BeginUpdate();
-	for (auto& pUpdatedObject : objectsInWorld) pUpdatedObject->Update();
-	for (auto& pUpdatedObject : objectsInWorld) pUpdatedObject->EndUpdate();
-	for (auto& pUpdatedObject : objectsInWorld) pUpdatedObject->Draw();
+	for (auto& updatedObject : objectsInWorld) updatedObject->Start();
+	for (auto& updatedObject : objectsInWorld) updatedObject->BeginUpdate();
+	for (auto& updatedObject : objectsInWorld) updatedObject->Update();
+	for (auto& updatedObject : objectsInWorld) updatedObject->EndUpdate();
+	for (auto& updatedObject : objectsInWorld) updatedObject->Draw();
 
 	// display drawn objects
 	window->display();

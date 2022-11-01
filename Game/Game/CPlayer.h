@@ -56,6 +56,7 @@ public:
 	~CPlayer();
 
 	virtual void Update() override;
+	virtual void FixedUpdate() override;
 	void AddGunToRender();
 
 	void TakeDamage(float _damage);

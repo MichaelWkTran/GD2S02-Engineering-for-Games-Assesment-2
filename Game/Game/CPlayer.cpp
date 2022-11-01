@@ -48,7 +48,7 @@ CPlayer::CPlayer(sf::Keyboard::Key _up, sf::Keyboard::Key _down, sf::Keyboard::K
     heldWeaponInt = 0;
 
     maxHealth = health = 10.0f;
-	moveSpeed = 10.0f;
+	moveSpeed = 30.0f;
 	coolDown = 0.0f;
 
     tags.emplace("Player");
@@ -111,10 +111,29 @@ CPlayer::~CPlayer()
 
 void CPlayer::Update()
 {
+    // cap player health
+    if (health > maxHealth) health = maxHealth;
+
+    // shoot projectile
+    if (sf::Keyboard::isKeyPressed(shoot))
+    {
+        //heldGun->Shoot();
+        heldWeapon->Shoot();
+        
+    }
+
+    if (CWinScene::playerOneRoundWin || CWinScene::playerTwoRoundWin)
+    {
+        Kill();
+    }
+}
+
+void CPlayer::FixedUpdate()
+{
     // player movement
     b2Vec2 movement = b2Vec2
     (
-        (float)(sf::Keyboard::isKeyPressed(right) - sf::Keyboard::isKeyPressed(left)), 
+        (float)(sf::Keyboard::isKeyPressed(right) - sf::Keyboard::isKeyPressed(left)),
         (float)(sf::Keyboard::isKeyPressed(down) - sf::Keyboard::isKeyPressed(up))
     );
 
@@ -124,12 +143,11 @@ void CPlayer::Update()
     movement *= moveSpeed;
     if (movement.x > moveSpeed) { movement.x = moveSpeed; }
     if (movement.y > moveSpeed) { movement.y = moveSpeed; }
-    
-    
+
     //body->SetLinearVelocity(movement);
     body->ApplyForceToCenter(movement, true);
     body->SetLinearDamping(8.f);
-    
+
     //animation
     if (movement.x > 0)
     {
@@ -201,9 +219,9 @@ void CPlayer::Update()
                 animClock.restart();
             }
         }
-        
+
     }
-    else if (movement.y == 0 &&  movement.x == 0)
+    else if (movement.y == 0 && movement.x == 0)
     {
         if (animClock.getElapsedTime().asSeconds() > 0.3f)
         {
@@ -224,24 +242,6 @@ void CPlayer::Update()
         texRect.left = 0;
         ((sf::RectangleShape*)drawable)->setTextureRect(texRect);
     }
-
-    // cap player health
-    if (health > maxHealth) health = maxHealth;
-
-    // shoot projectile
-    if (sf::Keyboard::isKeyPressed(shoot))
-    {
-        //heldGun->Shoot();
-        heldWeapon->Shoot();
-        
-    }
-
-
-    if (CWinScene::playerOneRoundWin || CWinScene::playerTwoRoundWin)
-    {
-        Kill();
-    }
-
 }
 
 void CPlayer::AddGunToRender()
