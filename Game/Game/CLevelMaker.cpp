@@ -177,23 +177,26 @@ void CLevelMaker::LoadLevel(std::string _path)
 		inFile >> l;
 		inFile >> rotation;
 
+		float xOffset = 160.0f;
+		float yOffset = 50.0f;
+
 		// decide which object to place
 		switch (objType)
 		{
 		case Ground:
-			arena[k][l] = new CGround(sf::Vector2f((32.0f * k) + 200.0f, (32.0f * l) + 100.0f), rotation);
+			arena[k][l] = new CGround(sf::Vector2f((32.0f * k) + xOffset, (32.0f * l) + yOffset), rotation);
 			break;
 		case UnbreakableWall:
-			arena[k][l] = new CWall(sf::Vector2f((32.0f * k) + 200.0f, (32.0f * l) + 100.0f), rotation);
+			arena[k][l] = new CWall(sf::Vector2f((32.0f * k) + xOffset, (32.0f * l) + yOffset), rotation);
 			break;
 		case BreakableWall:
-			arena[k][l] = new CWall(sf::Vector2f((32.0f * k) + 200.0f, (32.0f * l) + 100.0f), rotation, true);
+			arena[k][l] = new CWall(sf::Vector2f((32.0f * k) + xOffset, (32.0f * l) + yOffset), rotation, true);
 			break;
 		case SpikeTrap:
-			arena[k][l] = new CSpikeTrap(sf::Vector2f((32.0f * k) + 200.0f, (32.0f * l) + 100.0f));
+			arena[k][l] = new CSpikeTrap(sf::Vector2f((32.0f * k) + xOffset, (32.0f * l) + yOffset));
 			break;
 		case Turret:
-			arena[k][l] = new CTurret(sf::Vector2f((32.0f * k) + 200.0f, (32.0f * l) + 100.0f));
+			arena[k][l] = new CTurret(sf::Vector2f((32.0f * k) + xOffset, (32.0f * l) + yOffset));
 			break;
 		}
 	}
