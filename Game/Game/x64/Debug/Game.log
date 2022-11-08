@@ -1,4 +1,13 @@
-﻿  CPlayer.cpp
+﻿  CBullet.cpp
+  CGameObject.cpp
+  CGun.cpp
+  CHealthBar.cpp
+  CLevelMaker.cpp
+  CManager.cpp
+  CMapSelector.cpp
+  CMenu.cpp
+  CPhysicsBody.cpp
+  CPlayer.cpp
 C:\Users\Admin\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(68,55): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
@@ -9,4 +18,15 @@ C:\Users\Admin\Documents\GitHub\GD2S02-Assesment\Game\Game\CPlayer.cpp(68,49): w
           [
               T=float
           ]
+  CSound.cpp
+  CSpikeTrap.cpp
+  CTurret.cpp
+  CUpdatedObject.cpp
+  CWall.cpp
+  CWeaponBox.cpp
+  CWeaponUI.cpp
+  CWeapons.cpp
+  CWinScene.cpp
+  main.cpp
+  Generating Code...
   Game.vcxproj -> C:\Users\Admin\Documents\GitHub\GD2S02-Assesment\Game\x64\Debug\Game.exe

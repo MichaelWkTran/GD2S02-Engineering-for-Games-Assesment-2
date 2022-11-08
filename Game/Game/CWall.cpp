@@ -16,6 +16,8 @@
 #include "CSound.h"
 
 std::shared_ptr<sf::Texture> CWall::breakableWallTexture;
+std::shared_ptr<sf::Texture> CWall::breakableWallTexture1;
+std::shared_ptr<sf::Texture> CWall::breakableWallTexture2;
 std::shared_ptr<sf::Texture> CWall::unbreakableWallTexture;
 
 CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
@@ -36,6 +38,12 @@ CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
     {
         breakableWallTexture = std::make_shared<sf::Texture>();
         breakableWallTexture->loadFromFile("Assets/Sprites/tileSprites/box_5.png");
+
+        breakableWallTexture1 = std::make_shared<sf::Texture>();
+        breakableWallTexture1->loadFromFile("Assets/Sprites/tileSprites/box_5_1.png");
+
+        breakableWallTexture2 = std::make_shared<sf::Texture>();
+        breakableWallTexture2->loadFromFile("Assets/Sprites/tileSprites/box_5_2.png");
     }
     if (unbreakableWallTexture.get() == nullptr)
     {
@@ -45,7 +53,7 @@ CWall::CWall(sf::Vector2f _pos, float _rotation, bool _isBreakable)
 
     // setup sf::Drawable
     drawable = new sf::RectangleShape(sf::Vector2f(32.0f, 32.0f));
-    sf::RectangleShape* rectangleShape = (sf::RectangleShape*)drawable;
+    rectangleShape = (sf::RectangleShape*)drawable;
     rectangleShape->setTexture(isBreakable ? breakableWallTexture.get() : unbreakableWallTexture.get());
     
     // set the origin of the SFML transform
@@ -88,6 +96,16 @@ void CWall::BeginContact(CPhysicsBody* _other)
 
     // damage the wall
     health -= bullet->damage;
+
+    //change texture based on health
+    if (health == 2)
+    {
+        rectangleShape->setTexture(isBreakable ? breakableWallTexture1.get() : unbreakableWallTexture.get());
+    }
+    if (health == 1)
+    {
+        rectangleShape->setTexture(isBreakable ? breakableWallTexture2.get() : unbreakableWallTexture.get());
+    }
 
     // delete the wall if it has no health
     if (health <= 0)
