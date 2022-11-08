@@ -72,42 +72,42 @@ CWinScene::CWinScene()
     // player wins text
     winText.setFillColor(sf::Color::Red);
     winText.setFont(GetManager().font);
-    winText.setCharacterSize(20);
+    winText.setCharacterSize(28);
     winText.setPosition(transform.getPosition().x - 155, transform.getPosition().y - 220);
 
     // next round text
     nextRoundText.setString(nextRoundString);
     nextRoundText.setFillColor(sf::Color::Red);
     nextRoundText.setFont(GetManager().font);
-    nextRoundText.setCharacterSize(18);
-    nextRoundText.setPosition(restartTransform.getPosition().x - 45, restartTransform.getPosition().y - 10);
+    nextRoundText.setCharacterSize(24);
+    nextRoundText.setPosition(restartTransform.getPosition().x - 50, restartTransform.getPosition().y - 10);
 
     // player one score display
     scoreText[0].setString(scoreString[0]);
     scoreText[0].setFillColor(sf::Color::Blue);
     scoreText[0].setFont(GetManager().font);
-    scoreText[0].setCharacterSize(18);
+    scoreText[0].setCharacterSize(24);
     scoreText[0].setPosition(5, 590);
 
     // player two score display
     scoreText[1].setString(scoreString[1]);
     scoreText[1].setFillColor(sf::Color::Red);
     scoreText[1].setFont(GetManager().font);
-    scoreText[1].setCharacterSize(18);
-    scoreText[1].setPosition(1110, 590);
+    scoreText[1].setCharacterSize(24);
+    scoreText[1].setPosition(1060, 590);
 
     // home button
     homeText.setString(homeString);
     homeText.setFillColor(sf::Color::Red);
     homeText.setFont(GetManager().font);
-    homeText.setCharacterSize(18);
+    homeText.setCharacterSize(24);
     homeText.setPosition(homeTransform.getPosition().x - 25, homeTransform.getPosition().y - 10);
 
     // quit button
     quitText.setString(quitString);
     quitText.setFillColor(sf::Color::Red);
     quitText.setFont(GetManager().font);
-    quitText.setCharacterSize(18);
+    quitText.setCharacterSize(24);
     quitText.setPosition(quitTransform.getPosition().x - 25, quitTransform.getPosition().y - 10);
 }
 

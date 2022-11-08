@@ -81,12 +81,12 @@ CMenu::CMenu()
     windowSize1Drawable = new sf::RectangleShape(sf::Vector2f(100, 30));
     ((sf::RectangleShape*)windowSize1Drawable)->setFillColor(sf::Color().White);
     windowSize1Transform.setOrigin(50, 25);
-    windowSize1Transform.setPosition(565, 450);
+    windowSize1Transform.setPosition(565, 445);
     // (windowSize2 BUTTON)
     windowSize2Drawable = new sf::RectangleShape(sf::Vector2f(100, 30));
     ((sf::RectangleShape*)windowSize2Drawable)->setFillColor(sf::Color().White);
     windowSize2Transform.setOrigin(50, 25);
-    windowSize2Transform.setPosition(725, 450);
+    windowSize2Transform.setPosition(725, 445);
     // (volume0 BUTTON)
     volume0Drawable = new sf::RectangleShape(sf::Vector2f(75, 30));
     ((sf::RectangleShape*)volume0Drawable)->setFillColor(sf::Color().White);
@@ -268,9 +268,9 @@ void CMenu::Update()
         controlsString = "       LIST OF CONTROLS\n\nPlayer One:\n      WASD to Move\n"
             "      V to shoot"
             "\n\n\nPlayer Two:\n      Arrow Keys to Move\n"
-            "      Forward Slash to shoot\n\nPick up new weapons by running \ninto weapon boxes";
+            "      Forward Slash to shoot\n\nPick up new weapons by running \ninto weapon boxes\n\nDefeat the other player to become:\n        King of the Arena!";
         controlsText.setString(controlsString);
-        controlsText.setPosition(450, 190);
+        controlsText.setPosition(450, 130);
 
         if (mousePos.x > 430 && mousePos.x < 530 && mousePos.y > 535 && mousePos.y < 685)
         {
@@ -285,8 +285,8 @@ void CMenu::Update()
     else if (settingsScreen) // at the settings screen
     {
         settingsText.setCharacterSize(23);
-        settingsString = "            SETTINGS:\n\n\n\n             Volume:"
-            "\n\n  0%    25%    50%   75%    100%"
+        settingsString = "            SETTINGS:\n\n\n\n\n             Volume:"
+            "\n  0%    25%    50%   75%    100%"
             "\n\n\n           Window Size : \n      1280x720     1920x1080";
         settingsText.setString(settingsString);
         settingsText.setPosition(450, 190);
@@ -300,7 +300,7 @@ void CMenu::Update()
                 new CSound("button.wav");
             }
         }
-        if (mousePos.x > 515 && mousePos.x < 615 && mousePos.y > 435 && mousePos.y < 465)//window1
+        if (mousePos.x > 515 && mousePos.x < 615 && mousePos.y > 430 && mousePos.y < 460)//window1
         {
             if (mouseReleased)
             {
@@ -309,7 +309,7 @@ void CMenu::Update()
                 
             }
         }
-        if (mousePos.x > 675 && mousePos.x < 775 && mousePos.y > 435 && mousePos.y < 465)//window 2
+        if (mousePos.x > 675 && mousePos.x < 775 && mousePos.y > 430 && mousePos.y < 460)//window 2
         {
             if (mouseReleased)
             {
