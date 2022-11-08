@@ -136,6 +136,7 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
+                new CSound("button.wav");
                 GetManager().LoadNewLevel("1");
                 CMenu::mapSelectScreen = false;
                 GetManager().spawnWeapons = true;
@@ -147,6 +148,7 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
+                new CSound("button.wav");
                 GetManager().LoadNewLevel("2");
                 CMenu::mapSelectScreen = false;
                 GetManager().spawnWeapons = true;
@@ -158,6 +160,7 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
+                new CSound("button.wav");
                 GetManager().LoadNewLevel("3");
                 CMenu::mapSelectScreen = false;
                 GetManager().spawnWeapons = true;
@@ -169,6 +172,7 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
+                new CSound("button.wav");
                 GetManager().LoadNewLevel("4");
                 CMenu::mapSelectScreen = false;
                 GetManager().spawnWeapons = true;
@@ -181,6 +185,7 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
+                new CSound("button.wav");
                 CMenu::mapSelectScreen = false; // hide map select screen
                 CMenu::playGame = false; // display main menu
             }
@@ -191,6 +196,7 @@ void CMapSelector::Update()
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
+                new CSound("button.wav");
                 int i = rand() % 4 + 1;
                 GetManager().LoadNewLevel(std::to_string(i));
                 GetManager().spawnWeapons = true;

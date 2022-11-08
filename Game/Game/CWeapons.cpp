@@ -34,7 +34,7 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 		numberOfProjectiles = 1;
 		projectileMomentum = 1;
 		projectileRange = 0.3f;
-		damage = 1;
+		damage = 2.f;
 		gunTex = new sf::Texture();
 		gunTex->loadFromFile("Assets/Sprites/weaponSprites/topDownPistol2.png");
 	}
@@ -48,7 +48,7 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 		numberOfProjectiles = 1;
 		projectileMomentum = 2;
 		projectileRange = 0.5f;
-		damage = 2;
+		damage = 1.5f;
 		gunTex = new sf::Texture();
 		gunTex->loadFromFile("Assets/Sprites/weaponSprites/topDownRifle2.png");
 	}
@@ -62,7 +62,7 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 		numberOfProjectiles = 1;
 		projectileMomentum = 6;
 		projectileRange = 10.f;
-		damage = 4;
+		damage = 4.f;
 		gunTex = new sf::Texture();
 		gunTex->loadFromFile("Assets/Sprites/weaponSprites/topDownSniper2.png");
 	}
@@ -76,7 +76,7 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 		numberOfProjectiles = 3;
 		projectileMomentum = 6;
 		projectileRange = 0.2f;
-		damage = 3;
+		damage = 3.f;
 		gunTex = new sf::Texture();
 		gunTex->loadFromFile("Assets/Sprites/weaponSprites/topDownShotgun2.png");
 	}
@@ -280,8 +280,8 @@ void CWeapons::Shoot()
 					(_vector.x * sinf(_radians)) + (_vector.y * cosf(_radians))
 				);
 			};
-			bullets[1]->velocity = rotateRoundOrigin(bullets[1]->velocity, PI/5.0f);
-			bullets[2]->velocity = rotateRoundOrigin(bullets[2]->velocity,-PI/5.0f);
+			bullets[1]->velocity = rotateRoundOrigin(bullets[1]->velocity, PI/15.0f);
+			bullets[2]->velocity = rotateRoundOrigin(bullets[2]->velocity,-PI/15.0f);
 
 			new CSound("gun2.wav");
 		}

@@ -20,6 +20,7 @@
 #include "CWeaponUI.h"
 #include "CLevelMaker.h"
 #include <iostream>
+#include "CSound.h"
 
 #include "CWinScene.h"
 
@@ -312,6 +313,7 @@ void CPlayer::NewWeapon(int _heldWeaponInt)
     heldWeapon = new CWeapons(&facingDirection, this, _heldWeaponInt);
     heldWeaponInt = _heldWeaponInt;
     // play weapon pickup sound
+    new CSound("gunPickup.wav");
 }
 
 void CPlayer::ApplyRecoil(b2Vec2 _recoil)
