@@ -288,6 +288,12 @@ void CPlayer::Kill()
     GetManager().spawnWeapons = false;
     DeleteObject();
 
+    playerHealthBar->DeleteObject();
+    playerHealthBar = nullptr;
+
+    playerWeaponUI->DeleteObject();
+    playerWeaponUI = nullptr;
+
     heldWeapon->DeleteObject();
     heldWeapon->playerObject = nullptr;
 }
