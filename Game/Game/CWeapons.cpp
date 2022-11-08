@@ -33,7 +33,7 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 		recoilForce = 0;
 		numberOfProjectiles = 1;
 		projectileMomentum = 1;
-		projectileRange = 5;
+		projectileRange = 0.3f;
 		damage = 1;
 		gunTex = new sf::Texture();
 		gunTex->loadFromFile("Assets/Sprites/weaponSprites/topDownPistol2.png");
@@ -47,7 +47,7 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 		recoilForce = 1;
 		numberOfProjectiles = 1;
 		projectileMomentum = 2;
-		projectileRange = 7;
+		projectileRange = 0.5f;
 		damage = 2;
 		gunTex = new sf::Texture();
 		gunTex->loadFromFile("Assets/Sprites/weaponSprites/topDownRifle2.png");
@@ -61,8 +61,8 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 		recoilForce = 4;
 		numberOfProjectiles = 1;
 		projectileMomentum = 6;
-		projectileRange = 100;
-		damage = 5;
+		projectileRange = 10.f;
+		damage = 4;
 		gunTex = new sf::Texture();
 		gunTex->loadFromFile("Assets/Sprites/weaponSprites/topDownSniper2.png");
 	}
@@ -75,7 +75,7 @@ CWeapons::CWeapons(b2Vec2* _playerFacingVec, CPlayer* _playerObject, int _weapon
 		recoilForce = 3;
 		numberOfProjectiles = 3;
 		projectileMomentum = 6;
-		projectileRange = 3;
+		projectileRange = 0.2f;
 		damage = 3;
 		gunTex = new sf::Texture();
 		gunTex->loadFromFile("Assets/Sprites/weaponSprites/topDownShotgun2.png");

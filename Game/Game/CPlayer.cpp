@@ -303,6 +303,10 @@ void CPlayer::NewWeapon(int _heldWeaponInt)
     if (heldWeaponInt == _heldWeaponInt)
     {
         _heldWeaponInt += 1;
+        if (_heldWeaponInt >= 4)
+        {
+            _heldWeaponInt = 0;
+        }
     }
     heldWeapon->DeleteObject();
     heldWeapon = new CWeapons(&facingDirection, this, _heldWeaponInt);

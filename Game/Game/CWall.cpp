@@ -98,11 +98,11 @@ void CWall::BeginContact(CPhysicsBody* _other)
     health -= bullet->damage;
 
     //change texture based on health
-    if (health == 2)
+    if (health <= 2)
     {
         rectangleShape->setTexture(isBreakable ? breakableWallTexture1.get() : unbreakableWallTexture.get());
     }
-    if (health == 1)
+    if (health <= 1)
     {
         rectangleShape->setTexture(isBreakable ? breakableWallTexture2.get() : unbreakableWallTexture.get());
     }
